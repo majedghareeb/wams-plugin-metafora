@@ -1,0 +1,29 @@
+2024-01-31T13:24:45+00:00 [INFO] : 2024-01-31 13:24:45 - User: developer (ID: 1) logged in. IP: 127.0.0.1, Browser: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36
+
+2024-01-31T13:27:23+00:00 [INFO] : Array
+(
+    [date] => 2024-01-31 13:27:23
+    [User] => developer
+    [ID] => 1
+    [IP] => 127.0.0.1
+    [Browser] => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36
+)
+
+2024-01-31T14:06:46+00:00 [INFO] : Array
+(
+    [date] => 2024-01-31 14:06:46
+    [user_login] => developer
+    [user_id] => 1
+    [ip_address] => 127.0.0.1
+    [browser] => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36
+)
+
+2024-01-31T14:13:46+00:00 [INFO] : Array
+(
+    [date] => 2024-01-31 14:13:46
+    [user_login] => developer
+    [user_id] => 1
+    [ip_address] => 127.0.0.1
+    [browser] => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36
+)
+

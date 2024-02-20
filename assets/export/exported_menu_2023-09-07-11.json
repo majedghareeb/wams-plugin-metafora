@@ -1,0 +1,258 @@
+{
+    "Main": [
+        {
+            "id": 286,
+            "title": "\u0627\u0644\u0635\u0641\u062d\u0629 \u0627\u0644\u0631\u0626\u064a\u0633\u064a\u0629",
+            "url": "https:\/\/syriatv.rakami.net\/input\/",
+            "parent": "0",
+            "object": "page",
+            "object_id": "16",
+            "type": "post_type",
+            "type_label": "Front Page",
+            "icon": "bi bi-house",
+            "connected_page": {
+                "post_title": "Home",
+                "post_name": "home",
+                "post_status": "publish",
+                "post_content": "[home-page]",
+                "post_template": "",
+                "post_parent": 0,
+                "post_author": 1,
+                "post_type": "page"
+            }
+        },
+        {
+            "id": 338,
+            "title": "\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0644\u0631\u0626\u064a\u0633\u064a",
+            "url": "\/",
+            "parent": "0",
+            "object": "custom",
+            "object_id": "338",
+            "type": "custom",
+            "type_label": "Custom Link",
+            "icon": "bi bi-building-fill",
+            "connected_page": []
+        },
+        {
+            "id": 287,
+            "title": "\u0627\u0644\u0639\u0645\u0644\u0627\u0621",
+            "url": "#",
+            "parent": "0",
+            "object": "custom",
+            "object_id": "287",
+            "type": "custom",
+            "type_label": "Custom Link",
+            "icon": "bi bi-people-fill",
+            "connected_page": []
+        },
+        {
+            "id": 288,
+            "title": "\u0627\u0644\u0645\u0648\u0642\u0639",
+            "url": "#",
+            "parent": "0",
+            "object": "custom",
+            "object_id": "288",
+            "type": "custom",
+            "type_label": "Custom Link",
+            "icon": "bi bi-browser-chrome",
+            "connected_page": []
+        },
+        {
+            "id": 289,
+            "title": "\u0627\u0644\u0645\u0642\u0627\u0628\u0644\u0627\u062a",
+            "url": "#",
+            "parent": "0",
+            "object": "custom",
+            "object_id": "289",
+            "type": "custom",
+            "type_label": "Custom Link",
+            "icon": "bi bi-binoculars-fill",
+            "connected_page": []
+        },
+        {
+            "id": 290,
+            "title": "\u0627\u0644\u062a\u0643\u0644\u064a\u0641\u0627\u062a",
+            "url": "#",
+            "parent": "0",
+            "object": "custom",
+            "object_id": "290",
+            "type": "custom",
+            "type_label": "Custom Link",
+            "icon": "bi bi-film",
+            "connected_page": []
+        },
+        {
+            "id": 414,
+            "title": "\u0627\u0644\u062f\u0639\u0645 \u0627\u0644\u0641\u0646\u064a",
+            "url": "#",
+            "parent": "0",
+            "object": "custom",
+            "object_id": "414",
+            "type": "custom",
+            "type_label": "Custom Link",
+            "icon": "bi bi-life-preserver",
+            "connected_page": []
+        },
+        {
+            "id": 427,
+            "title": "\u0627\u0644\u0645\u0627\u0644\u064a\u0629",
+            "url": "#",
+            "parent": "0",
+            "object": "custom",
+            "object_id": "427",
+            "type": "custom",
+            "type_label": "Custom Link",
+            "icon": "bi bi-coin",
+            "connected_page": []
+        }
+    ],
+    "User Menu": [
+        {
+            "id": 254,
+            "title": "\u0627\u0644\u0645\u0647\u0627\u0645",
+            "url": "https:\/\/syriatv.rakami.net\/input\/inbox\/",
+            "parent": "0",
+            "object": "page",
+            "object_id": "248",
+            "type": "post_type",
+            "type_label": "Page",
+            "icon": "bi bi-card-checklist me-2",
+            "connected_page": {
+                "post_title": "Inbox",
+                "post_name": "inbox",
+                "post_status": "publish",
+                "post_content": "<!-- wp:gravityflow\/inbox \/-->",
+                "post_template": "",
+                "post_parent": 0,
+                "post_author": 1,
+                "post_type": "page"
+            }
+        },
+        {
+            "id": 253,
+            "title": "\u0627\u0644\u0637\u0644\u0628\u0627\u062a",
+            "url": "https:\/\/syriatv.rakami.net\/input\/status\/",
+            "parent": "0",
+            "object": "page",
+            "object_id": "251",
+            "type": "post_type",
+            "type_label": "Page",
+            "icon": "bi bi-hourglass-top me-2",
+            "connected_page": {
+                "post_title": "Status",
+                "post_name": "status",
+                "post_status": "publish",
+                "post_content": "<!-- wp:gravityflow\/status \/-->",
+                "post_template": "",
+                "post_parent": 0,
+                "post_author": 1,
+                "post_type": "page"
+            }
+        },
+        {
+            "id": 244,
+            "title": "\u0627\u0644\u062d\u0633\u0627\u0628",
+            "url": "https:\/\/syriatv.rakami.net\/input\/account\/",
+            "parent": "0",
+            "object": "page",
+            "object_id": "81",
+            "type": "post_type",
+            "type_label": "UM Account",
+            "icon": "bi bi-gear-fill me-2",
+            "connected_page": {
+                "post_title": "Account",
+                "post_name": "account",
+                "post_status": "publish",
+                "post_content": "[ultimatemember_account]",
+                "post_template": "",
+                "post_parent": 0,
+                "post_author": 1,
+                "post_type": "page"
+            }
+        },
+        {
+            "id": 255,
+            "title": "\u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062e\u0635\u064a",
+            "url": "https:\/\/syriatv.rakami.net\/input\/user\/",
+            "parent": "0",
+            "object": "page",
+            "object_id": "76",
+            "type": "post_type",
+            "type_label": "UM User",
+            "icon": "bi bi-person-badge-fill me-2",
+            "connected_page": {
+                "post_title": "User",
+                "post_name": "user",
+                "post_status": "publish",
+                "post_content": "[ultimatemember form_id=\"5\"]",
+                "post_template": "",
+                "post_parent": 0,
+                "post_author": 1,
+                "post_type": "page"
+            }
+        },
+        {
+            "id": 246,
+            "title": "\u0627\u0644\u0645\u0648\u0638\u0641\u064a\u0646",
+            "url": "https:\/\/syriatv.rakami.net\/input\/members\/",
+            "parent": "0",
+            "object": "page",
+            "object_id": "79",
+            "type": "post_type",
+            "type_label": "UM Members",
+            "icon": "bi bi-people me-2",
+            "connected_page": {
+                "post_title": "Members",
+                "post_name": "members",
+                "post_status": "publish",
+                "post_content": "[ultimatemember form_id=\"6\"]",
+                "post_template": "",
+                "post_parent": 0,
+                "post_author": 1,
+                "post_type": "page"
+            }
+        },
+        {
+            "id": 247,
+            "title": "\u0627\u0644\u0627\u0634\u0639\u0627\u0631\u0627\u062a",
+            "url": "https:\/\/syriatv.rakami.net\/input\/notifications-2\/",
+            "parent": "0",
+            "object": "page",
+            "object_id": "18",
+            "type": "post_type",
+            "type_label": "UM Notifications",
+            "icon": "bi bi-bell-fill me-2",
+            "connected_page": {
+                "post_title": "Notifications",
+                "post_name": "notifications-2",
+                "post_status": "publish",
+                "post_content": "[ultimatemember_notifications]",
+                "post_template": "",
+                "post_parent": 0,
+                "post_author": 1,
+                "post_type": "page"
+            }
+        },
+        {
+            "id": 245,
+            "title": "\u062e\u0631\u0648\u062c",
+            "url": "https:\/\/syriatv.rakami.net\/input\/logout\/",
+            "parent": "0",
+            "object": "page",
+            "object_id": "12",
+            "type": "post_type",
+            "type_label": "UM Logout",
+            "icon": "bi bi-door-closed-fill",
+            "connected_page": {
+                "post_title": "Logout",
+                "post_name": "logout",
+                "post_status": "publish",
+                "post_content": "",
+                "post_template": "",
+                "post_parent": 0,
+                "post_author": 1,
+                "post_type": "page"
+            }
+        }
+    ]
+}

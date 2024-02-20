@@ -1,0 +1,1 @@
+<h1>RSS Fetcher is here in template folder</h1>
