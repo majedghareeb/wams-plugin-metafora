@@ -60,8 +60,8 @@ if (!class_exists('wams\admin\modules\Task_Scheduler')) {
             ];
             // print_r($avaiable_intervals);
             $avaiable_hooks = [
-                '\wams\admin\Admin@wams_as_analytics_import' => 'Import Google Analytics Data',
-                '\wams\admin\Admin@wams_as_rss_import' => 'Fetch RSS Content'
+                '\wams\core\Google_Analytics@get_analytics_data' => 'Update Google Analytics Data',
+                '\wams\core\RSS_Feed_Extractor@wams_rss_import' => 'Fetch RSS Content'
             ];
             $this->page = [
                 'subpage' => [

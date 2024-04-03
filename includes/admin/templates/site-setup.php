@@ -27,6 +27,17 @@
                             echo '<button class="btn btn-light" id="install-user-menu">Install User Menu</button>';
                             ?>
                         </div>
+                        <div class="d-flex flex-wrap align-items-center justify-content-center gap-2 mb-3">
+
+                            <?php
+                            echo '<button class="btn btn-light" id="install-main-menu">Install Main Menu</button>';
+                            ?>
+                        </div>
+                        <div class="d-flex flex-wrap align-items-center justify-content-center gap-2 mb-3">
+                            <?php
+                            echo '<button class="btn btn-light" id="install-topbar-icon-box">Install Topbar Icon Box</button>';
+                            ?>
+                        </div>
                     </div>
 
                 </div>

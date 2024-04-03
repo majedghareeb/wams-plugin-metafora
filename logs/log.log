@@ -1,51 +1,248 @@
-2024-02-18 15:14:25 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-18 16:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-18 17:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-18 18:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-18 19:00:07 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-18 20:00:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-18 21:25:12 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-18 22:00:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 00:30:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 01:30:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 02:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 03:20:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 04:20:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 05:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 06:00:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 07:00:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 08:00:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 09:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 10:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 11:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 12:00:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 13:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 14:00:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 15:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 16:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 17:09:26 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 18:12:11 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 19:12:34 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 20:13:15 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 21:07:55 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 22:07:11 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-19 23:08:41 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 00:00:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 01:10:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 02:11:31 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 03:05:11 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 04:08:39 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 05:59:03 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 06:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 06:00:23 [INFO] : Table 'wp_5_wams_user_logins' already exists.
-2024-02-20 06:00:23 [INFO] : Table 'wp_5_wams_notifications' already exists.
-2024-02-20 07:00:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 08:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 09:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 10:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 11:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 12:00:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 13:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 14:06:46 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 15:00:00 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
-2024-02-20 16:00:01 [INFO] : wams_as_rss_import is called from wams\admin\Admin_Functions class using cron
+2024-03-18 15:01:45 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-18 15:15:25 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 15:18:36 [INFO] : Entry ID : 677Has been updated
+2024-03-18 15:18:55 [INFO] : Entry ID : 808Has been updated
+2024-03-18 15:18:56 [INFO] : Entry ID : 820Has been updated
+2024-03-18 15:18:57 [INFO] : Entry ID : 1194Has been updated
+2024-03-18 15:18:57 [INFO] : Entry ID : 1564Has been updated
+2024-03-18 15:18:58 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 15:18:58 [INFO] : Entry ID : 1869Has been updated
+2024-03-18 15:18:58 [INFO] : Entry ID : 2039Has been updated
+2024-03-18 15:18:59 [INFO] : Entry ID : 2098Has been updated
+2024-03-18 15:18:59 [INFO] : Entry ID : 2102Has been updated
+2024-03-18 15:18:59 [INFO] : Entry ID : 2110Has been updated
+2024-03-18 15:19:00 [INFO] : Entry ID : 2115Has been updated
+2024-03-18 15:19:03 [INFO] : Entry ID : 2129Has been updated
+2024-03-18 15:19:03 [INFO] : Entry ID : 2136Has been updated
+2024-03-18 15:19:03 [INFO] : Entry ID : 2141Has been updated
+2024-03-18 15:19:03 [INFO] : Entry ID : 2150Has been updated
+2024-03-18 15:19:03 [INFO] : Entry ID : 2160Has been updated
+2024-03-18 15:19:03 [INFO] : Entry ID : 2161Has been updated
+2024-03-18 15:19:03 [INFO] : Entry ID : 2169Has been updated
+2024-03-18 15:19:03 [INFO] : Entry ID : 2176Has been updated
+2024-03-18 15:22:57 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 15:25:09 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 15:26:16 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 15:28:18 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 15:30:11 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 15:48:58 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 15:52:18 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 15:53:26 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 15:57:32 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 15:59:46 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 16:00:20 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-18 16:01:28 [INFO] : Entry ID : 1838Has been updated
+2024-03-18 16:08:37 [INFO] : Entry ID : 2176Has been updated
+2024-03-18 16:08:39 [INFO] : Entry ID : 2176Has been updated
+2024-03-18 17:00:44 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-18 17:26:21 [INFO] : Entry ID : 2198Has been updated
+2024-03-18 17:28:50 [INFO] : Entry ID : 2198Has been updated
+2024-03-18 18:00:21 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-18 19:00:21 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 04:09:50 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 05:26:24 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 06:00:15 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 07:12:04 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 08:00:04 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 09:00:04 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 10:00:04 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 11:00:02 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 12:00:53 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 13:00:58 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 14:15:51 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 15:00:24 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 16:00:07 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 17:00:08 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 22:03:36 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-19 23:00:06 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 02:26:56 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 07:32:40 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 09:07:50 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 10:00:30 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 11:00:32 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 12:00:22 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 13:00:55 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 14:01:19 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 15:00:33 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 16:01:25 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 17:00:03 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 18:16:15 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 19:02:18 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 20:14:21 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 21:03:08 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 22:09:56 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-20 23:04:48 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 00:22:32 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 08:54:36 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 09:00:49 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 10:14:53 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 11:00:04 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 12:00:03 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 13:01:59 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 14:12:11 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 15:26:04 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 16:00:03 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 17:01:37 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-21 19:42:23 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-22 09:30:45 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-22 10:11:09 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-22 11:00:27 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-22 12:01:47 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-22 12:01:47 [ERROR] : Error in RSS Fetch: Error loading XML
+2024-03-23 15:42:54 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-23 16:00:54 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-23 20:44:57 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-24 08:48:01 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-24 09:00:01 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-24 10:00:39 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-24 10:03:18 [INFO] : Entry ID : 2218Has been updated
+2024-03-24 10:04:33 [INFO] : Entry ID : 2219Has been updated
+2024-03-24 10:06:11 [INFO] : Entry ID : 2220Has been updated
+2024-03-24 10:09:02 [INFO] : Entry ID : 2221Has been updated
+2024-03-24 10:09:53 [INFO] : Entry ID : 2222Has been updated
+2024-03-24 10:10:18 [INFO] : Entry ID : 2221Has been updated
+2024-03-24 10:11:23 [INFO] : Entry ID : 2223Has been updated
+2024-03-24 10:12:33 [INFO] : Entry ID : 2224Has been updated
+2024-03-24 10:14:29 [INFO] : Entry ID : 2225Has been updated
+2024-03-24 10:20:09 [INFO] : Entry ID : 2226Has been updated
+2024-03-24 10:22:54 [INFO] : Entry ID : 2227Has been updated
+2024-03-24 10:30:06 [INFO] : Entry ID : 2230Has been updated
+2024-03-24 10:52:22 [INFO] : Entry ID : 2230Has been updated
+2024-03-24 10:52:28 [INFO] : Entry ID : 2230Has been updated
+2024-03-24 11:00:17 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-24 11:05:00 [INFO] : Entry ID : 2230Has been updated
+2024-03-24 11:09:57 [INFO] : Entry ID : 2230Has been updated
+2024-03-24 11:15:49 [INFO] : Entry ID : 2231Has been updated
+2024-03-24 11:19:37 [INFO] : Entry ID : 2233Has been updated
+2024-03-24 11:21:54 [INFO] : Entry ID : 2234Has been updated
+2024-03-24 11:47:04 [INFO] : Entry ID : 2235Has been updated
+2024-03-24 11:48:17 [INFO] : Entry ID : 2235Has been updated
+2024-03-24 11:59:55 [INFO] : Entry ID : 2235Has been updated
+2024-03-24 12:00:57 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-24 13:00:14 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-24 13:01:15 [ERROR] : Error in RSS Fetch: Error loading XML
+2024-03-24 14:00:17 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-24 15:00:17 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-24 16:23:09 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-25 14:44:43 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-25 15:00:58 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-25 15:38:30 [INFO] : Entry ID : 2236Has been updated
+2024-03-25 15:39:08 [INFO] : Entry ID : 2236Has been updated
+2024-03-25 15:40:53 [INFO] : Entry ID : 2236Has been updated
+2024-03-25 15:41:16 [INFO] : Entry ID : 2236Has been updated
+2024-03-25 15:52:35 [INFO] : Entry ID : 2236Has been updated
+2024-03-25 15:54:32 [INFO] : Entry ID : 2237Has been updated
+2024-03-25 15:55:59 [INFO] : Entry ID : 2237Has been updated
+2024-03-25 16:00:01 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-25 17:00:02 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-26 09:39:11 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-26 10:00:08 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-26 11:00:42 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-26 12:01:05 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-26 14:30:14 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-26 15:00:40 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-26 16:01:23 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 07:12:05 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 08:07:06 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 09:00:56 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 10:01:39 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 11:00:03 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 12:00:01 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 13:00:16 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 14:00:05 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 15:32:24 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 16:00:01 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 17:00:04 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 18:00:06 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 19:22:50 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 20:15:01 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 21:29:55 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 22:31:02 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-27 23:32:13 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 01:33:08 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 03:23:15 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 05:24:23 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 06:25:34 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 07:26:44 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 08:01:34 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 08:01:34 [ERROR] : Error in RSS Fetch: Error loading XML
+2024-03-28 09:00:23 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 10:01:31 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 11:00:17 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 12:00:16 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 13:00:16 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 14:00:07 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 15:00:22 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 16:00:04 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 17:00:22 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 18:00:17 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 19:00:22 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 21:22:24 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 22:00:13 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-28 23:00:46 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 00:32:55 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 01:30:59 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 02:01:10 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 03:25:12 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 04:13:13 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 05:13:40 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 06:01:11 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 07:01:03 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 08:00:02 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 09:01:21 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 10:00:54 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 11:07:21 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 12:27:49 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 13:13:44 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 14:09:35 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 15:15:45 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 16:34:07 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 17:00:56 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 18:11:39 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 19:00:05 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 20:10:22 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 21:28:01 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 22:16:26 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-29 23:09:48 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-30 00:01:15 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-30 01:19:01 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-30 02:07:05 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-30 03:01:52 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-30 04:09:16 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-30 05:12:13 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-30 06:24:59 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-30 11:57:20 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-30 12:00:59 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-31 08:43:43 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-31 09:45:25 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-31 10:00:24 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-31 11:00:12 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-31 12:30:15 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-03-31 13:48:15 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-01 08:55:05 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-01 09:03:18 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-01 10:13:59 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-01 11:05:02 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-01 14:50:59 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-01 15:00:21 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-01 16:00:11 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-01 17:00:26 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-01 18:00:01 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 08:29:14 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 09:00:04 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 10:03:31 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 11:01:11 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 12:01:39 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 13:00:08 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 14:00:07 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 15:32:49 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 16:03:30 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 19:39:50 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 20:41:07 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 22:17:51 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-02 22:43:26 [ERROR] : Error in RSS Fetch: Error loading XML
+2024-04-03 04:34:15 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-03 06:26:01 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-03 08:38:41 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron
+2024-04-03 08:38:42 [ERROR] : Error in RSS Fetch: Error loading XML
+2024-04-03 09:38:11 [INFO] : wams_rss_import is called from wams\core\RSS_Feed_Extractor class using cron

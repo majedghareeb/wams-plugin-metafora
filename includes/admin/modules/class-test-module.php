@@ -86,28 +86,123 @@ if (!class_exists('wams\admin\modules\Test_Module')) {
 		}
 
 
+		function searchSubarrays($bigArray, $word)
+		{
+			$searchResults = [];
+
+			foreach ($bigArray as $subarray) {
+				$matchesId = false;
+				$matchesName = false;
+
+				// Check if ID (if present) partially or fully matches the word
+				if (isset($subarray['id'])) {
+					$matchesId = stristr($subarray['id'], $word) !== false; // Case-insensitive comparison
+				}
+
+				// Check if name partially or fully matches the word
+				if (isset($subarray['name'])) {
+					$matchesName = stristr($subarray['name'], $word) !== false; // Case-insensitive comparison
+				}
+
+				// If either ID or name matches, add the subarray to the results
+				if ($matchesId || $matchesName) {
+					$searchResults[] = $subarray;
+				}
+			}
+
+			return $searchResults;
+		}
+		function get_cached_vendors_list()
+		{
+			$wams_seach_vendor_field_settings = get_option('wams_seach_vendor_field_settings');
+			$vendor_name_field_id = $wams_seach_vendor_field_settings['vendor_name_field_id'] ?? 0;
+			$vendor_arabic_name_field_id = $wams_seach_vendor_field_settings['vendor_arabic_name_field_id'] ?? 0;
+			$vendor_project_field_id = $wams_seach_vendor_field_settings['vendor_project_field_id'] ?? 0;
+
+			$all_entries = get_transient('all_vendors');
+			if ($all_entries == false) {
+				$search_criteria = array(
+					'status'        => 'active',
+				);
+				$is_subsite = (get_current_blog_id() != WAMS_MAIN_BLOG_ID) ? true : false;
+				if ($is_subsite) switch_to_blog(WAMS_MAIN_BLOG_ID);
+				$total_count = 0;
+				$all_entries = [];
+				$page = 0;
+				$batch_size = 100;
+				do {
+					$paging          = array('offset' => $page, 'page_size' => $batch_size); // Adjust this based on your requirements
+					$entries = GFAPI::get_entries(14, $search_criteria, [], $paging, $total_count);
+					foreach ($entries as $entry) {
+						$all_entries[] = [
+							'id' => rgar($entry, 'id'),
+							'name' => rgar($entry, $vendor_name_field_id),
+							'arabic_name' => rgar($entry, $vendor_arabic_name_field_id),
+							'project' => rgars($entry, $vendor_project_field_id),
+						];
+					}
+					// Increment the page number for the next request
+					$page = $batch_size + $page;
+				} while (count($entries) === $batch_size);
+				if ($is_subsite) restore_current_blog();
+				set_transient('all_vendors', $all_entries, 3 * MINUTE_IN_SECONDS);
+			}
+			return $all_entries;
+		}
+
 		function show_test_page()
 		{
 			echo '<h1>Test_Module Page</h1>';
-			global $wpdb;
-			// $sqlquery = $wpdb->query("SELECT FROM $wpdb->options WHERE option_name LIKE 'wams%%'");
-			$sql =  "SELECT * FROM $wpdb->options  WHERE option_name LIKE '%wams_ga_cache%' ";
+			$result = $this->get_cached_vendors_list();
 
-			$options = $wpdb->get_results(
-				$wpdb->prepare(
-					$sql
-				)
-			);
-			if ($options) :
-				foreach ($options as $option) {
-					echo '<div>';
-					echo '<h1>' . $option->option_name . '';
-					$option_value = delete_option($option->option_name);
-					echo ' Deleted!';
-					echo '</h1>';
-					echo '</div>';
-				}
-			endif;
+			echo '<pre>' . print_r($result, true) . '</pre>';
+?>
+			
+<?php
+			// $wams_seach_vendor_field_settings = get_option('wams_seach_vendor_field_settings');
+
+			// if ($wams_seach_vendor_field_settings && $wams_seach_vendor_field_settings['enable_seach_vendor_field'] == 'on') {
+			// 	add_action('gform_loaded', array($this, 'load'), 5);
+			// 	define('_SITE_ID', $wams_seach_vendor_field_settings['vendor_site_id'] ?? 0);
+			// 	define('_VENDOR_FORM_ID', $wams_seach_vendor_field_settings['vendor_form'] ?? 0);
+			// 	define('_PROJECT_FORM_ID', $wams_seach_vendor_field_settings['project_form'] ?? 0);
+			// 	define('_VENDOR_NAME_FIELD_ID', $wams_seach_vendor_field_settings['vendor_name_field_id'] ?? 0);
+			// 	define('_VENDOR_ARABIC_NAME_FIELD_ID', $wams_seach_vendor_field_settings['vendor_arabic_name_field_id'] ?? 0);
+			// 	define('_VENDOR_PROJECT_FIELD_ID', $wams_seach_vendor_field_settings['vendor_project_field_id'] ?? 0);
+			// }
+			// $all_projects = [];
+			// $projects = GFAPI::get_entries(_PROJECT_FORM_ID, [], null, array('offset' => 0, 'page_size' => 250));
+			// foreach ($projects as $project) {
+			// 	$all_projects[$project['id']] = $project['8'];
+			// }
+			// print_r($all_projects);
+			// $entries = GFAPI::get_entries(_VENDOR_FORM_ID, [], null, array('offset' => 0, 'page_size' => 250));
+			// if ($entries) {
+			// 	foreach ($entries as $entry) {
+			// 		// print_r($entry);
+			// 		if ($entry['id'] == 3280) {
+			// 			$s = $entry['17'];
+
+			// 			var_dump(json_decode($s));
+			// 		}
+			// 		$vendor_project = rgar($entry, _VENDOR_PROJECT_FIELD_ID, '');
+			// 		$vendor_project = str_replace(['[', ']', '"'], '', $vendor_project);
+
+			// 		// if ($key = array_search($vendor_project, $all_projects, true)) {
+			// 		// 	echo $vendor_project . ': ' . $key .  '<br>';
+
+			// 		// 	$entry[_VENDOR_PROJECT_FIELD_ID] = $key;
+			// 		// 	// GFAPI::update_entry($entry);
+			// 		// }
+
+			// 		// foreach ($vendor_project as $vendor_project) {
+			// 		// 	if (str_contains($allowed_projects, $allowed_projects)) {
+			// 		// 		$return[] = '<option value="' . $entry['id'] . '">' . $entry['id'] . ':' . $entry['1'] . ' -- ' . $vendor_project . '</option>';
+			// 		// 		break;
+			// 		// 	}
+			// 		// }
+			// 	}
+			// }
 			// $logger = new \wams\common\Logger();
 			// echo $logger->set_log_file_path('new');
 			// // $logger->log_dir = "new";
@@ -381,14 +476,14 @@ if (!class_exists('wams\admin\modules\Test_Module')) {
 
 			// $json_file = WAMS_PATH . 'includes/admin/export/exported_menu_2023-09-07-11.json';
 			// switch_to_blog(3);
-			$pages = get_posts(array('post_type' => 'page', 'name' => 'notifications'));
+			// $pages = get_posts(array('post_type' => 'page', 'name' => 'notifications'));
 
 			echo '<pre>';
 			// $default_values = json_decode(WAMS()->config()->get_input_defaults());
 			// print_r($input_forms = WAMS()->admin()->get_input_site_forms($input_site = 3));
 			// $menus_arr = $this->readJsonFile($json_file);
 			// global $wpdb;
-			$message = [];
+			// $message = [];
 			// echo  $wpdb->prefix;
 			// $pages = get_pages(array('post_type' => 'page',));
 
@@ -402,7 +497,7 @@ if (!class_exists('wams\admin\modules\Test_Module')) {
 			// 	$this->import_menu_items($menu_name, $menu_items);
 			// }
 			echo '</pre>';
-			WAMS()->get_template('notifications.php', '', [], true);
+			// WAMS()->get_template('notifications.php', '', [], true);
 		}
 
 		function wams_get_default_avatar_uri()

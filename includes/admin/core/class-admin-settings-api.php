@@ -668,7 +668,6 @@ if (!class_exists('wams\admin\core\Admin_Settings_API')) {
 		function show_settings_page($page_title = '')
 		{
 			echo '<h1>' . $page_title . '</h1>';
-
 			echo '<div class="wraper">';
 			echo '<div id="tabs">';
 			$this->show_navigation();

@@ -1,13 +1,13 @@
 <h1>Charts</h1>
 <?php //print_r($output_arrays); 
-wp_enqueue_script("chart", WAMS_URL . 'assets/js/frontend/chart.min.js', array(), WAMS_VERSION, false);
-wp_enqueue_script("chart-datalabels", WAMS_URL . 'assets/js/frontend/chartjs-plugin-datalabels.min.js', array(), WAMS_VERSION, false);
+echo json_encode($tasks['datasets']);
 if (!empty($tasks)) :
 ?>
     <script>
         jQuery(document).ready(function($) {
             // Your Chart.js configuration
             var ctx = document.getElementById('myChart').getContext('2d');
+            var pie = document.getElementById('myChart_pie').getContext('2d');
             Chart.register(ChartDataLabels);
             Chart.defaults.set('plugins.datalabels', {
                 anchor: 'end',
@@ -28,7 +28,7 @@ if (!empty($tasks)) :
                     datasets: data
                 },
                 options: {
-                    indexAxis: 'y',
+                    indexAxis: 'x',
                     scales: {
                         y: {
                             beginAtZero: true
@@ -37,9 +37,39 @@ if (!empty($tasks)) :
                 },
 
             });
+
+            var pie_chart = new Chart(pie, {
+                type: "pie",
+                data: {
+                    labels: <?php echo json_encode($tasks['labels']); ?>,
+                    datasets: data
+                },
+                options: {}
+            });
         });
     </script>
 <?php endif; ?>
-<div>
-    <canvas id="myChart"></canvas>
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Bar Chart</h4>
+            </div>
+            <div class="card-body">
+
+                <canvas id="myChart" height="300"></canvas>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Pie Chart</h4>
+            </div>
+            <div class="card-body">
+                <canvas id="myChart_pie" width="451" height="100"></canvas>
+            </div>
+        </div>
+    </div> <!-- end col -->
 </div>

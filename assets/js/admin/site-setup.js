@@ -160,4 +160,102 @@ jQuery(document).ready(function () {
 
         });
     });
+    jQuery("#install-main-menu").on("click", function (e) {
+        Swal.fire({
+            title: 'Under Process',
+            text: 'Please wait while Installing Database Table',
+            allowOutsideClick: true,
+            showCancelButton: false,
+            showConfirmButton: false,
+            willOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        jQuery('#messages-list').html('');
+        var param = "install_main_menu";
+        jQuery.ajax({
+            type: "POST",
+            dataType: "json",
+            url: ajaxurl,
+            data: {
+                action: action,
+                param: param,
+                nonce: nonce
+            },
+            beforeSend: function () {
+                jQuery('#messagesList').html('');
+            },
+            complete: function (response) {
+                console.log(response);
+                messages = response.responseJSON.data.messages;
+                if (response.status === 200) {
+                    Swal.close();
+                    for (var i = 0; i < messages.length; i++) {
+                        jQuery('#messagesList').append('<li>' + messages[i] + '</li>');
+                    }
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    })
+                }
+                hideSpinner();
+            },
+            error: function (xhr, status, error) {
+                // Handle errors
+                console.error(status + ': ' + error);
+            }
+
+        });
+    });
+    jQuery("#install-topbar-icon-box").on("click", function (e) {
+        Swal.fire({
+            title: 'Under Process',
+            text: 'Please wait while Installing Database Table',
+            allowOutsideClick: true,
+            showCancelButton: false,
+            showConfirmButton: false,
+            willOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        jQuery('#messages-list').html('');
+        var param = "install_topbar_icon_box";
+        jQuery.ajax({
+            type: "POST",
+            dataType: "json",
+            url: ajaxurl,
+            data: {
+                action: action,
+                param: param,
+                nonce: nonce
+            },
+            beforeSend: function () {
+                jQuery('#messagesList').html('');
+            },
+            complete: function (response) {
+                console.log(response);
+                messages = response.responseJSON.data.messages;
+                if (response.status === 200) {
+                    Swal.close();
+                    for (var i = 0; i < messages.length; i++) {
+                        jQuery('#messagesList').append('<li>' + messages[i] + '</li>');
+                    }
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    })
+                }
+                hideSpinner();
+            },
+            error: function (xhr, status, error) {
+                // Handle errors
+                console.error(status + ': ' + error);
+            }
+
+        });
+    });
 });

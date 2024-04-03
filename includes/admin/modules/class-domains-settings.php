@@ -48,6 +48,18 @@ if (!class_exists('wams\admin\modules\Domains_Settings')) {
 		 */
 		public function init_variables()
 		{
+			$sites = [];
+			foreach (get_sites() as $site) {
+				$sites[$site->blog_id] =  $site->path;
+			}
+			$profiles_list = [];
+			$wams_ga_options = get_option('wams_ga_options');
+			$ga4_profiles_list =  false;
+			if (is_array($ga4_profiles_list)) {
+				foreach ($ga4_profiles_list as $profile) {
+					$profiles_list[$profile[1]] = $profile[0];
+				}
+			}
 			$wams_scheduled_actions = [];
 			if (is_plugin_active('action-scheduler')) {
 				// foreach ($this->hooks as $key => $hook) {
@@ -69,9 +81,7 @@ if (!class_exists('wams\admin\modules\Domains_Settings')) {
 						'menu_title' => 'Domains Settings',
 						'capability' => 'edit_wams_settings',
 						'menu_slug' => 'wams_domains_settings',
-						'callback' => function () {
-							$this->settings_api->show_settings_page($title = 'Domains Settings');
-						}
+						'callback' => [$this, 'domain_settings']
 					]
 				],
 				'sections' => [
@@ -80,8 +90,9 @@ if (!class_exists('wams\admin\modules\Domains_Settings')) {
 						'title' => __('Domains Settings', 'wams'),
 					],
 					[
-						'id'    => 'wams_social_media_settings',
-						'title' => __('Social Media Settings', 'wams')
+						'id'    => 'wams_api_settings',
+						'title' => __('API Settings', 'wams'),
+						'desc'	=> 'API Token:' .  md5('wams_api_token') . '<br>' . 'API Key:' .  md5('wams_api_key'),
 					],
 					[
 						'id'    => 'wams_pages_settings',
@@ -92,6 +103,14 @@ if (!class_exists('wams\admin\modules\Domains_Settings')) {
 				'fields' => [
 					'wams_domains_settings' => [
 						[
+							'name'              => 'blog_id',
+							'label'             => __('Blog ID', 'wams'),
+							'placeholder'       => __('ID', 'wams'),
+							'type'              => 'select',
+							'default'           => get_current_blog_id(),
+							'options' => $sites
+						],
+						[
 							'name'              => 'Website Name',
 							'label'             => __('Website Name', 'wams'),
 							'desc'              => __('Title Of the Website', 'wams'),
@@ -99,6 +118,30 @@ if (!class_exists('wams\admin\modules\Domains_Settings')) {
 							'type'              => 'text',
 							'default'           => get_bloginfo('name'),
 							'sanitize_callback' => 'sanitize_text_field'
+						],
+						[
+							'name'              => 'project_name',
+							'label'             => __('Project Name', 'wams'),
+							'desc'              => __('Project Name', 'wams'),
+							'placeholder'       => __('name', 'wams'),
+							'type'              => 'text',
+							'default'           => get_bloginfo('name'),
+							'sanitize_callback' => 'sanitize_text_field'
+						],
+						[
+							'name'              => 'domain_name',
+							'label'             => __('Domain Name', 'wams'),
+							'desc'              => __('Domain Name', 'wams'),
+							'placeholder'       => __('name', 'wams'),
+							'type'              => 'text',
+							'default'           => parse_url(get_bloginfo('url'), PHP_URL_HOST),
+							'sanitize_callback' => 'sanitize_text_field'
+						],
+						[
+							'name'              => 'ga_account',
+							'label'             => __('Google Analytics 4 Account ID', 'wams'),
+							'type'              => 'select',
+							'options' => $profiles_list
 						],
 					],
 					'wams_pages_settings' => [
@@ -130,6 +173,11 @@ if (!class_exists('wams\admin\modules\Domains_Settings')) {
 				]
 
 			];
+		}
+
+		public function domain_settings()
+		{
+			$this->settings_api->show_settings_page("Domain Settings");
 		}
 	}
 }

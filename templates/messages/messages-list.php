@@ -1,6 +1,35 @@
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
+            <div id="message-box">Box</div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="mb-2">
+                    <h5 class="card-title">Test Notification</h5>
+                </div>
+                <form id="send-message">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Message</label>
+                        <textarea class="form-control" name="message-text" id="message-text" rows="6"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <input type="hidden" name="user_id" value="1">
+                    </div>
+
+
+                    <div><button type="submit" id="send-notification-test" class="btn btn-primary">Submit</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
             <div class="btn-toolbar gap-2 p-3" role="toolbar">
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-inbox"></i></button>

@@ -1,0 +1,25 @@
+{
+    "name": "majedghareeb/dom",
+    "type": "library",
+    "config": {
+        "platform": {
+            "php": "8.0"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "6.*",
+        "symfony/dom-crawler": "5.*",
+        "symfony/css-selector": "5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Majedghareeb\\Dom\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Majed Ghareeb",
+            "email": "majed.sham@gmail.com"
+        }
+    ]
+}

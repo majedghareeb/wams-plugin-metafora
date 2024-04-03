@@ -64,15 +64,15 @@ if (!class_exists('wams\admin\modules\Google_Analytics')) {
 						'menu_title' => 'GA4 Settings',
 						'capability' => 'edit_wams_settings',
 						'menu_slug' => 'wams_ga',
-						'callback' => [$this, 'show_ga_page2']
+						'callback' => [$this, 'show_ga_page']
 					]
 				]
 			];
 		}
 
-		function show_ga_page()
+		function show_ga_page2()
 		{
-			echo '<h1>Google_Analytics Page</h1>';
+			echo '<h1>Google Analytics Setup</h1>';
 			$options = (array) json_decode(get_option('wams_ga_options'));
 			// $this->ga_api_controller = new GA_Api_Controller;
 
@@ -80,7 +80,7 @@ if (!class_exists('wams\admin\modules\Google_Analytics')) {
 			// // $accounts = $this->ga_api_controller->service_ga4_admin->accountSummaries->listAccountSummaries(array('pageSize' => 200))->getAccountSummaries();
 			// echo '<pre>' . print_r($this->ga_api_controller->service_ga4_admin->accountSummaries->listAccountSummaries(), true) . '</pre>';
 			// delete_option('wams_ga_options');
-			echo '<pre>' . print_r($options, true) . '</pre>';
+			// echo '<pre>' . print_r($options, true) . '</pre>';
 			// $this->ga_api_controller = new GA_Api_Controller;
 		}
 		public function get_link()
@@ -104,9 +104,13 @@ if (!class_exists('wams\admin\modules\Google_Analytics')) {
 			echo '<pre>'  . esc_html($error_reason) . '</pre>';
 			echo '<pre>'  . esc_html($error_details) . '</pre>';
 		}
-		public function show_ga_page2()
+		public function show_ga_page()
 		{
+			echo '<h1>Google_Analytics Page</h1>';
+			echo '<div>';
 			$this->ga_config = new GA_Config;
+			// echo '<p>' . $this->ga_config->options['default_profile'] . '</p>';
+
 			$this->ga_api_controller = new GA_Api_Controller;
 			$options = (array) json_decode(get_option('wams_ga_options'));
 
@@ -167,7 +171,6 @@ if (!class_exists('wams\admin\modules\Google_Analytics')) {
 			if (isset($_REQUEST['Save'])) {
 				if (isset($_REQUEST['wams_security']) && wp_verify_nonce($_REQUEST['wams_security'], 'wams_form')) {
 					$new_options['default_profile'] = $_REQUEST['default_profile'];
-					$new_options['reporting_type'] = $_REQUEST['reporting_type'];
 					$options = array_merge($options, $new_options);
 					$this->ga_config->options = $options;
 					$this->ga_config->set_plugin_options();
@@ -177,36 +180,16 @@ if (!class_exists('wams\admin\modules\Google_Analytics')) {
 			}
 			if (isset($_REQUEST['Refresh'])) {
 				if (isset($_REQUEST['wams_security']) && wp_verify_nonce($_REQUEST['wams_security'], 'wams_form')) {
-					// $profiles = $this->ga_api_controller->refresh_profiles_ua();
-					// // print_r($profiles);
-					// if (is_array($profiles) && !empty($profiles)) {
-					// 	$this->ga_config->options['ga_profiles_list'] = $profiles;
-					// 	if (!$this->ga_config->options['default_profile']) {
-					// 		$profile = GA_Tools::guess_default_domain($profiles);
-					// 		$this->ga_config->options['default_profile'] = $profile;
-					// 	}
-					// 	$this->ga_config->set_plugin_options();
-					// }
-
 					$webstreams = $this->ga_api_controller->refresh_profiles_ga4();
 					if (is_array($webstreams) && !empty($webstreams)) {
 						$this->ga_config->options['ga4_profiles_list'] = $webstreams;
-						if (!$this->ga_config->options['default_profile']) {
+						if (!isset($this->ga_config->options['default_profile'])) {
 							$property = GA_Tools::guess_default_domain($webstreams, 2);
 							$this->ga_config->options['default_profile'] = $property;
 						}
 						$this->ga_config->set_plugin_options();
 						$message = "<div class='updated' id='wams-autodismiss'><p>" . __("Account has been refreshed.", 'wams') . "</p></div>";
 					}
-					// print_r($this->ga_config->options);
-					// if (isset($_REQUEST['options']['wams_hidden'])) {
-					// 	$new_options = $_REQUEST['options'];
-					// 	$options['reporting_type'] = 0;
-					// 	$options['user_api'] = 0;
-					// 	$options = array_merge($options, $new_options);
-					// 	$this->ga_config->options = $options;
-					// 	$this->ga_config->set_plugin_options();
-					// }
 				}
 			}
 			if (isset($_REQUEST['Clear'])) {
@@ -218,7 +201,7 @@ if (!class_exists('wams\admin\modules\Google_Analytics')) {
 				}
 			}
 			if (isset($_REQUEST['Reset'])) {
-				print_r($this->ga_api_controller->client->getAccessToken());
+				// print_r($this->ga_api_controller->client->getAccessToken());
 				$this->ga_api_controller->reset_token(true);
 				GA_Tools::clear_cache();
 				// if (isset($_REQUEST['wams_security']) && wp_verify_nonce($_REQUEST['wams_security'], 'wams_form')) {
@@ -235,15 +218,15 @@ if (!class_exists('wams\admin\modules\Google_Analytics')) {
 				echo '</div>';
 				//print_r(json_decode(get_option('wams_ga_redeemed_code')));
 			} else {
-				$ga_profiles_list = $this->ga_config->options['ga_profiles_list'];
-				$ga4_profiles_list = $this->ga_config->options['ga4_profiles_list'];
+				$ga4_profiles_list = $this->ga_config->options['ga4_profiles_list'] ?? [];
 				$options = $this->ga_config->options;
 				$authUrl = $this->ga_api_controller->client->createAuthUrl();
 				$token = $this->ga_config->options['token'];
 				if (isset($message)) echo wp_kses($message, array('div' => array('class' => array(), 'id' => array()), 'p' => array(), 'a' => array('href' => array())));
-				$result = $this->ga_api_controller->get('properties/337038707/dataStreams/4141307294', 'bottomstats', '2024-01-01', '2024-01-01', '/');
+				// $result = $this->ga_api_controller->get('properties/337038707/dataStreams/4141307294', 'bottomstats', '2024-01-01', '2024-01-01', '/');
 				include_once WAMS()->admin()->templates_path . 'google-analytics.php';
 			}
+			echo '</div>';
 		}
 
 		public function authenicationForm()
@@ -258,24 +241,6 @@ if (!class_exists('wams\admin\modules\Google_Analytics')) {
 			// printf('<div id="ga-warning" class="updated"><p>%1$s <a href="https://www.rakami.net">%2$s</a></p></div>', __('Loading the required libraries. If this results in a blank screen or a fatal error, try this solution:', 'wams'), __('Library conflicts between WordPress plugins', 'wams'));
 		}
 
-
-		public function profilesList()
-		{
-			return $this->ga_config->options['ga_profiles_list'];
-		}
-		public function get_ga3_profilesList()
-		{
-			$ga_profiles_list = $this->ga_config->options['ga_profiles_list'];
-			$list = [];
-			if (!empty($ga_profiles_list)) :
-				foreach ($ga_profiles_list as $items) :
-					if ($items[3]) :
-						$list[$items[1]] =  esc_html(GA_Tools::strip_protocol($items[3])) . ' - ' . $items[2]  . ' - ' . $items[0];
-					endif;
-				endforeach;
-			endif;
-			return $list;
-		}
 		public function get_ga4_profilesList()
 		{
 			$list = [];

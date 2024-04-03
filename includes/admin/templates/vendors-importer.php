@@ -9,7 +9,7 @@ if ($option) {
 
 ?>
     <div class="table-responsive">
-        <h2>Current Template</h2>
+        <h5>Current Template</h5>
         <form method="post" class="" enctype="multipart/form-data">
             <input name="template" type="hidden" value="<?php echo $option['template']; ?>">
             <input name="file_path" type="hidden" value="<?php echo $option['path']; ?>">

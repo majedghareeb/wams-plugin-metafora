@@ -28,7 +28,7 @@ if (!class_exists('wams\common\Init')) {
 		{
 			add_action('wp_login', [$this->user_logins(), 'log_user_login'], 10, 2);
 			$this->hooks();
-			$this->search_client_field();
+			$this->search_vendor_field();
 			$this->gravityflow_custom_step();
 			// add_action('wams_every_minute_scheduled_events', [$this, 'wams_cron_test']);
 			// $this->cpt()->hooks();
@@ -136,14 +136,14 @@ if (!class_exists('wams\common\Init')) {
 		/**
 		 * @since 1.0.0
 		 *
-		 * @return Search_Client_Field
+		 * @return Search_Vendor_Field
 		 */
-		public function search_client_field()
+		public function search_vendor_field()
 		{
-			if (empty(WAMS()->classes['wams\common\search_client_field'])) {
-				WAMS()->classes['wams\common\search_client_field'] = new Search_Client_Field();
+			if (empty(WAMS()->classes['wams\common\search_vendor_field'])) {
+				WAMS()->classes['wams\common\search_vendor_field'] = new Search_Vendor_Field();
 			}
-			return WAMS()->classes['wams\common\search_client_field'];
+			return WAMS()->classes['wams\common\search_vendor_field'];
 		}
 		/**
 		 * @since 1.0.0

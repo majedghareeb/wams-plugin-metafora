@@ -30,9 +30,22 @@ if (!class_exists('wams\core\Web_Notifications')) {
             if (empty($_POST['param'])) {
                 wp_send_json_error(__('Invalid Action.', 'wams'));
             }
-
+            $user_id = get_current_user_id();
             // return wp_send_json(['message' => "TEST AJAX from Admin " . __METHOD__]);
             switch ($_POST['param']) {
+                case 'save-user-notification-settings':
+                    $formData = wp_parse_args($_POST['formData']);
+                    $update_user_meta = update_user_meta($user_id, 'notification-settings', $formData);
+                    if (isset($formData['telegram-chat-id'])) update_user_meta($user_id, 'telegram_chat_id', $formData['telegram-chat-id']);
+                    wp_send_json_success([
+                        'status' => 'success',
+                        'message' => __('Settings Saved', 'wams'),
+                        'formData' => $formData
+                    ]);
+                    break;
+                case 'ajax_get_menu_inbox_count':
+                    wp_send_json($this->get_inbox_count());
+                    break;
                 case 'ajax_get_new_count':
                     wp_send_json($this->ajax_get_new_count());
                     break;
@@ -92,20 +105,16 @@ if (!class_exists('wams\core\Web_Notifications')) {
          */
         function user_enabled($key, $user_id)
         {
-            if (!UM()->options()->get('log_' . $key)) {
-                return false;
-            }
-            $prefs = get_user_meta($user_id, '_notifications_prefs', true);
-            if (isset($prefs[$key]) && !$prefs[$key]) {
-                return false;
+
+            $prefs = get_user_meta($user_id, 'notification-settings', true);
+            $web_prefs = $prefs['web'] ?? false;
+            if (isset($web_prefs['notification-enabled']) &&  $web_prefs['notification-enabled'] == 'on') {
+                if (isset($web_prefs[$key]) && $web_prefs[$key] == 'on') {
+                    return true;
+                }
             }
 
-            // if all checkboxes were not selected
-            if ($prefs === array('')) {
-                return false;
-            }
-
-            return true;
+            return false;
         }
 
         /**
@@ -187,14 +196,14 @@ if (!class_exists('wams\core\Web_Notifications')) {
          * @param $type
          * @param array $vars
          */
-        function store_notification($user_id, $type, $vars = array())
+        function store_notification($user_id, $type = '', $title = '', $vars = array())
         {
             global $wpdb;
 
             // Check if user opted-in
-            // if (!$this->user_enabled($type, $user_id)) {
-            //     return;
-            // }
+            if ($type != '' && !$this->user_enabled($type, $user_id)) {
+                return;
+            }
 
             if ($vars && isset($vars['message'])) {
                 $content = $vars['message'];
@@ -206,7 +215,7 @@ if (!class_exists('wams\core\Web_Notifications')) {
             if ($vars && isset($vars['photo'])) {
                 $photo = $vars['photo'];
             } else {
-                $photo = wams_get_default_avatar_uri($user_id);
+                $photo = um_get_default_avatar_uri($user_id);
             }
 
             $url = '';
@@ -216,13 +225,8 @@ if (!class_exists('wams\core\Web_Notifications')) {
 
             $table_name = $wpdb->prefix . "wams_notifications";
 
-            $exclude_type = apply_filters('wams_notifications_exclude_types', array(
-                'workflow_compleled',
-                'workflow_rejected',
-                'form_submitted',
-            ));
 
-            if (!in_array($type, $exclude_type) && !empty($content)) {
+            if (!empty($content)) {
                 // Try to update a similar log
                 $result = $wpdb->get_var($wpdb->prepare(
                     "SELECT id 
@@ -232,7 +236,7 @@ if (!class_exists('wams\core\Web_Notifications')) {
 					  content = %s 
 				ORDER BY time DESC",
                     $user_id,
-                    $type,
+                    $title,
                     $content
                 ));
 
@@ -246,7 +250,7 @@ if (!class_exists('wams\core\Web_Notifications')) {
                         ),
                         array(
                             'user'      => $user_id,
-                            'type'      => $type,
+                            'type'      => $title,
                             'content'   => $content
                         )
                     );
@@ -336,11 +340,6 @@ if (!class_exists('wams\core\Web_Notifications')) {
             } else {
                 return $wpdb->num_rows;
             }
-        }
-
-        function notifications_page()
-        {
-            WAMS()->get_template('notifications/notifications.php', '', [], true);
         }
 
         /**
@@ -776,14 +775,30 @@ if (!class_exists('wams\core\Web_Notifications')) {
 						  {$unread_where}
 					ORDER BY time DESC"
             );
-            $new_notifications_formatted = (absint($new_notifications) > 9) ? __('9+', 'wams') : absint($new_notifications);
+            $new_notifications_formatted = absint($new_notifications);
+            // $new_notifications_formatted = (absint($new_notifications) > 9) ? __('9+', 'wams') : absint($new_notifications);
 
             $output = array(
                 'new_notifications_formatted' => esc_html($new_notifications_formatted),
                 'new_notifications'           => $new_notifications,
+                'inbox_count'           => $this->get_inbox_count(),
             );
 
             wp_send_json_success($output);
+        }
+
+        public function get_inbox_count()
+        {
+            $count_value = '';
+            if (class_exists('Gravity_Flow_API')) {
+                $count_value = get_transient('gflow_inbox_count_' . get_current_user_id());
+                if ($count_value === false) {
+                    $count_value = \Gravity_Flow_API::get_inbox_entries_count();
+                    set_transient('gflow_inbox_count_' . get_current_user_id(), $count_value, MINUTE_IN_SECONDS);
+                }
+            }
+
+            return $count_value;
         }
     }
 }

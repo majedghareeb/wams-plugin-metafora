@@ -11,14 +11,9 @@
  * @var array  $notifications
  */
 
-wp_enqueue_style("bootstrap-table", WAMS_URL . 'assets/css/bootstrap-table.min.css', array(), WAMS_VERSION);
-wp_enqueue_script("bootstrap-table", WAMS_URL . 'assets/js/bootstrap-table.min.js', array(), WAMS_VERSION, false);
-
-
 
 ?>
 
-<div id="container"></div>
 <?php $notifications = WAMS()->web_notifications()->get_notifications(100); ?>
 <?php $unread_count = WAMS()->web_notifications()->unread_count() ?? 0;  ?>
 
@@ -28,22 +23,21 @@ wp_enqueue_script("bootstrap-table", WAMS_URL . 'assets/js/bootstrap-table.min.j
 </div>
 
 <div class="row">
-
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <h5 class="card-title">Notifications<span class="text-muted fw-normal ms-2">(<?php echo ($notifications) ? count($notifications) : '0'; ?>)</span></h5>
+                            <h5 class="card-title"><?php echo __('Notifications List', 'wams'); ?><span class="text-muted fw-normal ms-2">(<?php echo !empty($notifications) ? count($notifications) : '0'; ?>)</span></h5>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
                             <div>
-                                <button data-action-type="read" class="multi-action-button btn btn-light"><i class="bx bx-check-double"></i>Read</button>
-                                <button data-action-type="unread" class="multi-action-button btn btn-light"><i class="bx bx-check-double"></i>Unread</button>
-                                <button data-action-type="delete" class="multi-action-button btn btn-light"><i class="bx bxs-minus-square"></i>Delete</button>
+                                <button data-action-type="read" class="multi-action-button btn btn-light"><i class="bx bx-check-double"></i><?php echo __('Read', 'wams'); ?></button>
+                                <button data-action-type="unread" class="multi-action-button btn btn-light"><i class="bx bx-check-double"></i><?php echo __('Unread', 'wams'); ?></button>
+                                <button data-action-type="delete" class="multi-action-button btn btn-light"><i class="bx bxs-minus-square"></i><?php echo __('Delete', 'wams'); ?></button>
                             </div>
                         </div>
 
@@ -55,15 +49,16 @@ wp_enqueue_script("bootstrap-table", WAMS_URL . 'assets/js/bootstrap-table.min.j
                                 <tr>
                                     <th scope="col" style="width: 50px;">
                                         <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="checkAll">
+                                            <input type="checkbox" class="form-check-input table-checkbox" id="checkAll">
                                             <label class="form-check-label" for="checkAll"></label>
                                         </div>
                                     </th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Message</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Status</th>
-                                    <th style="width: 80px; min-width: 80px;">Action</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"><?php echo __('Type', 'wams'); ?></th>
+                                    <th scope="col"><?php echo __('Message', 'wams'); ?></th>
+                                    <th scope="col"><?php echo __('Time', 'wams'); ?></th>
+                                    <th scope="col"><?php echo __('Status', 'wams'); ?></th>
+                                    <th style="width: 80px; min-width: 80px;"><?php echo __('Action', 'wams'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,20 +66,21 @@ wp_enqueue_script("bootstrap-table", WAMS_URL . 'assets/js/bootstrap-table.min.j
                                     <?php foreach ($notifications as $notification) : ?>
 
                                         <tr>
-                                            <th scope="row">
+                                            <td scope="row">
                                                 <div class="form-check font-size-16">
-                                                    <input type="checkbox" class="form-check-input" id="<?php echo $notification->id; ?>">
+                                                    <input type="checkbox" class="form-check-input table-checkbox" id="<?php echo $notification->id; ?>">
                                                     <label class="form-check-label" for="notification_item_<?php echo $notification->id; ?>"></label>
                                                 </div>
-                                            </th>
+                                            </td>
+                                            <td> <img src="<?php echo $notification->photo; ?>" alt="" class="avatar-sm rounded-circle me-2">
+                                            </td>
                                             <td>
-                                                <img src="<?php echo $notification->photo; ?>" alt="" class="avatar-sm rounded-circle me-2">
                                                 <a href="<?php echo $notification->url; ?>" class="text-body"><?php echo $notification->type ?></a>
                                             </td>
                                             <td><?php echo $notification->content ?></td>
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    <p><?php echo nice_time($notification->time); ?></p>
+                                                    <p><?php echo wams_nice_time($notification->time); ?></p>
                                                 </div>
                                             </td>
                                             <td>
@@ -98,9 +94,9 @@ wp_enqueue_script("bootstrap-table", WAMS_URL . 'assets/js/bootstrap-table.min.j
                                                         <i class="bx bx-dots-horizontal-rounded"></i>
                                                     </button>
                                                     <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><button class="action-button dropdown-item" data-row-id="<?php echo $notification->id; ?>" data-action-type="read" href="#">Mark as read</button></li>
-                                                        <li><button class="action-button dropdown-item" data-row-id="<?php echo $notification->id; ?>" data-action-type="unread">Mark as unread</button></li>
-                                                        <li><button class="action-button dropdown-item" data-row-id="<?php echo $notification->id; ?>" data-action-type="delete">delete</button></li>
+                                                        <li><button class="action-button dropdown-item" data-row-id="<?php echo $notification->id; ?>" data-action-type="read" href="#"><?php echo __('Mark as read', 'wams'); ?></button></li>
+                                                        <li><button class="action-button dropdown-item" data-row-id="<?php echo $notification->id; ?>" data-action-type="unread"><?php echo __('Mark as unread', 'wams'); ?></button></li>
+                                                        <li><button class="action-button dropdown-item" data-row-id="<?php echo $notification->id; ?>" data-action-type="delete"><?php echo __('Delete', 'wams'); ?></button></li>
                                                     </ul>
                                                 </div>
                                             </td>
@@ -110,9 +106,7 @@ wp_enqueue_script("bootstrap-table", WAMS_URL . 'assets/js/bootstrap-table.min.j
                                     <div class="table-responsive mb-4">
                                         <tr>
                                             <td colspan="6">
-                                                <h2 class="text-center">There is no notifications</h2>
-
-                                                bs5
+                                                <h2 class="text-center"><?php echo __('There is no notifications', 'wams'); ?></h2>
                                             </td>
                                         </tr>
 
@@ -127,3 +121,4 @@ wp_enqueue_script("bootstrap-table", WAMS_URL . 'assets/js/bootstrap-table.min.j
             </div>
         </div>
     </div>
+</div>

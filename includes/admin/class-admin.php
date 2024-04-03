@@ -137,6 +137,36 @@ if (!class_exists('wams\admin\Admin')) {
 					'blog' => '',
 					'default' => true,
 				],
+				[
+					'name' => 'search-vendor-field',
+					'title' => __('Search Vendor Field', 'wams'),
+					'blog' => '',
+					'default' => true,
+				],
+				[
+					'name' => 'rss-fetcher',
+					'title' => __('RSS Fetcher', 'wams'),
+					'blog' => '',
+					'default' => true,
+				],
+				[
+					'name' => 'task-scheduler',
+					'title' => __('Tasks Scheduler', 'wams'),
+					'blog' => '',
+					'default' => true,
+				],
+				[
+					'name' => 'test-module',
+					'title' => __('TEST PAGE', 'wams'),
+					'blog' => '',
+					'default' => true,
+				],
+				[
+					'name' => 'google-analytics',
+					'title' => __('Google Analytics', 'wams'),
+					'blog' => '',
+					'default' => true,
+				],
 
 				// [
 				// 	'name' => 'system-debug',
@@ -163,36 +193,20 @@ if (!class_exists('wams\admin\Admin')) {
 								'default' => true,
 							],
 							[
-								'name' => 'task-scheduler',
-								'title' => __('Tasks Scheduler', 'wams'),
-								'blog' => '',
-								'default' => true,
-							],
-							[
-								'name' => 'rss-fetcher',
-								'title' => __('RSS Fetcher', 'wams'),
+								'name' => 'vendors-importer',
+								'title' => __('Vendors Importer', 'wams'),
 								'blog' => '',
 								'default' => true,
 							],
 
-							[
-								'name' => 'google-analytics',
-								'title' => __('Google Analytics', 'wams'),
-								'blog' => '',
-								'default' => true,
-							],
-							[
-								'name' => 'test-module',
-								'title' => __('TEST PAGE', 'wams'),
-								'blog' => '',
-								'default' => true,
-							],
+
 							[
 								'name' => 'system-debug',
 								'title' => __('System Debug', 'wams'),
 								'blog' => '',
 								'default' => true,
 							],
+
 							[
 								'name' => 'server-debug',
 								'title' => __('Server Debug', 'wams'),
@@ -207,6 +221,18 @@ if (!class_exists('wams\admin\Admin')) {
 							// ],
 						];
 					$this->modules = array_merge($this->modules, $main_modules,);
+					break;
+				default:
+					// $subsites_modules =
+					// 	[
+					// 		[
+					// 			'name' => 'subsite-forms-settings',
+					// 			'title' => __('Forms Settings', 'wams'),
+					// 			'blog' => '',
+					// 			'default' => true,
+					// 		],
+					// 	];
+					// $this->modules = array_merge($this->modules, $subsites_modules,);
 					break;
 			}
 		}
@@ -414,6 +440,18 @@ if (!class_exists('wams\admin\Admin')) {
 				WAMS()->classes['wams\admin\screen'] = new Screen();
 			}
 			return WAMS()->classes['wams\admin\screen'];
+		}
+		/**
+		 * @since 1.0.0
+		 *
+		 * @return core\System_Setup
+		 */
+		public function system_setup()
+		{
+			if (empty(WAMS()->classes['wams\admin\core\system_setup'])) {
+				WAMS()->classes['wams\admin\core\system_setup'] = new core\Admin_System_Setup();
+			}
+			return WAMS()->classes['wams\admin\core\system_setup'];
 		}
 
 		/**

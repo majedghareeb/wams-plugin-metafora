@@ -149,50 +149,54 @@ if (!class_exists('wams\admin\modules\Telegram_Settings')) {
 
             ];
 
-            if (get_option('wams_forms_settings') && !empty(get_option('wams_forms_settings')['domain_form'])) {
+            // if (get_option('wams_forms_settings') && !empty(get_option('wams_forms_settings')['domain_form'])) {
 
-                $domains = WAMS()->Admin()->get_domains_list();
+            //     $domains = WAMS()->Admin()->get_domains_list();
 
-                foreach ($domains as $domain) {
-                    if ($domain == '') {
-                        $message =  __('The selected Form ID :  ' . $domain . ' is not valid domains form <br/>');
-                        $message .=  __('Please visit forms setting page to correct that!');
-                        WAMS()->admin()->notices()->add_notice(
-                            'wams_settings',
-                            array(
-                                'class'       => 'error',
-                                'message'     => $message,
-                                'dismissible' => true,
-                            ),
-                            10
-                        );
-                        continue;
-                    }
-                    $this->page['fields']['wams_telegram_channel'][] =
-                        [
-                            'name'              => $domain . '_channel_ID',
-                            'label'             => __($domain, 'wams'),
-                            'desc'              => __(strtoupper($domain) . ' Telegram Channel ID', 'wams'),
-                            'placeholder'       => __('Channel ID', 'wams'),
-                            'type'              => 'text',
-                            'default'           => '',
-                            'sanitize_callback' => 'sanitize_text_field'
+            //     foreach ($domains as $domain) {
+            //         if ($domain == '') {
+            //             $message =  __('The selected Form ID :  ' . $domain . ' is not valid domains form <br/>');
+            //             $message .=  __('Please visit forms setting page to correct that!');
+            //             WAMS()->admin()->notices()->add_notice(
+            //                 'wams_settings',
+            //                 array(
+            //                     'class'       => 'error',
+            //                     'message'     => $message,
+            //                     'dismissible' => true,
+            //                 ),
+            //                 10
+            //             );
+            //             continue;
+            //         }
+            //         $this->page['fields']['wams_telegram_channel'][] =
+            //             [
+            //                 'name'              => $domain . '_channel_ID',
+            //                 'label'             => __($domain, 'wams'),
+            //                 'desc'              => __(strtoupper($domain) . ' Telegram Channel ID', 'wams'),
+            //                 'placeholder'       => __('Channel ID', 'wams'),
+            //                 'type'              => 'text',
+            //                 'default'           => '',
+            //                 'sanitize_callback' => 'sanitize_text_field'
 
-                        ];
-                    $this->page['fields']['wams_telegram_channel'][] =
-                        [
-                            'name'  => $domain . '_tg_notification',
-                            'label' => __('Enable', 'wams'),
-                            'desc'  => __('Enable on ' . $domain . ' public channel', 'wams'),
-                            'default' => 'off',
-                            'type'  => 'checkbox'
-                        ];
-                }
-            }
+            //             ];
+            //         $this->page['fields']['wams_telegram_channel'][] =
+            //             [
+            //                 'name'  => $domain . '_tg_notification',
+            //                 'label' => __('Enable', 'wams'),
+            //                 'desc'  => __('Enable on ' . $domain . ' public channel', 'wams'),
+            //                 'default' => 'off',
+            //                 'type'  => 'checkbox'
+            //             ];
+            //     }
+            // }
         }
 
         public function show_page()
         {
+            wp_enqueue_script("telegram-notifications", WAMS_URL . 'assets/js/admin/telegram-notifications.js', array(), '1.0.2', true);
+            wp_enqueue_style("sweetalert2", WAMS_URL . 'assets/css/sweetalert2.min.css', array(), WAMS_VERSION);
+            wp_enqueue_script("sweetalert2", WAMS_URL . 'assets/js/sweetalert2.min.js', array(), WAMS_VERSION, true);
+
             echo '<h1>Telegram Settings</h1>';
 
             echo '<div class="wraper">';
@@ -203,6 +207,8 @@ if (!class_exists('wams\admin\modules\Telegram_Settings')) {
             echo '</div>';
             echo '</div>';
             echo '</div>';
+            $users = get_users();
+            include_once WAMS()->admin()->templates_path . 'telegram-notification.php';
         }
     }
 }

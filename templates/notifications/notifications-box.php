@@ -13,7 +13,7 @@
                         <h6 class="mb-1 <?php echo ($notification->status == 'read') ? 'text-muted' : ''; ?>"><?php echo $notification->type ?></h6>
                         <div class="font-size-13 text-muted">
                             <p class="mb-1"><?php echo $notification->content ?></p>
-                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span><?php echo nice_time($notification->time); ?></span></p>
+                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span><?php echo wams_nice_time($notification->time); ?></span></p>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,8 @@
 
 namespace wams\common;
 
+use WP_Error;
+
 if (!defined('ABSPATH')) {
     exit;
 }

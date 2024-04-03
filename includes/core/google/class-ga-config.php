@@ -57,7 +57,6 @@ if (!class_exists('wams\core\google\GA_Config')) {
                 $options['reporting_type'] = 1;
                 $options['token'] = '';
                 $options['user_api'] = 0;
-                $options['ga_profiles_list'] = array();
                 $options['ga4_profiles_list'] = array();
                 $options['reporting_type'] = 0;
                 $options['api_backoff'] = 0;

@@ -330,6 +330,7 @@ if (!class_exists('wams\core\google\GA_Tools')) {
                 'medium' => 'sessionMedium',
                 'dataSource' => 'platform',
                 'pagePath' => 'pagePathPlusQueryString',
+                'pageTitle' => 'pageTitle',
                 'pageviews' => 'screenPageViews',
                 'pageviewsPerSession' => 'screenPageViewsPerSession',
                 'timeOnPage' => 'userEngagementDuration',

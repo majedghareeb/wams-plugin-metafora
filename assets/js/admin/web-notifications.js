@@ -168,7 +168,7 @@ jQuery(document).ready(function ($) {
 
         // Get the number input value
         var param = "send_notification_test";
-        var message = jQuery('#message').val();
+        var message = jQuery('#message-text').val();
         var user_id = jQuery('#user-id').val();
 
         jQuery.ajax({

@@ -89,7 +89,7 @@ class Enqueue
 	 */
 	protected function register_jquery_ui()
 	{
-		wp_register_style('wams_ui', self::get_url('libs') . 'jquery-ui/jquery-ui' . self::get_suffix() . '.css', array(), '1.13.2');
+		// wp_register_style('wams_ui', self::get_url('libs') . 'jquery-ui/jquery-ui' . self::get_suffix() . '.css', array(), '1.13.2');
 	}
 
 	/**
@@ -103,16 +103,10 @@ class Enqueue
 		$libs_url = self::get_url('libs');
 		$js_url   = self::get_url('js');
 		$css_url  = self::get_url('css');
-		wp_register_script('wams_jquery_form', $libs_url . 'jquery-form/jquery-form.js', array('jquery'), WAMS_VERSION, true);
-
-		wp_register_script('wams_fileupload', $libs_url . 'fileupload/fileupload.js', array('wams_jquery_form'), WAMS_VERSION, true);
-		wp_register_script('wams_functions', $js_url . 'wams-functions.js', array('jquery', 'wams_fileupload', 'wams_jquery_form'), '1.0.0', true);
-
 		wp_register_script('wams_common', $js_url . 'wams_common.js', array('jquery'), '1.0.0', true);
 		wp_register_style('wams_common', $css_url . 'wams_common.css', array(), '1.0.0');
 
 		wp_enqueue_style('wams_common');
 		wp_enqueue_script('wams_common');
-		wp_enqueue_script('wams_functions');
 	}
 }

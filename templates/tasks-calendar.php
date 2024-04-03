@@ -1,6 +1,7 @@
 <h1>Tasks</h1>
 <?php //print_r($output_arrays); 
-// wp_enqueue_script("full-calendar", WAMS_URL . 'assets/fullcalendar/index.global.min.js', array(), WAMS_VERSION, false);
+wp_enqueue_script("full-calendar", WAMS_URL . 'assets/fullcalendar/index.global.min.js', array(), WAMS_VERSION, false);
+
 // print_r($tasks);
 $today = date('Y-m-d');
 

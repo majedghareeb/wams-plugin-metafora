@@ -154,12 +154,12 @@ if (!class_exists('WAMS')) {
 		public function localize()
 		{
 			// The function `get_user_locale()` will return `get_locale()` result by default if user or its locale is empty.
-			$language_locale = get_user_locale();
+			$language_locale = get_locale();
 			$language_locale = apply_filters('wams_language_locale', $language_locale);
 
 			$language_domain = apply_filters('wams_language_textdomain', 'wams');
 
-			$language_file = WP_LANG_DIR . '/plugins/' . $language_domain . '-' . $language_locale . '.mo';
+			$language_file = WAMS_PATH . 'languages/' . $language_domain . '-' . $language_locale . '.mo';
 
 			$language_file = apply_filters('wams_language_file', $language_file);
 
@@ -381,7 +381,26 @@ if (!class_exists('WAMS')) {
 			}
 			return $this->classes['wams\common\init'];
 		}
+		/**
+		 * @since 1.0
+		 * @todo Make it deprecated and review extensions.
+		 *
+		 * @return wams\frontend\Enqueue
+		 */
+		public function enqueue()
+		{
+			return $this->frontend()->enqueue();
+		}
 
+		/**
+		 * @since 1.0
+		 *
+		 * @return wams\admin\Enqueue
+		 */
+		public function admin_enqueue()
+		{
+			return $this->admin()->enqueue();
+		}
 		/**
 		 * @since 2.6.8
 		 *
@@ -525,12 +544,12 @@ if (!class_exists('WAMS')) {
 		/**
 		 * @since 1.0.0
 		 *
-		 * @return wams\core\rest\API_v2
+		 * @return wams\core\rest\API
 		 */
 		function rest_api()
 		{
 			if (empty($this->classes['rest_api'])) {
-				$this->classes['rest_api'] = new wams\core\rest\API_v2();
+				$this->classes['rest_api'] = new wams\core\rest\API();
 			}
 			return $this->classes['rest_api'];
 		}
@@ -584,77 +603,72 @@ if (!class_exists('WAMS')) {
 		/**
 		 * @since 1.0.0
 		 *
-		 * @return wams\core\Login
+		 * @return wams\core\RSS_Feed_Extractor
 		 */
-		function login()
+		function rss_feed_extractor()
 		{
-			if (empty($this->classes['login'])) {
-				$this->classes['login'] = new wams\core\Login();
+			if (empty($this->classes['rss_feed_extractor'])) {
+				$this->classes['rss_feed_extractor'] = new wams\core\RSS_Feed_Extractor();
 			}
 
-			return $this->classes['login'];
+			return $this->classes['rss_feed_extractor'];
+		}
+		/**
+		 * @since 1.0.0
+		 * 
+		 *
+		 * @return Web_Page_Parser
+		 */
+		function web_page_parser()
+		{
+			if (empty($this->classes['web_page_parser'])) {
+				$this->classes['web_page_parser'] = new wams\core\Web_Page_Parser();
+			}
+
+			return $this->classes['web_page_parser'];
+		}
+		/**
+		 * @since 1.0.0
+		 * 
+		 *
+		 * @return Google_Analytics
+		 */
+		function google_analytics()
+		{
+			if (empty($this->classes['google_analytics'])) {
+				$this->classes['google_analytics'] = new wams\core\Google_Analytics();
+			}
+
+			return $this->classes['google_analytics'];
 		}
 
 
 		/**
 		 * @since 2.0
 		 *
-		 * @return wams\core\Register
+		 * @return wams\core\Gravity
 		 */
-		function register()
+		function gravity()
 		{
-			if (empty($this->classes['register'])) {
-				$this->classes['register'] = new wams\core\Register();
+			if (empty($this->classes['gravity'])) {
+				$this->classes['gravity'] = new wams\core\Gravity();
 			}
 
-			return $this->classes['register'];
+			return $this->classes['gravity'];
 		}
 
-
-
-
 		/**
-		 * @since 2.0
+		 * @since 1.0
 		 *
-		 * @return wams\core\Account
+		 * @return wams\core\Vendors_Importer
 		 */
-		function account()
+		function vendors_importer()
 		{
-			if (empty($this->classes['account'])) {
-				$this->classes['account'] = new wams\core\Account();
+			if (empty($this->classes['vendors_importer'])) {
+				$this->classes['vendors_importer'] = new wams\core\Vendors_Importer();
 			}
 
-			return $this->classes['account'];
-		}
-
-
-		/**
-		 * @since 2.0
-		 *
-		 * @return wams\core\Password
-		 */
-		function password()
-		{
-			if (empty($this->classes['password'])) {
-				$this->classes['password'] = new wams\core\Password();
-			}
-
-			return $this->classes['password'];
-		}
-
-
-		/**
-		 * @since 2.0
-		 *
-		 * @return wams\core\Form
-		 */
-		public function form()
-		{
-			if (empty($this->classes['form'])) {
-				$this->classes['form'] = new wams\core\Form();
-			}
-
-			return $this->classes['form'];
+			return $this->classes['vendors_importer'];
 		}
 
 		/**

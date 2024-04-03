@@ -3,13 +3,6 @@
     "description": "Workflow Management System",
     "type": "project",
     "license": "GPL",
-    "autoload": {
-        "psr-4": {
-            "Inc\\": "./includes",
-            "Admin\\": "./admin",
-            "Front\\": "./public"
-        }
-    },
     "authors": [
         {
             "name": "Majed Ghareeb"
@@ -17,14 +10,14 @@
     ],
     "config": {
         "optimize-autoloader": true,
-        "platform-check": false
+        "platform-check": true,
+        "platform": {
+            "php": "7.4.0"
+        }
     },
     "require": {
-        "google/apiclient": "^2.0",
-        "voku/simple_html_dom": "*",
-        "eleirbag89/telegrambotphp": "*",
-        "goodby/csv": "*",
-        "symfony/dom-crawler": "*"
+        "google/apiclient": "*",
+        "phpoffice/phpword": "^1.2"
     },
     "scripts": {
         "post-update-cmd": "Google\\Task\\Composer::cleanup"
@@ -34,7 +27,8 @@
             "AnalyticsReporting",
             "AnalyticsData",
             "GoogleAnalyticsAdmin",
-            "CustomSearchAPI"
+            "CustomSearchAPI",
+            "FactCheckTools"
         ]
     }
 }

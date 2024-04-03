@@ -96,7 +96,7 @@ if (!class_exists('wams\admin\modules\Web_Notifications')) {
 		}
 		public function show_page()
 		{
-			wp_enqueue_script("web-notifications", WAMS_URL . 'assets/js/admin/web-notifications.js', array(), WAMS_VERSION, false);
+			wp_enqueue_script("web-notifications", WAMS_URL . 'assets/js/admin/web-notifications.js', array(), '1.0.1', false);
 			wp_enqueue_style("sweetalert2", WAMS_URL . 'assets/css/sweetalert2.min.css', array(), WAMS_VERSION);
 			wp_enqueue_script("sweetalert2", WAMS_URL . 'assets/js/sweetalert2.min.js', array(), WAMS_VERSION, false);
 			echo '<h1>Web_Notifications</h1>';
@@ -116,65 +116,7 @@ if (!class_exists('wams\admin\modules\Web_Notifications')) {
 		{
 
 			$users = get_users();
-
-?>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="card">
-						<div class="card-body">
-							<div class="row align-items-center">
-								<div class="col-md-6">
-									<div class="mb-2">
-										<h5 class="card-title">Installation</h5>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="d-flex flex-wrap align-items-center justify-content-center gap-2 mb-3">
-
-										<?php
-										echo '<button class="btn btn-light" id="install-page">Install Page</button>';
-										?>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="col-lg-12">
-					<div class="card">
-						<div class="card-body">
-							<div class="mb-2">
-								<h5 class="card-title">Test Notification</h5>
-							</div>
-							<form id="notifications-test">
-								<div class="mb-3">
-									<label for="" class="form-label">Message</label>
-									<textarea class="form-control" name="message" id="message" rows="6"></textarea>
-								</div>
-								<div class="mb-3">
-									<label for="" class="form-label">User</label>
-									<select class="form-select form-select-lg" name="user" id="user-id">
-										<option selected>Select User</option>
-										<?php
-										foreach ($users as $user) {
-											echo '<option value="' . $user->ID . '">' . $user->display_name . '</option>';
-										}
-										?>
-									</select>
-								</div>
-
-
-								<div><button type="submit" id="send-notification-test" class="btn btn-primary">Submit</button></div>
-							</form>
-						</div>
-					</div>
-				</div>
-
-			</div>
-<?php
-
+			include_once WAMS()->admin()->templates_path . 'web-notification.php';
 		}
 	}
 }

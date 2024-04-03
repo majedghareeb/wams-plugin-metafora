@@ -46,6 +46,7 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
 
         public function __construct()
         {
+
             $this->ga_config = new GA_Config;
             $this->client = new Google\Client();
             $httpClient = new GuzzleHttp\Client();
@@ -58,7 +59,7 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
 
             $this->client->setState($state_uri);
             $this->quotauser = 'u' . get_current_user_id() . 's' . get_current_blog_id();
-            if ($this->ga_config->options['user_api']) {
+            if ($this->ga_config->options['user_api'] == 1) {
                 $this->client->setClientId($this->ga_config->options['client_id']);
                 $this->client->setClientSecret($this->ga_config->options['client_secret']);
             } else {
@@ -83,16 +84,16 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
                         if ($this->client->isAccessTokenExpired() && isset($token->refresh_token)) {
                             echo $this->client->getRefreshToken();
                             $creds = $this->client->fetchAccessTokenWithRefreshToken($this->client->getRefreshToken());
-                            // if ($creds && isset($creds['access_token'])) {
-                            //     $this->ga_config->options['token'] = $this->client->getAccessToken();
-                            // } else {
-                            //     echo 'error';
-                            //     $timeout = $this->get_timeouts('midnight');
-                            //     GA_Tools::set_error($creds, $timeout);
-                            //     if (isset($creds['error']) && 'invalid_grant' == $creds['error']) {
-                            //         $this->reset_token(true);
-                            //     }
-                            // }
+                            if ($creds && isset($creds['access_token'])) {
+                                $this->ga_config->options['token'] = $this->client->getAccessToken();
+                            } else {
+                                echo 'error';
+                                $timeout = $this->get_timeouts('midnight');
+                                GA_Tools::set_error($creds, $timeout);
+                                if (isset($creds['error']) && 'invalid_grant' == $creds['error']) {
+                                    $this->reset_token(true);
+                                }
+                            }
                         }
                     } catch (Exception $e) {
                         $timeout = $this->get_timeouts('midnight');
@@ -149,7 +150,6 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
             if ($all) {
                 $this->ga_config->options['site_jail'] = "";
                 $this->ga_config->options['sites_list'] = array();
-                $this->ga_config->options['ga_profiles_list'] = array();
                 $this->ga_config->options['ga4_profiles_list'] = array();
                 $this->ga_config->options['default_profile'] = '';
                 $this->ga_config->options['reporting_type'] = 0;
@@ -242,54 +242,6 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
         }
 
         /**
-         * Retrieves all Universal Analytics Views with details
-         *
-         * @return array
-         */
-        public function refresh_profiles_ua()
-        {
-
-            try {
-
-                $ga_profiles_list = array();
-                $startindex = 1;
-                $totalresults = 65535; // use something big
-
-                while ($startindex < $totalresults) {
-
-                    $profiles = $this->service->management_profiles->listManagementProfiles('~all', '~all', array('start-index' => $startindex));
-                    $items = $profiles->getItems();
-                    $totalresults = $profiles->getTotalResults();
-
-                    if ($totalresults > 0) {
-                        foreach ($items as $profile) {
-                            $timetz = new DateTimeZone($profile->getTimezone());
-                            $localtime = new DateTime('now', $timetz);
-                            $timeshift = strtotime($localtime->format('Y-m-d H:i:s')) - time();
-                            $ga_profiles_list[] = array($profile->getName(), $profile->getId(), $profile->getwebPropertyId(), $profile->getwebsiteUrl(), $timeshift, $profile->getTimezone(), $profile->getDefaultPage());
-                            $startindex++;
-                        }
-                    }
-                }
-
-                if (empty($ga_profiles_list)) {
-                    $timeout = $this->get_timeouts('midnight');
-                    //GA_Tools::set_error( 'No Google Analytics properties were found in this Google account. Re-authorize with the right account.!', $timeout );
-                } else {
-                    GA_Tools::delete_cache('last_error');
-                }
-
-                return $ga_profiles_list;
-            } catch (GoogleServiceException $e) {
-                $timeout = $this->get_timeouts('midnight');
-                GA_Tools::set_error($e, $timeout);
-            } catch (Exception $e) {
-                $timeout = $this->get_timeouts('midnight');
-                GA_Tools::set_error($e, $timeout);
-            }
-        }
-
-        /**
          * Retrieves all Google Analytics 4 Properties with details
          *
          * @return array
@@ -344,827 +296,6 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
         }
 
         /**
-         * Get and cache Google Analytics 3 Core Reports
-         *
-         * @param
-         *            $projecId
-         * @param
-         *            $from
-         * @param
-         *            $to
-         * @param
-         *            $metrics
-         * @param
-         *            $options
-         * @param
-         *            $serial
-         * @return int|Google\Service\AnalyticsReporting\DateRangeValues
-         */
-        private function handle_corereports($projectId, $from, $to, $metrics, $dimensions, $sortby, $filters, $serial)
-        {
-            try {
-                if ('today' == $from) {
-                    $interval = 'hourly';
-                } else {
-                    $interval = 'daily';
-                }
-                $transient = GA_Tools::get_cache($serial);
-                if (false === $transient) {
-                    // if ($this->gapi_errors_handler()) {
-                    // 	return -23;
-                    // }
-
-                    $quotauser = $this->get_serial($this->quotauser . $projectId);
-
-                    // Create the DateRange object.
-                    $dateRange = new Google\Service\AnalyticsReporting\DateRange();
-                    $dateRange->setStartDate($from);
-                    $dateRange->setEndDate($to);
-
-                    // Create the Metrics object.
-                    if (is_array($metrics)) {
-                        foreach ($metrics as $value) {
-                            $metricobj = new Google\Service\AnalyticsReporting\Metric();
-                            $metricobj->setExpression($value);
-                            $metric[] = $metricobj;
-                        }
-                    } else {
-                        $metricobj = new Google\Service\AnalyticsReporting\Metric();
-                        $metricobj->setExpression($metrics);
-                        $metric[] = $metricobj;
-                    }
-
-                    // Create the ReportRequest object.
-                    $request = new Google\Service\AnalyticsReporting\ReportRequest();
-                    $request->setViewId($projectId);
-                    $request->setDateRanges($dateRange);
-                    $request->setMetrics($metric);
-                    $request->setIncludeEmptyRows(true);
-
-                    // Create the Dimensions object.
-                    if ($dimensions) {
-
-                        if (is_array($dimensions)) {
-                            foreach ($dimensions as $value) {
-                                $dimensionobj = new Google\Service\AnalyticsReporting\Dimension();
-                                $dimensionobj->setName($value);
-                                $dimension[] = $dimensionobj;
-                            }
-                        } else {
-                            $dimensionobj = new Google\Service\AnalyticsReporting\Dimension();
-                            $dimensionobj->setName($dimensions);
-                            $dimension[] = $dimensionobj;
-                        }
-
-                        $request->setDimensions($dimension);
-                    }
-
-                    // Create the Filters
-                    if ($filters) {
-
-                        foreach ($filters as $value) {
-                            $dimensionFilterobj = new Google\Service\AnalyticsReporting\DimensionFilter();
-                            $dimensionFilterobj->setDimensionName($value[0]);
-                            $dimensionFilterobj->setOperator($value[1]);
-                            $dimensionFilterobj->setExpressions(array($value[2]));
-                            $dimensionFilterobj->setNot($value[3]);
-                            $dimensionFilter[] = $dimensionFilterobj;
-                        }
-
-                        // Create the DimensionFilterClauses
-                        $dimensionFilterClause = new Google\Service\AnalyticsReporting\DimensionFilterClause();
-                        $dimensionFilterClause->setOperator('AND');
-                        $dimensionFilterClause->setFilters($dimensionFilter);
-
-                        $request->setDimensionFilterClauses(array($dimensionFilterClause));
-                    }
-
-                    // Create the Ordering.
-                    if ($sortby) {
-                        $ordering = new Google\Service\AnalyticsReporting\OrderBy();
-                        $ordering->setOrderType('VALUE');
-                        $ordering->setSortOrder('DESCENDING');
-                        $ordering->setFieldName($metrics);
-                        $request->setOrderBys($ordering);
-                    }
-
-                    $body = new Google\Service\AnalyticsReporting\GetReportsRequest();
-                    $body->setReportRequests(array($request));
-
-                    $response = $this->service_ga3_reporting->reports->batchGet($body, array('quotaUser' => $quotauser));
-
-                    $reports = $response->getReports();
-
-                    $dataraw = $reports[0]->getData();
-
-                    $data['values'] = array();
-
-                    foreach ($dataraw->getRows() as $row) {
-
-                        $values = array();
-
-                        if (isset($row->getDimensions()[0])) {
-                            foreach ($row->getDimensions() as $value) {
-                                $values[] = $value;
-                            }
-                        }
-
-                        if (isset($row->getMetrics()[0])) {
-                            foreach ($row->getMetrics()[0]->getValues() as $value) {
-                                $values[] = $value;
-                            }
-                        }
-
-                        $data['values'][] = $values;
-                    }
-
-                    if (isset($dataraw->getTotals()[0]->getValues()[0])) {
-                        $data['totals'] = $dataraw->getTotals()[0]->getValues()[0];
-                    }
-
-                    GA_Tools::set_cache($serial, $data, $this->get_timeouts($interval));
-                } else {
-                    $data = $transient;
-                }
-            } catch (GoogleServiceException $e) {
-                $timeout = $this->get_timeouts('midnight');
-                GA_Tools::set_error($e, $timeout);
-                return $e->getCode();
-            } catch (Exception $e) {
-                $timeout = $this->get_timeouts('midnight');
-                GA_Tools::set_error($e, $timeout);
-                return $e->getCode();
-            }
-            $this->ga_config->options['api_backoff'] = 0;
-            $this->ga_config->set_plugin_options();
-
-            return $data;
-        }
-
-
-        /**
-         * Analytics data for Area Charts (Admin Dashboard Widget report)
-         *
-         * @param
-         *            $projectId
-         * @param
-         *            $from
-         * @param
-         *            $to
-         * @param
-         *            $query
-         * @param
-         *            $filter
-         * @return array|int
-         */
-        private function get_areachart_data($projectId, $from, $to, $query, $filter = '')
-        {
-
-            switch ($query) {
-                case 'users':
-                    $title = __("Users", 'wams');
-                    break;
-                case 'pageviews':
-                    $title = __("Page Views", 'wams');
-                    break;
-                case 'visitBounceRate':
-                    $title = __("Bounce Rate", 'wams');
-                    break;
-                case 'organicSearches':
-                    $title = __("Organic Searches", 'wams');
-                    break;
-                case 'uniquePageviews':
-                    $title = __("Unique Page Views", 'wams');
-                    break;
-                default:
-                    $title = __("Sessions", 'wams');
-            }
-
-            $metrics = 'ga:' . $query;
-
-            if ('today' == $from || 'yesterday' == $from) {
-                $dimensions = 'ga:hour';
-                $dayorhour = __("Hour", 'wams');
-            } else if ('365daysAgo' == $from || '1095daysAgo' == $from) {
-                $dimensions = array(
-                    'ga:yearMonth',
-                    'ga:month'
-                );
-                $dayorhour = __("Date", 'wams');
-            } else {
-                $dimensions = array(
-                    'ga:date',
-                    'ga:dayOfWeekName'
-                );
-                $dayorhour = __("Date", 'wams');
-            }
-
-            $filters = false;
-
-            if ($filter) {
-                $filters[] = array('ga:pagePath', 'EXACT', $filter, false);
-            }
-
-            $serial = 'qr2_' . $this->get_serial($projectId . $from . $to . $metrics . $filter);
-
-            $data = $this->handle_corereports($projectId, $from, $to, $metrics, $dimensions, false, $filters, $serial);
-
-            if (is_numeric($data)) {
-                return $data;
-            }
-
-            if (empty($data['values'])) {
-                // unable to render it as an Area Chart, returns a numeric value to be handled by reportsx.js
-                return -21;
-            }
-
-            $aiwp_data = array(array($dayorhour, $title));
-            if ('today' == $from || 'yesterday' == $from) {
-                foreach ($data['values'] as $row) {
-                    $aiwp_data[] = array((int) $row[0] . ':00', round($row[1], 2));
-                }
-            } else if ('365daysAgo' == $from || '1095daysAgo' == $from) {
-                foreach ($data['values'] as $row) {
-                    /*
-					 * translators:
-					 * Example: 'F, Y' will become 'November, 2015'
-					 * For details see: http://php.net/manual/en/function.date.php#refsect1-function.date-parameters
-					 */
-                    $aiwp_data[] = array(date_i18n(__('F, Y', 'wams'), strtotime($row[0] . '01')), round($row[2], 2));
-                }
-            } else {
-                foreach ($data['values'] as $row) {
-                    /*
-					 * translators:
-					 * Example: 'l, F j, Y' will become 'Thusday, November 17, 2015'
-					 * For details see: http://php.net/manual/en/function.date.php#refsect1-function.date-parameters
-					 */
-                    $aiwp_data[] = array(date_i18n(__('l, F j, Y', 'wams'), strtotime($row[0])), round($row[2], 2));
-                }
-            }
-
-            return $aiwp_data;
-        }
-
-        /**
-         * Google Analytics 3 data for Bottom Stats (bottom stats on main report)
-         *
-         * @param
-         *            $projectId
-         * @param
-         *            $from
-         * @param
-         *            $to
-         * @param
-         *            $filter
-         * @return array|int
-         */
-        private function get_bottomstats($projectId, $from, $to, $filter = '')
-        {
-
-            $filters = false;
-
-            if ($filter) {
-                $filters[] = array('ga:pagePath', 'PARTIAL', $filter, false);
-                $metrics = array(
-                    'ga:uniquePageviews',
-                    'ga:users',
-                    'ga:pageviews',
-                    'ga:BounceRate',
-                    'ga:organicSearches',
-                    'ga:pageviewsPerSession',
-                    'ga:avgTimeOnPage',
-                    'ga:avgPageLoadTime',
-                    'ga:exitRate'
-                );
-            } else {
-                $metrics = array(
-                    'ga:sessions',
-                    'ga:users',
-                    'ga:pageviews',
-                    'ga:BounceRate',
-                    'ga:organicSearches',
-                    'ga:pageviewsPerSession',
-                    'ga:avgTimeOnPage',
-                    'ga:avgPageLoadTime',
-                    'ga:avgSessionDuration'
-                );
-            }
-
-            $sortby = false;
-            // added to to serial
-            $serial = 'qr3_' . $this->get_serial($projectId . $from . $to . $filter);
-            $data = $this->handle_corereports($projectId, $from, $to, $metrics, false, $sortby, $filters, $serial);
-
-            if (is_numeric($data)) {
-                return $data;
-            }
-
-            $aiwp_data = array();
-
-            $aiwp_data = $data['values'][0];
-
-            // i18n support
-            $aiwp_data[0] = isset($aiwp_data[0]) ? number_format_i18n($aiwp_data[0]) : 0;
-            $aiwp_data[1] = isset($aiwp_data[1]) ? number_format_i18n($aiwp_data[1]) : 0;
-            $aiwp_data[2] = isset($aiwp_data[2]) ? number_format_i18n($aiwp_data[2]) : 0;
-            $aiwp_data[3] = isset($aiwp_data[3]) ? number_format_i18n($aiwp_data[3], 2) . '%' : '0%';
-            $aiwp_data[4] = isset($aiwp_data[4]) ? number_format_i18n($aiwp_data[4]) : 0;
-            $aiwp_data[5] = isset($aiwp_data[5]) ? number_format_i18n($aiwp_data[5], 2) : 0;
-            $aiwp_data[6] = isset($aiwp_data[6]) ? gmdate("H:i:s", $aiwp_data[6]) : '00:00:00';
-            $aiwp_data[7] = isset($aiwp_data[7]) ? number_format_i18n($aiwp_data[7], 2) : 0;
-
-            if ($filter) {
-                $aiwp_data[8] = isset($aiwp_data[8]) ? number_format_i18n($aiwp_data[8], 2) . '%' : '0%';
-            } else {
-                $aiwp_data[8] = isset($aiwp_data[8]) ? gmdate("H:i:s", $aiwp_data[8]) : '00:00:00';
-            }
-
-            return $aiwp_data;
-        }
-
-
-        /**
-         * Google Analytics 3 data for Table Charts (content pages)
-         *
-         * @param
-         *            $projectId
-         * @param
-         *            $from
-         * @param
-         *            $to
-         * @param
-         *            $filter
-         * @return array|int
-         */
-        private function get_contentpages($projectId, $from, $to, $metric, $filter = '')
-        {
-
-            $metrics = 'ga:pageviews';
-
-            $dimensions = 'ga:pagePath';
-
-            $sortby = '-' . $metrics;
-
-            $filters = false;
-            if ($filter) {
-                $filters[] = array('ga:pagePath', 'EXACT', $filter, false);
-            }
-
-            $serial = 'qr4_' . $this->get_serial($projectId . $from . $to . $filter . $metric);
-
-            $data =  $this->handle_corereports($projectId, $from, $to, $metrics, $dimensions, $sortby, $filters, $serial);
-
-            if (is_numeric($data)) {
-                return $data;
-            }
-
-            $aiwp_data = array(array(__("Pages", 'wams'), __(ucfirst($metric), 'wams')));
-
-            foreach ($data['values'] as $row) {
-                $aiwp_data[] = array(esc_html($row[0]), (int) $row[1]);
-            }
-
-            return $aiwp_data;
-        }
-
-        /**
-         * Google Analytics 3 data for 404 Errors
-         *
-         * @param
-         *            $projectId
-         * @param
-         *            $from
-         * @param
-         *            $to
-         * @return array|int
-         */
-        private function get_404errors($projectId, $from, $to, $metric, $filter = "Page Not Found")
-        {
-
-            $metrics = 'ga:' . $metric;
-
-            $dimensions = array(
-                'ga:pagePath',
-                'ga:fullReferrer'
-            );
-
-            $sortby = '-' . $metrics;
-
-            $filters[] = array('ga:pageTitle', 'PARTIAL', $filter, false);
-
-            $serial = 'qr4_' . $this->get_serial($projectId . $from . $to . $filter . $metric);
-
-            $data =  $this->handle_corereports($projectId, $from, $to, $metrics, $dimensions, $sortby, $filters, $serial);
-
-            if (is_numeric($data)) {
-                return $data;
-            }
-
-            $aiwp_data = array(array(__("404 Errors", 'wams'), __(ucfirst($metric), 'wams')));
-            foreach ($data['values'] as $row) {
-                $path = esc_html($row[0]);
-                $source = esc_html($row[1]);
-                $aiwp_data[] = array("<strong>" . __("URI:", 'wams') . "</strong> " . $path . "<br><strong>" . __("Source:", 'wams') . "</strong> " . $source, (int) $row[2]);
-            }
-
-            return $aiwp_data;
-        }
-
-        /**
-         * Google Analytics 3 data for Table Charts (referrers)
-         *
-         * @param
-         *            $projectId
-         * @param
-         *            $from
-         * @param
-         *            $to
-         * @param
-         *            $filter
-         * @return array|int
-         */
-        private function get_referrers($projectId, $from, $to, $metric, $filter = '')
-        {
-
-            $metrics = 'ga:' . $metric;
-
-            $dimensions = 'ga:source';
-
-            $sortby = '-' . $metrics;
-
-            $filters = false;
-            if ($filter) {
-                $filters[] = array('ga:pagePath', 'EXACT', $filter, false);
-                $filters[] = array('ga:medium', 'EXACT', 'referral', false);
-            } else {
-                $filters[] = array('ga:medium', 'EXACT', 'referral', false);
-            }
-
-            $serial = 'qr5_' . $this->get_serial($projectId . $from . $to . $filter . $metric);
-
-            $data =  $this->handle_corereports($projectId, $from, $to, $metrics, $dimensions, $sortby, $filters, $serial);
-
-            if (is_numeric($data)) {
-                return $data;
-            }
-
-            $aiwp_data = array(array(__("Referrers", 'wams'), __(ucfirst($metric), 'wams')));
-
-            foreach ($data['values'] as $row) {
-                $aiwp_data[] = array(esc_html($row[0]), (int) $row[1]);
-            }
-
-            return $aiwp_data;
-        }
-
-        /**
-         * Google Analytics 3 data for Table Charts (searches)
-         *
-         * @param
-         *            $projectId
-         * @param
-         *            $from
-         * @param
-         *            $to
-         * @param
-         *            $filter
-         * @return array|int
-         */
-        private function get_searches($projectId, $from, $to, $metric, $filter = '')
-        {
-
-            $metrics = 'ga:' . $metric;
-
-            $dimensions = 'ga:source';
-
-            $sortby = '-' . $metrics;
-
-            $filters = false;
-            if ($filter) {
-                $filters[] = array('ga:pagePath', 'EXACT', $filter, false);
-                $filters[] = array('ga:medium', 'EXACT', 'organic', false);
-            } else {
-                $filters[] = array('ga:medium', 'EXACT', 'organic', false);
-            }
-
-            $serial = 'qr5_' . $this->get_serial($projectId . $from . $to . $filter . $metric);
-
-            $data =  $this->handle_corereports($projectId, $from, $to, $metrics, $dimensions, $sortby, $filters, $serial);
-
-            if (is_numeric($data)) {
-                return $data;
-            }
-
-            $aiwp_data = array(array(__("Search Engines", 'wams'), __(ucfirst($metric), 'wams')));
-
-            foreach ($data['values'] as $row) {
-                $aiwp_data[] = array(esc_html($row[0]), (int) $row[1]);
-            }
-
-            return $aiwp_data;
-        }
-
-        /**
-         * Google Analytics 3 data for Table Charts (location reports)
-         *
-         * @param
-         *            $projectId
-         * @param
-         *            $from
-         * @param
-         *            $to
-         * @param
-         *            $filter
-         * @return array|int
-         */
-        private function get_locations($projectId, $from, $to, $metric, $filter = '')
-        {
-
-            $metrics = 'ga:' . $metric;
-
-            $title = __("Countries", 'wams');
-
-            $serial = 'qr7_' . $this->get_serial($projectId . $from . $to . $filter . $metric);
-
-            $dimensions = 'ga:country';
-
-            $local_filter = '';
-
-            if ($this->ga_config->options['ga_target_geomap']) {
-                $dimensions = array(
-                    'ga:city',
-                    'ga:region'
-                );
-
-                $country_codes = GA_Tools::get_countrycodes();
-                if (isset($country_codes[$this->ga_config->options['ga_target_geomap']])) {
-                    $local_filter = array('ga:country', 'EXACT', ($country_codes[$this->ga_config->options['ga_target_geomap']]), false);
-                    $title = __("Cities from", 'wams') . ' ' . __($country_codes[$this->ga_config->options['ga_target_geomap']]);
-                    $serial = 'qr7_' . $this->get_serial($projectId . $from . $to . $this->ga_config->options['ga_target_geomap'] . $filter . $metric);
-                }
-            }
-
-            $sortby = '-' . $metrics;
-
-            $filters = false;
-            if ($filter) {
-                $filters[] = array('ga:pagePath', 'EXACT', $filter, false);
-                if ($local_filter) {
-                    $filters[] = array('ga:pagePath', 'EXACT', $filter, false);
-                    $filters[1] = $local_filter;
-                }
-            } else {
-                if ($local_filter) {
-                    $filters[] = $local_filter;
-                }
-            }
-
-            $data =  $this->handle_corereports($projectId, $from, $to, $metrics, $dimensions, $sortby, $filters, $serial);
-
-            if (is_numeric($data)) {
-                return $data;
-            }
-
-            $aiwp_data = array(array($title, __(ucfirst($metric), 'wams')));
-
-            foreach ($data['values'] as $row) {
-                if (isset($row[2])) {
-                    $aiwp_data[] = array(esc_html($row[0]) . ', ' . esc_html($row[1]), (int) $row[2]);
-                } else {
-                    $aiwp_data[] = array(esc_html($row[0]), (int) $row[1]);
-                }
-            }
-
-            return $aiwp_data;
-        }
-
-        /**
-         * Google Analytics 3 data for Org Charts (traffic channels, device categories)
-         *
-         * @param
-         *            $projectId
-         * @param
-         *            $from
-         * @param
-         *            $to
-         * @param
-         *            $query
-         * @param
-         *            $filter
-         * @return array|int
-         */
-        private function get_orgchart_data($projectId, $from, $to, $query, $metric, $filter = '')
-        {
-
-            $metrics = 'ga:' . $metric;
-
-            $dimensions = 'ga:' . $query;
-
-            $sortby = '-' . $metrics;
-
-
-            $filters = false;
-            if ($filter) {
-                $filters[] = array('ga:pagePath', 'EXACT', $filter, false);
-            }
-
-            $serial = 'qr8_' . $this->get_serial($projectId . $from . $to . $query . $filter . $metric);
-
-            $data =  $this->handle_corereports($projectId, $from, $to, $metrics, $dimensions, $sortby, $filters, $serial);
-
-            if (is_numeric($data)) {
-                return $data;
-            }
-
-            if (empty($data['values'])) {
-                // unable to render as an Org Chart, returns a numeric value to be handled by reportsx.js
-                return -21;
-            }
-
-            $block = ('channelGrouping' == $query) ? __("Channels", 'wams') : __("Devices", 'wams');
-            $aiwp_data = array(array('<div style="color:black; font-size:1.1em">' . $block . '</div><div style="color:darkblue; font-size:1.2em">' . (int) $data['totals'] . '</div>', ""));
-            foreach ($data['values'] as $row) {
-                $shrink = explode(" ", $row[0]);
-                $aiwp_data[] = array('<div style="color:black; font-size:1.1em">' . esc_html($shrink[0]) . '</div><div style="color:darkblue; font-size:1.2em">' . (int) $row[1] . '</div>', '<div style="color:black; font-size:1.1em">' . $block . '</div><div style="color:darkblue; font-size:1.2em">' . (int) $data['totals'] . '</div>');
-            }
-
-            return $aiwp_data;
-        }
-
-        /**
-         * Google Analytics 3 data for Pie Charts (traffic mediums, serach engines, social networks, browsers, screen rsolutions, etc.)
-         *
-         * @param
-         *            $projectId
-         * @param
-         *            $from
-         * @param
-         *            $to
-         * @param
-         *            $query
-         * @param
-         *            $filter
-         * @return array|int
-         */
-        private function get_piechart_data($projectId, $from, $to, $query, $metric, $filter = '')
-        {
-
-            $metrics = 'ga:' . $metric;
-            $dimensions = 'ga:' . $query;
-            $sortby = false;
-            $filters = false;
-
-            if ('source' == $query) {
-                $sortby = '-' . $metrics;
-                if ($filter) {
-                    $filters[] = array('ga:pagePath', 'EXACT', $filter, false);
-                    $filters[] = array('ga:medium', 'EXACT', 'organic', false);
-                    $filters[] = array('ga:keyword', 'EXACT', '(not set)', true);
-                } else {
-                    $filters[] = array('ga:medium', 'EXACT', 'organic', false);
-                    $filters[] = array('ga:keyword', 'EXACT', '(not set)', true);
-                }
-            } else {
-                $sortby = '-' . $metrics;
-                if ($filter) {
-                    $filters[] = array('ga:pagePath', 'EXACT', $filter, false);
-                    $filters[] = array('ga:' . $query, 'EXACT', '(not set)', true);
-                } else {
-                    $filters[] = array('ga:' . $query, 'EXACT', '(not set)', true);
-                }
-            }
-
-            $serial = 'qr10_' . $this->get_serial($projectId . $from . $to . $query . $filter . $metric);
-
-            $data =  $this->handle_corereports($projectId, $from, $to, $metrics, $dimensions, $sortby, $filters, $serial);
-
-            if (is_numeric($data)) {
-                return $data;
-            }
-
-            $aiwp_data = array(array(__("Type", 'wams'), __(ucfirst($metric), 'wams')));
-
-            $included = 0;
-            foreach ($data['values'] as $row) {
-                $aiwp_data[] = array(str_replace("(none)", "direct", esc_html($row[0])), (int) $row[1]);
-                $included += $row[1];
-            }
-
-            $totals = $data['totals'];
-            $others = $totals - $included;
-            if ($others > 0) {
-                $aiwp_data[] = array(__('Other', 'wams'), $others);
-            }
-
-            return $aiwp_data;
-        }
-
-        /**
-         * Google Analytics 3 data for Frontend Widget (chart data and totals)
-         *
-         * @param
-         *            $projectId
-         * @param
-         *            $period
-         * @param
-         *            $anonim
-         * @return array|int
-         */
-        public function frontend_widget_stats($projectId, $from, $anonim)
-        {
-
-            $to = 'yesterday';
-            $metrics = 'ga:sessions';
-            $dimensions = array(
-                'ga:date',
-                'ga:dayOfWeekName'
-            );
-
-            $serial = 'qr2_' . $this->get_serial($projectId . $from . $to . $metrics);
-
-
-            $data =  $this->handle_corereports($projectId, $from, $to, $metrics, $dimensions, false, false, $serial);
-
-            if (is_numeric($data)) {
-                return $data;
-            }
-
-            $aiwp_data = array(array(__("Date", 'wams'), __("Sessions", 'wams')));
-
-            if ($anonim) {
-                $max_array = array();
-                foreach ($data['values'] as $row) {
-                    $max_array[] = $row[2];
-                }
-                $max = max($max_array) ? max($max_array) : 1;
-            }
-
-            foreach ($data['values'] as $row) {
-                $aiwp_data[] = array(date_i18n(__('l, F j, Y', 'wams'), strtotime($row[0] . ',' . $row[1])), ($anonim ? round($row[2] * 100 / $max, 2) : (int) $row[2]));
-            }
-            $totals = $data['totals'];
-
-            return array($aiwp_data, $anonim ? 0 : number_format_i18n($totals));
-        }
-
-        /**
-         * Google Analytics 3 data for Realtime component (the real-time report)
-         *
-         * @param
-         *            $projectId
-         * @return array|int
-         */
-        private function get_realtime($projectId)
-        {
-            $metrics = 'rt:activeUsers';
-            $dimensions = 'rt:pagePath,rt:source,rt:keyword,rt:trafficType,rt:visitorType,rt:pageTitle';
-
-            try {
-                $serial = 'qr_realtimecache_' . $this->get_serial($projectId);
-                $transient = GA_Tools::get_cache($serial);
-                if (false === $transient) {
-
-                    if ($this->gapi_errors_handler()) {
-                        return -23;
-                    }
-
-                    $data = $this->service->data_realtime->get('ga:' . $projectId, $metrics, array('dimensions' => $dimensions, 'quotaUser' => $this->quotauser . 'p' . $projectId));
-
-                    GA_Tools::set_cache($serial, $data, 55);
-                } else {
-
-                    $data = $transient;
-                }
-            } catch (GoogleServiceException $e) {
-                $timeout = $this->get_timeouts('midnight');
-                GA_Tools::set_error($e, $timeout);
-                return $e->getCode();
-            } catch (Exception $e) {
-                $timeout = $this->get_timeouts('midnight');
-                GA_Tools::set_error($e, $timeout);
-                return $e->getCode();
-            }
-
-            if ($data->getRows() < 1) {
-                return -21;
-            }
-
-            $i = 0;
-            $aiwp_data = $data;
-            foreach ($data->getRows() as $row) {
-                $strip = array_map('wp_kses_data', $row);
-                $aiwp_data->rows[$i] = array_map('esc_html', $strip);
-                $i++;
-            }
-
-            $this->ga_config->options['api_backoff'] = 0;
-            $this->ga_config->set_plugin_options();
-
-            return array($aiwp_data);
-        }
-
-        /**
          * Google Analtyics 4 Reports Get and cache
          *
          * @param
@@ -1192,7 +323,7 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
                 $transient = GA_Tools::get_cache($serial);
                 if (false === $transient) {
                     if ($this->gapi_errors_handler()) {
-                        return -23;
+                        // return -23;
                     }
 
                     $projectIdArr = explode('/dataStreams/', $projectId);
@@ -1259,6 +390,7 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
                             $value[0] = GA_Tools::ga3_ga4_mapping($value[0]);
                             $dimensionFilter->setFieldName($value[0]);
                             $stringFilter->setValue($value[2]);
+                            $stringFilter->setMatchType($value[1]);
                             $dimensionFilter->setStringFilter($stringFilter);
 
                             $dimensionFilterExpressionobj = new Google\Service\AnalyticsData\FilterExpression();
@@ -1509,7 +641,61 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
 
             return $aiwp_data;
         }
+        /**
+         * Google Analytics 4 data for Page Title
+         *
+         * @param
+         *            $projectId
+         * @param
+         *            $from
+         * @param
+         *            $to
+         * @param
+         *            $filter
+         * @return array|int
+         */
+        private function get_title_ga4($projectId, $from, $to, $filter = '')
+        {
+            $metrics = array(
+                'ga:sessions',
+                'ga:users',
+                'ga:pageviews',
+                'engagementRate',
+                'userEngagementDuration',
+            );
 
+            $dimensions = 'ga:pageTitle';
+
+            $filters = false;
+            if ($filter) {
+                $filters[] = array('ga:pageTitle', 'CONTAINS', $filter, false);
+            }
+
+            $serial = 'qr11_' . $this->get_serial($projectId . $from . $to . $filter);
+
+            $data =  $this->handle_corereports_ga4($projectId, $from, $to, $metrics, $dimensions, false, $filters, $serial);
+
+
+            if (is_numeric($data)) {
+                return $data;
+            }
+
+            $ga4_data = array();
+
+            foreach ($data['values'] as $row) {
+                $ga4_data[] = [
+                    'Title' => isset($row[0]) ? $row[0] : 'No Title',
+                    'Sessions' => isset($row[1]) ? number_format_i18n($row[1]) : 0,
+                    'Users' => isset($row[2]) ? number_format_i18n($row[2]) : 0,
+                    'Pageviews' => isset($row[3]) ? number_format_i18n($row[3]) : 0,
+                    'Engagement Rate' => isset($row[4]) ? number_format_i18n($row[4] * 100, 2) . '%' : '0%',
+                    'User Engagement Duration' => isset($row[5]) ? GA_Tools::secondstohms($row[5]) : '00:00:00',
+                ];
+            }
+
+
+            return $ga4_data;
+        }
         /**
          * Google Analytics 4 data for Bottom Stats (bottom stats on main report)
          *
@@ -1553,9 +739,7 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
                     'userEngagementDuration',
                 );
             }
-            print_r($filters);
             $sortby = false;
-
             $serial = 'qr3_' . $this->get_serial($projectId . $from . $to . $filter);
             $data = $this->handle_corereports_ga4($projectId, $from, $to, $metrics, false, $sortby, $filters, $serial);
 
@@ -1679,7 +863,7 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
 
             $filters = false;
             if ($filter) {
-                $filters[] = array('ga:pagePath', '=~', $filter, false);
+                $filters[] = array('ga:pageTitle', '=~', $filter, false);
             }
 
             $serial = 'qr4_' . $this->get_serial($projectId . $from . $to . $filter . $metric);
@@ -2030,7 +1214,7 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
                 if (false === $transient) {
 
                     if ($this->gapi_errors_handler()) {
-                        return -23;
+                        // return -23;
                     }
 
                     $request = new Google\Service\AnalyticsData\RunRealtimeReportRequest();
@@ -2138,79 +1322,39 @@ if (!class_exists('wams\core\google\GA_Api_Controller')) {
             }
 
             if (in_array($query, array('sessions', 'users', 'organicSearches', 'visitBounceRate', 'pageviews', 'uniquePageviews'))) {
-                if ($this->ga_config->options['reporting_type']) {
-                    return $this->get_areachart_data_ga4($projectId, $from, $to, $query, $filter);
-                } else {
-                    return $this->get_areachart_data($projectId, $from, $to, $query, $filter);
-                }
+                return $this->get_areachart_data_ga4($projectId, $from, $to, $query, $filter);
             }
             if ('bottomstats' == $query) {
-                if ($this->ga_config->options['reporting_type']) {
-                    return $this->get_bottomstats_ga4($projectId, $from, $to, $filter);
-                } else {
-                    return $this->get_bottomstats($projectId, $from, $to, $filter);
-                }
+                return $this->get_bottomstats_ga4($projectId, $from, $to, $filter);
+            }
+            if ('pageTitle' == $query) {
+                return $this->get_title_ga4($projectId, $from, $to, $filter);
             }
             if ('locations' == $query) {
-                if ($this->ga_config->options['reporting_type']) {
-                    return $this->get_locations_ga4($projectId, $from, $to, $metric, $filter);
-                } else {
-                    return $this->get_locations($projectId, $from, $to, $metric, $filter);
-                }
+                return $this->get_locations_ga4($projectId, $from, $to, $metric, $filter);
             }
             if ('contentpages' == $query) {
-                if ($this->ga_config->options['reporting_type']) {
-                    return $this->get_contentpages_ga4($projectId, $from, $to, $metric, $filter);
-                } else {
-                    $metric = 'pageviews';
-                    return $this->get_contentpages($projectId, $from, $to, $metric, $filter);
-                }
+                return $this->get_contentpages_ga4($projectId, $from, $to, $metric, $filter);
             }
             if ('referrers' == $query) {
-                if ($this->ga_config->options['reporting_type']) {
-                    return $this->get_referrers_ga4($projectId, $from, $to, $metric, $filter);
-                } else {
-                    return $this->get_referrers($projectId, $from, $to, $metric, $filter);
-                }
+                return $this->get_referrers_ga4($projectId, $from, $to, $metric, $filter);
             }
             if ('searches' == $query) {
-                if ($this->ga_config->options['reporting_type']) {
-                    return $this->get_searches_ga4($projectId, $from, $to, $metric, $filter);
-                } else {
-                    return $this->get_searches($projectId, $from, $to, $metric, $filter);
-                }
+                return $this->get_searches_ga4($projectId, $from, $to, $metric, $filter);
             }
             if ('404errors' == $query) {
-                if ($this->ga_config->options['reporting_type']) {
-                    $filter = $this->ga_config->options['pagetitle_404'];
-                    return $this->get_404errors_ga4($projectId, $from, $to, $metric, $filter);
-                } else {
-                    $filter = $this->ga_config->options['pagetitle_404'];
-                    return $this->get_404errors($projectId, $from, $to, $metric, $filter);
-                }
+                $filter = $this->ga_config->options['pagetitle_404'];
+                return $this->get_404errors_ga4($projectId, $from, $to, $metric, $filter);
             }
             if ('realtime' == $query) {
-                if ($this->ga_config->options['reporting_type']) {
-                    return $this->get_realtime_ga4($projectId);
-                } else {
-                    return $this->get_realtime($projectId);
-                }
+                return $this->get_realtime_ga4($projectId);
             }
             if ('channelGrouping' == $query || 'deviceCategory' == $query) {
-                if ($this->ga_config->options['reporting_type']) {
-                    return $this->get_orgchart_data_ga4($projectId, $from, $to, $query, $metric, $filter);
-                } else {
-                    return $this->get_orgchart_data($projectId, $from, $to, $query, $metric, $filter);
-                }
+                return $this->get_orgchart_data_ga4($projectId, $from, $to, $query, $metric, $filter);
             }
             if (in_array($query, array('medium', 'visitorType', 'socialNetwork', 'source', 'browser', 'operatingSystem', 'screenResolution', 'mobileDeviceBranding'))) {
-                if ($this->ga_config->options['reporting_type']) {
-                    return $this->get_piechart_data_ga4($projectId, $from, $to, $query, $metric, $filter);
-                } else {
-                    return $this->get_piechart_data($projectId, $from, $to, $query, $metric, $filter);
-                }
+                return $this->get_piechart_data_ga4($projectId, $from, $to, $query, $metric, $filter);
             }
-
             wp_die(-27);
         }
     }

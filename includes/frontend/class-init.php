@@ -25,6 +25,7 @@ if (!class_exists('wams\frontend\Init')) {
 		{
 			$this->user_dashboard();
 			$this->Shortcodes();
+			$this->theme_hooks();
 			$this->enqueue();
 			$this->secure();
 		}

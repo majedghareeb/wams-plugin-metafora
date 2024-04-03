@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template for the search form
+ * Template for the Telegram links
  *
  * This template can be overridden by copying it to yourtheme/wams/searchform.php
  *
@@ -14,24 +14,22 @@
  * @var string  $chat_id
  * @var array  $api [ ]
  */
-echo ($user_display_name ?? 'No Chat ID fount!!');
-echo ($user_display_name ?? 'No Chat ID fount!!');
-echo ($current_user_id ?? 'No Chat ID fount!!');
 if (isset($chat_id)) {
-    echo '<div class="alert alert-success" role="alert">You have already activated your Telegram account <br>Your Activation Code is ' . $chat_id . ' </div>';
+    $disabled = $chat_id == '' ? 'disabled' : '';
+    echo '<div class="alert alert-info" role="alert">Your Activation Code is ' . $chat_id . ' </div>';
 ?>
     <h1>Link Telegram Account</h1>
     <div class="row g-3">
         <div id="form-group" class="row-auto">
             <label for="testMessage">Message</label>
             <?php
-            $test_message = 'Hello ' . $user_display_name . PHP_EOL . 'This is a test message on your telegram account';
+            $test_message = 'Hello ' . $user_display_name . PHP_EOL . 'This is a test message from:  ' . get_bloginfo('name');
             ?>
             <textarea class="form-control" id="testMessage" rows="3"><?php echo $test_message;  ?></textarea>
 
         </div>
         <div class="row-auto">
-            <button id="sendTestMessage" type="submit" chat-id="<?php echo $chat_id;  ?>" class="btn btn-primary mb-2">Send</button>
+            <button id="sendTestMessage" <?php echo $disabled;  ?> type="submit" chat-id="<?php echo $chat_id;  ?>" class="btn btn-primary mb-2">Send</button>
         </div>
     </div>
     <hr>

@@ -14,7 +14,35 @@ jQuery(document).ready(function ($) {
 	jQuery("#accordion").accordion({
 		heightStyle: "content"
 	});
+	jQuery("#test-google-analytics").on("click", function (e) {
+		var account = jQuery('#default_profile').val()
+		jQuery.ajax({
+			url: ajaxurl, // Replace with your endpoint URL
+			type: "POST",
+			dataType: "json",
+			data: {
+				action: action,
+				param: 'test_google_analytics',
+				account: account,
+				nonce: nonce
+			},
+			success: function (response) {
+				console.log(response);
+				// Handle successful response, e.g., display success message
+				// var result = response.responseJSON.account
+				// $('#test-result').html(response.responseJSON.result);
+				// Swal.fire({
+				// 	icon: response.data.status,
+				// 	title: response.data.message,
 
+				// })
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				// Handle errors, e.g., display error message
+				console.error(textStatus + " " + errorThrown);
+			}
+		});
+	});
 	/**
 	 * Just to test AJAX call handler
 	 */
@@ -43,6 +71,7 @@ jQuery(document).ready(function ($) {
 		jQuery.ajax({
 			url: ajaxurl,
 			type: 'POST',
+			dataType: "json",
 			data: {
 				action: action,
 				param: param,
@@ -51,6 +80,10 @@ jQuery(document).ready(function ($) {
 			},
 
 			success: function (response) {
+				Swal.fire({
+					icon: response.responseJSON[0],
+					text: response.responseJSON[1],
+				})
 				console.log(response);
 
 			},

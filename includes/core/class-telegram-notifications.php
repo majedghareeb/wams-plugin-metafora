@@ -20,14 +20,61 @@ if (!class_exists('wams\core\Telegram_Notifications')) {
 
         public function __construct()
         {
+            $this->telegram_api = [];
             $wams_telegram_api = get_option('wams_telegram_api');
-
             if ($wams_telegram_api) {
                 $this->telegram_api = [
-                    'api_key' => $wams_telegram_api['api_key'] ?? 0,
+                    'api_key' => $wams_telegram_api['api_key'] ?? false,
                     'bot_username' => $wams_telegram_api['bot_username'] ?? 0,
                     'channel_id' => $wams_telegram_api['channel_id'] ?? 0,
                 ];
+            }
+        }
+
+        /**
+         * Did user enable this telegram notification?
+         *
+         * @param $key
+         * @param $user_id
+         *
+         * @return bool
+         */
+        function user_enabled($key, $user_id)
+        {
+
+            $prefs = get_user_meta($user_id, 'notification-settings', true);
+            $telegram_prefs = $prefs['telegram'] ?? false;
+            if (isset($telegram_prefs['notification-enabled']) &&  $telegram_prefs['notification-enabled'] == 'on') {
+                if (isset($telegram_prefs[$key]) && $telegram_prefs[$key] == 'on') {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
+        public function send_message_to_channel($channel_id, $message = '')
+        {
+            if (isset($this->telegram_api['api_key']) && $channel_id != '') {
+                $content = array('chat_id' => $channel_id, 'text' => $message);
+                require_once(WAMS_PATH . '/includes/lib/telegram/Telegram.php');
+                $telegram = new \Telegram($this->telegram_api['api_key']);
+                $telegram->sendMessage($content);
+            }
+        }
+
+        public function send_telegram_message($user_id, $type = '', $message = '')
+        {
+            $user = get_userdata($user_id);
+            if ($type != '' && !$this->user_enabled($type, $user_id)) return;
+            $display_name = $user->display_name;
+            $chat_id = get_user_meta($user_id, 'telegram_chat_id', $single = true);
+            if ($user && isset($this->telegram_api['api_key']) && $chat_id != '') {
+                $content = array('chat_id' => $chat_id, 'text' => $message);
+                require_once(WAMS_PATH . '/includes/lib/telegram/Telegram.php');
+                $telegram = new \Telegram($this->telegram_api['api_key']);
+                $telegram->sendMessage($content);
             }
         }
 
@@ -36,6 +83,7 @@ if (!class_exists('wams\core\Telegram_Notifications')) {
          */
         public function link_my_telegram_page()
         {
+            require_once(WAMS_PATH . '/includes/lib/telegram/Telegram.php');
             if (!class_exists('Telegram')) {
                 echo '<div class="alert alert-danger" role="alert">Telegram Service is not installed on Deactived</div>';
                 return;
@@ -60,6 +108,7 @@ if (!class_exists('wams\core\Telegram_Notifications')) {
 
         function telegram_ajax_handler()
         {
+
             if (!wp_verify_nonce($_POST['nonce'], 'wams-frontend-nonce')) {
                 wp_die(esc_attr__('Security Check', 'wams'));
             }
@@ -68,9 +117,11 @@ if (!class_exists('wams\core\Telegram_Notifications')) {
                 wp_send_json_error(__('Invalid Action.', 'wams'));
             }
 
+            require_once(WAMS_PATH . '/includes/lib/telegram/Telegram.php');
             // return wp_send_json(['message' => "TEST AJAX from Admin " . __METHOD__]);
             switch ($_POST['param']) {
                 case 'sendcode':
+
                     $telegram = new \Telegram($this->telegram_api['api_key']);
                     $req = $telegram->getUpdates();
                     $result = $telegram->UpdateCount();
@@ -89,9 +140,10 @@ if (!class_exists('wams\core\Telegram_Notifications')) {
                         }
                     }
                     wp_send_json(array(
-                        "status" => 1,
-                        "message" => $this->telegram_api['api_key'] . ' Activation Code Has Been Sent!',
+                        "status" => 'success',
+                        "message" => 'Activation Code Has Been Sent!',
                     ));
+
 
 
                     break;
@@ -104,19 +156,19 @@ if (!class_exists('wams\core\Telegram_Notifications')) {
                         $new_chat_id = update_user_meta($telegram_user_id, 'telegram_chat_id', $telegram_chat_id, $previous_telegram_chat_id);
                         if ($new_chat_id == $previous_telegram_chat_id) {
                             wp_send_json(array(
-                                "status" => 1,
+                                "status" => 'success',
                                 "message" => 'Activation Done for User: ' . $telegram_user_id . ' With New Code:' . $telegram_chat_id,
                             ));
                         } else {
                             wp_send_json(array(
-                                "status" => 2,
+                                "status" => 'warning',
                                 "message" => 'You Did not change the ID',
                             ));
                             // wp_send_json_error('We Could Not Activate your account');
                         }
                     } else {
                         wp_send_json(array(
-                            'status' => 2,
+                            'status' => 'warning',
                             'message' => 'Activation Code not found!',
                         ));
                     }
@@ -132,12 +184,12 @@ if (!class_exists('wams\core\Telegram_Notifications')) {
                         $content = array('chat_id' => $channel_chat_id, 'text' => $telegram_message);
                         $telegram->sendMessage($content);
                         wp_send_json(array(
-                            "status" => 1,
+                            "status" => 'success',
                             "message" => 'Test Message has been sent to your telegram account please check!',
                         ));
                     } else {
                         wp_send_json(array(
-                            "status" => 0,
+                            "status" => 'error',
                             "message" => "Failed to send test message!"
                         ));
                     }
@@ -145,11 +197,12 @@ if (!class_exists('wams\core\Telegram_Notifications')) {
                     break;
                 default:
                     wp_send_json(array(
-                        "status" => 1,
+                        "status" => 'success',
                         "message" => "Successfully completed first ajax from frontend"
                     ));
                     break;
             }
+            wp_die();
         }
     }
 }

@@ -1,0 +1,3541 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WAMS2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-29 12:59+0000\n"
+"PO-Revision-Date: 2024-03-07 13:42+0000\n"
+"Last-Translator: Developer :)\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.6; wp-6.4.3\n"
+"X-Domain: wams"
+
+#: includes/admin/modules/class-telegram-settings.php:186
+msgid " public channel"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:175
+msgid " Telegram Channel ID"
+msgstr ""
+
+#. %1$s is a date; %2$s is a time.
+#: includes/core/class-date-time.php:82 includes/core/class-date-time.php:87
+#: includes/core/class-date-time.php:91 includes/core/class-date-time.php:95
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#. %s: hours.
+#: includes/core/class-date-time.php:69
+#, php-format
+msgid "%s hr"
+msgid_plural "%s hrs"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#. %s: extension name.
+#: includes/class-extensions.php:106
+#, php-format
+msgid "%s License Key"
+msgstr ""
+
+#. %s: min time.
+#: includes/core/class-date-time.php:60
+#, php-format
+msgid "%s min"
+msgid_plural "%s mins"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#. %s: Plugin name.
+#: includes/admin/core/class-admin-notices.php:253
+#, php-format
+msgid ""
+"%s needs to create several pages (User Profiles, Account, Registration, "
+"Login, Password Reset, Logout, Member Directory) to function correctly."
+msgstr ""
+
+#. %s: age.
+#: includes/core/class-date-time.php:151
+#, php-format
+msgid "%s year old"
+msgid_plural "%s years old"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: includes/core/google/class-ga-api-controller.php:1136
+msgid "404 Errors"
+msgstr ""
+
+#. %1$s is a plugin name; %2$s is a #.
+#: includes/admin/core/class-admin-notices.php:422
+#, php-format
+msgid ""
+"<strong>%1$s</strong> future plans! Detailed future list is <a href=\"%2$s\" "
+"target=\"_blank\">here</a>"
+msgstr ""
+
+#: includes/frontend/class-secure.php:118
+#: includes/frontend/class-theme-hooks.php:105
+msgid ""
+"<strong>Important:</strong> Our website is currently under maintenance. "
+"Please check back soon."
+msgstr ""
+
+#. One-time change requires you to reset your password
+#: includes/frontend/class-secure.php:86
+#: includes/frontend/class-theme-hooks.php:73
+#, php-format
+msgid ""
+"<strong>Important:</strong> Your password has expired. This (one-time) "
+"change requires you to reset your password. Please <a href=\"%s\">click "
+"here</a> to reset your password via Email."
+msgstr ""
+
+#: includes/core/class-files.php:434 includes/core/class-files.php:516
+msgid "A theme or plugin compatibility issue"
+msgstr ""
+
+#: includes/core/class-builtin.php:675
+msgid "Abkhazian"
+msgstr ""
+
+#: includes/admin/modules/class-google-analytics.php:191
+msgid "Account has been refreshed."
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:352
+msgid "Account has been successfully restored."
+msgstr ""
+
+#: templates/notifications/notifications.php:66
+msgid "Action"
+msgstr "إجراء"
+
+#: includes/common/class-cpt.php:37
+#: includes/admin/core/list-tables/roles-list-table.php:570
+msgid "Add New"
+msgstr ""
+
+#: includes/common/class-cpt.php:38
+msgid "Add New Form"
+msgstr ""
+
+#: includes/core/class-builtin.php:674
+msgid "Afar"
+msgstr ""
+
+#: includes/core/class-builtin.php:863
+msgid "Afghanistan"
+msgstr ""
+
+#: includes/core/class-builtin.php:677
+msgid "Afrikaans"
+msgstr ""
+
+#: includes/core/class-builtin.php:678
+msgid "Akan"
+msgstr ""
+
+#: includes/core/class-builtin.php:865
+msgid "Albania"
+msgstr ""
+
+#: includes/core/class-builtin.php:822
+msgid "Albanian"
+msgstr ""
+
+#: includes/core/class-builtin.php:866
+msgid "Algeria"
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:349
+msgid "All users sessions have been successfully destroyed."
+msgstr ""
+
+#: includes/core/class-builtin.php:630
+msgid "Alpha-numeric value"
+msgstr ""
+
+#: includes/core/class-builtin.php:629
+msgid "Alphabetic value only"
+msgstr ""
+
+#: includes/core/class-builtin.php:867
+msgid "American Samoa"
+msgstr ""
+
+#: includes/core/class-builtin.php:679
+msgid "Amharic"
+msgstr ""
+
+#: includes/core/class-builtin.php:868
+msgid "Andorra"
+msgstr ""
+
+#: includes/core/class-builtin.php:869
+msgid "Angola"
+msgstr ""
+
+#: includes/core/class-builtin.php:870
+msgid "Anguilla"
+msgstr ""
+
+#: includes/core/class-builtin.php:871
+msgid "Antarctica"
+msgstr ""
+
+#: includes/core/class-builtin.php:872
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:81
+msgid "API Key"
+msgstr ""
+
+#: includes/admin/modules/class-domains-settings.php:86
+msgid "API Settings"
+msgstr ""
+
+#: includes/common/gravityflow-cs/class-custom-step.php:531
+msgid "Approval Status"
+msgstr ""
+
+#: includes/admin/templates/dashboard/users.php:28
+msgid "Approved"
+msgstr ""
+
+#: includes/core/class-builtin.php:681
+msgid "Arabic"
+msgstr ""
+
+#: includes/core/class-builtin.php:680
+msgid "Aragonese"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:406
+msgid "Are you sure you want to delete this role?"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:411
+msgid "Are you sure you want to reset WAMS role meta?"
+msgstr ""
+
+#: includes/core/class-builtin.php:873
+msgid "Argentina"
+msgstr ""
+
+#: includes/core/class-builtin.php:874
+msgid "Armenia"
+msgstr ""
+
+#: includes/core/class-builtin.php:736
+msgid "Armenian"
+msgstr ""
+
+#: includes/core/class-builtin.php:875
+msgid "Aruba"
+msgstr ""
+
+#: includes/core/class-builtin.php:682
+msgid "Assamese"
+msgstr ""
+
+#: includes/core/class-builtin.php:876
+msgid "Australia"
+msgstr ""
+
+#: includes/core/class-builtin.php:877
+msgid "Austria"
+msgstr ""
+
+#: includes/core/class-builtin.php:683
+msgid "Avaric"
+msgstr ""
+
+#: includes/core/class-builtin.php:676
+msgid "Avestan"
+msgstr ""
+
+#: includes/admin/templates/dashboard/users.php:73
+msgid "Awaiting E-mail Confirmation"
+msgstr ""
+
+#: includes/core/class-builtin.php:684
+msgid "Aymara"
+msgstr ""
+
+#: includes/core/class-builtin.php:878
+msgid "Azerbaijan"
+msgstr ""
+
+#: includes/core/class-builtin.php:685
+msgid "Azerbaijani"
+msgstr ""
+
+#: includes/core/class-builtin.php:879
+msgid "Bahamas"
+msgstr ""
+
+#: includes/core/class-builtin.php:880
+msgid "Bahrain"
+msgstr ""
+
+#: includes/core/class-builtin.php:691
+msgid "Bambara"
+msgstr ""
+
+#: includes/core/class-builtin.php:881
+msgid "Bangladesh"
+msgstr ""
+
+#: includes/core/class-builtin.php:882
+msgid "Barbados"
+msgstr ""
+
+#: includes/core/class-builtin.php:686
+msgid "Bashkir"
+msgstr ""
+
+#: includes/core/class-builtin.php:715
+msgid "Basque"
+msgstr ""
+
+#: includes/core/class-builtin.php:883
+msgid "Belarus"
+msgstr ""
+
+#: includes/core/class-builtin.php:687
+msgid "Belarusian"
+msgstr ""
+
+#: includes/core/class-builtin.php:884
+msgid "Belgium"
+msgstr ""
+
+#: includes/core/class-builtin.php:885
+msgid "Belize"
+msgstr ""
+
+#: includes/core/class-builtin.php:692
+msgid "Bengali"
+msgstr ""
+
+#: includes/core/class-builtin.php:886
+msgid "Benin"
+msgstr ""
+
+#: includes/core/class-builtin.php:887
+msgid "Bermuda"
+msgstr ""
+
+#: includes/core/class-builtin.php:888
+msgid "Bhutan"
+msgstr ""
+
+#: includes/core/class-builtin.php:689
+msgid "Bihari"
+msgstr ""
+
+#: includes/core/class-builtin.php:690
+msgid "Bislama"
+msgstr ""
+
+#: includes/admin/modules/class-domains-settings.php:99
+msgid "Blog ID"
+msgstr ""
+
+#: includes/core/class-builtin.php:889
+msgid "Bolivia, Plurinational State of"
+msgstr ""
+
+#: includes/core/class-builtin.php:890
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: includes/core/class-builtin.php:695
+msgid "Bosnian"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:90
+msgid "BOT Username"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:91
+msgid "BOT Username you can get from telegram @botfather"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:92
+msgid "bot_username"
+msgstr ""
+
+#: includes/core/class-builtin.php:891
+msgid "Botswana"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:520
+msgid "Bounce Rate"
+msgstr ""
+
+#: includes/core/class-builtin.php:892
+msgid "Bouvet Island"
+msgstr ""
+
+#: includes/core/class-builtin.php:893
+msgid "Brazil"
+msgstr ""
+
+#: includes/core/class-builtin.php:694
+msgid "Breton"
+msgstr ""
+
+#: includes/core/class-builtin.php:894
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: includes/core/class-builtin.php:895
+msgid "Brunei Darussalam"
+msgstr ""
+
+#: includes/core/class-builtin.php:896
+msgid "Bulgaria"
+msgstr ""
+
+#: includes/core/class-builtin.php:688
+msgid "Bulgarian"
+msgstr ""
+
+#: includes/core/class-builtin.php:897
+msgid "Burkina Faso"
+msgstr ""
+
+#: includes/core/class-builtin.php:783
+msgid "Burmese"
+msgstr ""
+
+#: includes/core/class-builtin.php:898
+msgid "Burundi"
+msgstr ""
+
+#: includes/core/class-builtin.php:899
+msgid "Cambodia"
+msgstr ""
+
+#: includes/core/class-builtin.php:900
+msgid "Cameroon"
+msgstr ""
+
+#: includes/core/class-builtin.php:901
+msgid "Canada"
+msgstr ""
+
+#: includes/core/class-builtin.php:902
+msgid "Cape Verde"
+msgstr ""
+
+#: includes/core/class-builtin.php:696
+msgid "Catalan"
+msgstr ""
+
+#: includes/core/class-builtin.php:903
+msgid "Cayman Islands"
+msgstr ""
+
+#: includes/core/class-builtin.php:904
+msgid "Central African Republic"
+msgstr ""
+
+#: includes/core/class-builtin.php:905
+msgid "Chad"
+msgstr ""
+
+#: includes/core/class-builtin.php:698
+msgid "Chamorro"
+msgstr ""
+
+#: templates/notifications/notifications-settings.php:10
+msgid "Change Settings"
+msgstr "تغيير الاعدادات"
+
+#: includes/admin/modules/class-telegram-settings.php:176
+msgid "Channel ID"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:929
+msgid "Channels"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:73
+msgid "Channels Settings"
+msgstr ""
+
+#: includes/class-init.php:79 includes/class-init.php:89
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: includes/core/class-builtin.php:697
+msgid "Chechen"
+msgstr ""
+
+#: includes/core/class-builtin.php:794
+msgid "Chichewa"
+msgstr ""
+
+#: includes/core/class-builtin.php:906
+msgid "Chile"
+msgstr ""
+
+#: includes/core/class-builtin.php:907
+msgid "China"
+msgstr ""
+
+#: includes/core/class-builtin.php:856
+msgid "Chinese"
+msgstr ""
+
+#: includes/core/class-builtin.php:908
+msgid "Christmas Island"
+msgstr ""
+
+#: includes/core/class-builtin.php:702
+msgid "Church Slavic"
+msgstr ""
+
+#: includes/core/class-builtin.php:703
+msgid "Chuvash"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:803
+msgid "Cities from"
+msgstr ""
+
+#: includes/admin/templates/google-analytics.php:37
+msgid "Clear Cache"
+msgstr ""
+
+#. %s: users number.
+#: includes/admin/templates/dashboard/cache.php:35
+#, php-format
+msgid "Clear cache of %s users"
+msgstr ""
+
+#: includes/admin/templates/dashboard/cache.php:39
+msgid "Clear user statuses cache"
+msgstr ""
+
+#: includes/admin/modules/class-google-analytics.php:198
+msgid "Cleared Cache."
+msgstr ""
+
+#: includes/core/class-builtin.php:909
+msgid "Cocos (Keeling) Islands"
+msgstr ""
+
+#: includes/core/class-builtin.php:910
+msgid "Colombia"
+msgstr ""
+
+#: includes/core/class-builtin.php:911
+msgid "Comoros"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:100
+msgid "Company Form"
+msgstr ""
+
+#: includes/core/class-builtin.php:912
+msgid "Congo"
+msgstr ""
+
+#: includes/core/class-builtin.php:913
+msgid "Congo, the Democratic Republic of the"
+msgstr ""
+
+#: includes/core/class-builtin.php:914
+msgid "Cook Islands"
+msgstr ""
+
+#: includes/admin/core/list-tables/version-template-list-table.php:140
+msgid "Core path - "
+msgstr ""
+
+#: includes/admin/core/list-tables/version-template-list-table.php:213
+msgid "Core version"
+msgstr ""
+
+#: includes/core/class-builtin.php:763
+msgid "Cornish"
+msgstr ""
+
+#. %s: extension name.
+#: includes/class-dependencies.php:176
+#, php-format
+msgid "Correct folder name is <strong>\"%s\"</strong>"
+msgstr ""
+
+#: includes/core/class-builtin.php:699
+msgid "Corsican"
+msgstr ""
+
+#: includes/core/class-builtin.php:915
+msgid "Costa Rica"
+msgstr ""
+
+#: includes/core/class-web-page-parser.php:237
+msgid "Could Not Get Page Backlinks"
+msgstr ""
+
+#: includes/core/class-web-page-parser.php:201
+msgid "Could Not Get Page Links"
+msgstr ""
+
+#: includes/core/class-web-page-parser.php:178
+msgid "Could Not Get Page Meta Tags"
+msgstr ""
+
+#: includes/core/class-web-page-parser.php:276
+msgid "Could Not Get Page Schema"
+msgstr ""
+
+#: includes/core/class-web-page-parser.php:124
+#: includes/core/class-web-page-parser.php:151
+msgid "Could Not Get Page Title"
+msgstr ""
+
+#: includes/common/gravityflow-cs/class-custom-step.php:564
+msgid "Could Not Get URL Data! "
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:786
+msgid "Countries"
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:258
+msgid "Create Pages"
+msgstr ""
+
+#: templates/home-page.php:39 templates/home-page.php:85
+#: templates/home-page.php:130
+#: includes/common/gravityflow-cs/class-custom-step.php:528
+msgid "Created By"
+msgstr ""
+
+#: templates/rss-fetcher.php:17 templates/page-parser.php:20
+msgid "Creator"
+msgstr ""
+
+#: includes/core/class-builtin.php:700
+msgid "Cree"
+msgstr ""
+
+#: includes/core/class-builtin.php:917
+msgid "Croatia"
+msgstr ""
+
+#: includes/core/class-builtin.php:733
+msgid "Croatian"
+msgstr ""
+
+#: includes/core/class-builtin.php:918
+msgid "Cuba"
+msgstr ""
+
+#: includes/core/class-builtin.php:655
+msgid "Custom Validation"
+msgstr ""
+
+#: includes/core/class-builtin.php:919
+msgid "Cyprus"
+msgstr ""
+
+#: includes/core/class-builtin.php:701
+msgid "Czech"
+msgstr ""
+
+#: includes/core/class-builtin.php:920
+msgid "Czech Republic"
+msgstr ""
+
+#: includes/core/class-builtin.php:916
+msgid "Côte d'Ivoire"
+msgstr ""
+
+#: includes/core/class-builtin.php:705
+msgid "Danish"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:543
+#: includes/core/google/class-ga-api-controller.php:549
+#: includes/core/google/class-ga-api-controller.php:1176
+msgid "Date"
+msgstr ""
+
+#: templates/home-page.php:40 templates/home-page.php:86
+#: templates/home-page.php:131
+#: includes/common/gravityflow-cs/class-custom-step.php:529
+msgid "Date Created"
+msgstr ""
+
+#: templates/home-page.php:41 templates/home-page.php:87
+#: templates/home-page.php:132
+msgid "Date Updated"
+msgstr ""
+
+#: includes/admin/class-admin.php:136
+msgid "DB Cleanup"
+msgstr ""
+
+#: includes/frontend/class-shortcodes.php:369
+msgid "Default Template"
+msgstr ""
+
+#: templates/notifications/notifications.php:45
+#: templates/notifications/notifications.php:104
+#: includes/admin/core/list-tables/roles-list-table.php:406
+#: includes/admin/core/list-tables/roles-list-table.php:495
+msgid "Delete"
+msgstr "حذف"
+
+#: includes/core/class-builtin.php:921
+msgid "Denmark"
+msgstr ""
+
+#: templates/page-parser.php:19
+msgid "Description"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:929
+msgid "Devices"
+msgstr ""
+
+#: templates/reporters-list.php:19
+msgid "Direct Manager"
+msgstr ""
+
+#: includes/core/class-builtin.php:651
+msgid "Discord ID"
+msgstr ""
+
+#: includes/core/class-builtin.php:707
+msgid "Divehi"
+msgstr ""
+
+#: includes/core/class-builtin.php:922
+msgid "Djibouti"
+msgstr ""
+
+#: includes/admin/class-admin.php:393
+msgid "Docs"
+msgstr ""
+
+#: templates/page-parser.php:17
+msgid "Domain"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:116
+msgid "Domain Form"
+msgstr ""
+
+#: includes/admin/modules/class-domains-settings.php:125
+#: includes/admin/modules/class-domains-settings.php:126
+msgid "Domain Name"
+msgstr ""
+
+#: includes/admin/class-admin.php:112
+msgid "Domain Settings"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:87
+msgid "Domains Form Settings"
+msgstr ""
+
+#: includes/admin/modules/class-domains-settings.php:82
+msgid "Domains Settings"
+msgstr ""
+
+#: includes/core/class-builtin.php:923
+msgid "Dominica"
+msgstr ""
+
+#: includes/core/class-builtin.php:924
+msgid "Dominican Republic"
+msgstr ""
+
+#: includes/core/class-builtin.php:789
+msgid "Dutch"
+msgstr ""
+
+#: includes/core/class-builtin.php:708
+msgid "Dzongkha"
+msgstr ""
+
+#: includes/core/class-builtin.php:641
+msgid "E-mail( Not Unique )"
+msgstr ""
+
+#: includes/core/class-builtin.php:925
+msgid "Ecuador"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:403
+msgid "Edit"
+msgstr ""
+
+#: includes/common/class-cpt.php:39
+msgid "Edit Form"
+msgstr ""
+
+#: includes/admin/core/list-tables/emails-list-table.php:273
+msgid "Edit template"
+msgstr ""
+
+#: includes/core/class-builtin.php:926
+msgid "Egypt"
+msgstr ""
+
+#: includes/core/class-builtin.php:927
+msgid "El Salvador"
+msgstr ""
+
+#: templates/reporters-list.php:15
+#: includes/admin/core/list-tables/emails-list-table.php:328
+msgid "Email"
+msgstr ""
+
+#: includes/admin/core/list-tables/emails-list-table.php:298
+msgid "Email Notification"
+msgstr ""
+
+#: includes/admin/core/list-tables/emails-list-table.php:299
+msgid "Email Notifications"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:142
+#: includes/admin/modules/class-telegram-settings.php:185
+#: includes/admin/modules/class-web-notifications.php:69
+msgid "Enable"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:103
+msgid "Enable RSS Featcher"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:126
+msgid "Enable Scheduler"
+msgstr ""
+
+#: includes/admin/modules/class-search-vendor-field.php:93
+msgid "Enable seach_vendor_field"
+msgstr ""
+
+#: includes/admin/modules/class-web-notifications.php:76
+msgid "Enable Sound"
+msgstr ""
+
+#: includes/admin/modules/class-web-notifications.php:77
+msgid "Enable Sound on new notifications"
+msgstr "تفعيل الصوت للتنبيهات"
+
+#: includes/admin/modules/class-task-scheduler.php:89
+msgid "Enable Task Scheduler"
+msgstr ""
+
+#: templates/notifications/notifications-settings.php:29
+msgid "Enable Telegram Notifications"
+msgstr "تفعيل تنبيهات تيليغرام"
+
+#: includes/admin/modules/class-telegram-settings.php:143
+msgid "Enable telegram notifications"
+msgstr "تفعيل تنبيهات تيليغرام"
+
+#: templates/notifications/notifications-settings.php:53
+msgid "Enable Web Notifications"
+msgstr "تفعيل تنبيهات الموقع"
+
+#: includes/admin/modules/class-web-notifications.php:70
+msgid "Enable web notifications"
+msgstr "تفعيل تنبيهات الموقع"
+
+#: includes/core/google/class-ga-api-controller.php:524
+msgid "Engaged Sessions"
+msgstr ""
+
+#: includes/core/class-builtin.php:711
+msgid "English"
+msgstr ""
+
+#: includes/core/class-builtin.php:631
+msgid "English letters only"
+msgstr ""
+
+#: templates/home-page.php:36 templates/home-page.php:82
+#: templates/home-page.php:127
+#: includes/common/gravityflow-cs/class-custom-step.php:526
+msgid "Entry ID"
+msgstr ""
+
+#: includes/core/class-builtin.php:928
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: includes/core/class-builtin.php:929
+msgid "Eritrea"
+msgstr ""
+
+#: includes/core/class-builtin.php:712
+msgid "Esperanto"
+msgstr ""
+
+#: includes/core/class-builtin.php:930
+msgid "Estonia"
+msgstr ""
+
+#: includes/core/class-builtin.php:714
+msgid "Estonian"
+msgstr ""
+
+#: includes/core/class-builtin.php:1074
+msgid "Eswatini"
+msgstr ""
+
+#: includes/core/class-builtin.php:931
+msgid "Ethiopia"
+msgstr ""
+
+#: includes/core/class-cron.php:67
+msgid "Every 1 Minute"
+msgstr ""
+
+#: includes/core/class-cron.php:71
+msgid "Every 10 Minute"
+msgstr ""
+
+#: includes/core/class-cron.php:75
+msgid "Every 15 Minute"
+msgstr ""
+
+#: includes/core/class-cron.php:79
+msgid "Every 30 Minute"
+msgstr ""
+
+#: includes/core/class-builtin.php:709
+msgid "Ewe"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:610
+msgid "F, Y"
+msgstr ""
+
+#: includes/core/class-builtin.php:632
+msgid "Facebook URL"
+msgstr ""
+
+#. Description of the plugin
+msgid "Fadaat Media - WAMS Plugin"
+msgstr ""
+
+#: includes/core/class-builtin.php:932
+msgid "Falkland Islands (Malvinas)"
+msgstr ""
+
+#: includes/core/class-builtin.php:933
+msgid "Faroe Islands"
+msgstr ""
+
+#: includes/core/class-builtin.php:720
+msgid "Faroese"
+msgstr ""
+
+#: templates/rss-fetcher.php:8 templates/page-parser.php:8
+msgid "Fetched Links"
+msgstr ""
+
+#: includes/core/class-builtin.php:934
+msgid "Fiji"
+msgstr ""
+
+#: includes/core/class-builtin.php:719
+msgid "Fijian"
+msgstr ""
+
+#: includes/core/class-builtin.php:935
+msgid "Finland"
+msgstr ""
+
+#: includes/core/class-builtin.php:718
+msgid "Finnish"
+msgstr ""
+
+#: templates/reporters-list.php:16
+msgid "First Name"
+msgstr ""
+
+#: templates/home-page.php:38 templates/home-page.php:84
+#: templates/home-page.php:129 includes/common/class-cpt.php:36
+msgid "Form"
+msgstr ""
+
+#: includes/common/class-cpt.php:35
+msgid "Forms"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:72
+#: includes/admin/modules/archive/class-archive-forms-settings.php:68
+msgid "Forms Archive Settings"
+msgstr ""
+
+#: includes/admin/class-admin.php:191
+#: includes/admin/modules/class-forms-settings.php:68
+msgid "Forms Settings"
+msgstr ""
+
+#: includes/core/class-builtin.php:936
+msgid "France"
+msgstr ""
+
+#: includes/core/class-builtin.php:721
+msgid "French"
+msgstr ""
+
+#: includes/core/class-builtin.php:937
+msgid "French Guiana"
+msgstr ""
+
+#: includes/core/class-builtin.php:938
+msgid "French Polynesia"
+msgstr ""
+
+#: includes/core/class-builtin.php:939
+msgid "French Southern Territories"
+msgstr ""
+
+#: includes/core/class-builtin.php:717
+msgid "Fulah"
+msgstr ""
+
+#: includes/core/class-builtin.php:940
+msgid "Gabon"
+msgstr ""
+
+#: includes/core/class-builtin.php:725
+msgid "Galician"
+msgstr ""
+
+#: includes/core/class-builtin.php:941
+msgid "Gambia"
+msgstr ""
+
+#: includes/core/class-builtin.php:767
+msgid "Ganda"
+msgstr ""
+
+#: includes/core/class-builtin.php:706
+msgid "German"
+msgstr ""
+
+#: includes/core/class-builtin.php:943
+msgid "Germany"
+msgstr ""
+
+#: includes/admin/templates/dashboard/upgrade-request.php:17
+msgid "Get latest versions"
+msgstr ""
+
+#: includes/core/class-builtin.php:944
+msgid "Ghana"
+msgstr ""
+
+#: includes/core/class-builtin.php:945
+msgid "Gibraltar"
+msgstr ""
+
+#: includes/admin/class-admin.php:166
+msgid "Google Analytics"
+msgstr ""
+
+#: includes/core/class-builtin.php:946
+msgid "Greece"
+msgstr ""
+
+#: includes/core/class-builtin.php:710
+msgid "Greek"
+msgstr ""
+
+#: includes/core/class-builtin.php:947
+msgid "Greenland"
+msgstr ""
+
+#: includes/core/class-builtin.php:948
+msgid "Grenada"
+msgstr ""
+
+#: includes/core/class-builtin.php:949
+msgid "Guadeloupe"
+msgstr ""
+
+#: includes/core/class-builtin.php:950
+msgid "Guam"
+msgstr ""
+
+#: includes/core/class-builtin.php:726
+msgid "Guarani"
+msgstr ""
+
+#: includes/core/class-builtin.php:951
+msgid "Guatemala"
+msgstr ""
+
+#: includes/core/class-builtin.php:952
+msgid "Guernsey"
+msgstr ""
+
+#: includes/core/class-builtin.php:953
+msgid "Guinea"
+msgstr ""
+
+#: includes/core/class-builtin.php:954
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: includes/core/class-builtin.php:727
+msgid "Gujarati"
+msgstr ""
+
+#: includes/core/class-builtin.php:955
+msgid "Guyana"
+msgstr ""
+
+#: includes/core/class-builtin.php:956
+msgid "Haiti"
+msgstr ""
+
+#: includes/core/class-builtin.php:734
+msgid "Haitian"
+msgstr ""
+
+#: includes/core/class-builtin.php:729
+msgid "Hausa"
+msgstr ""
+
+#: includes/core/class-builtin.php:957
+msgid "Heard Island and McDonald Islands"
+msgstr ""
+
+#: includes/core/class-builtin.php:730
+msgid "Hebrew"
+msgstr ""
+
+#: includes/core/class-form.php:593
+msgid "Hello, spam bot!"
+msgstr ""
+
+#: includes/core/class-builtin.php:737
+msgid "Herero"
+msgstr ""
+
+#: includes/core/class-builtin.php:731
+msgid "Hindi"
+msgstr ""
+
+#: includes/core/class-builtin.php:732
+msgid "Hiri Motu"
+msgstr ""
+
+#: includes/core/class-builtin.php:958
+msgid "Holy See (Vatican City State)"
+msgstr ""
+
+#: includes/core/class-builtin.php:959
+msgid "Honduras"
+msgstr ""
+
+#: includes/core/class-builtin.php:960
+msgid "Hong Kong"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:537
+msgid "Hour"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "http://wams.com/"
+msgstr ""
+
+#: includes/core/class-builtin.php:735
+msgid "Hungarian"
+msgstr ""
+
+#: includes/core/class-builtin.php:961
+msgid "Hungary"
+msgstr ""
+
+#: includes/core/class-builtin.php:962
+msgid "Iceland"
+msgstr ""
+
+#: includes/core/class-builtin.php:745
+msgid "Icelandic"
+msgstr ""
+
+#: templates/reporters-list.php:13
+#: includes/admin/modules/class-domains-settings.php:100
+msgid "ID"
+msgstr ""
+
+#: includes/core/class-builtin.php:744
+msgid "Ido"
+msgstr ""
+
+#: includes/core/class-builtin.php:741
+msgid "Igbo"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:78
+#: includes/admin/modules/class-rss-fetcher.php:134
+msgid "Ignored Authors"
+msgstr ""
+
+#: includes/common/gravityflow-cs/class-custom-step.php:522
+msgid "In"
+msgstr ""
+
+#: includes/common/class-hooks.php:100
+#, php-format
+msgid ""
+"In Form: %1$s %5$s Created By: %2$s %5$s With Entry ID#  %3$d %5$s Is Now in "
+"%4$s"
+msgstr ""
+"طلبك في النموذج %1$s  %5$s  الذي تم إرساله من قبل %2$s %5$s ذو الرقم %3$d "
+"%5$s الان في مرحلة %4$s"
+
+#: includes/admin/templates/dashboard/users.php:86
+msgid "Inactive"
+msgstr ""
+
+#: includes/admin/core/class-admin-system-setup.php:96
+#: includes/admin/modules/class-domains-settings.php:136
+msgid "Inbox"
+msgstr ""
+
+#: includes/core/class-builtin.php:963
+msgid "India"
+msgstr ""
+
+#: includes/core/class-builtin.php:964
+msgid "Indonesia"
+msgstr ""
+
+#: includes/core/class-builtin.php:739
+msgid "Indonesian"
+msgstr ""
+
+#: includes/core/class-builtin.php:633
+msgid "Instagram URL"
+msgstr ""
+
+#: includes/core/class-builtin.php:738
+msgid "Interlingua (International Auxiliary Language Association)"
+msgstr ""
+
+#: includes/core/class-builtin.php:740
+msgid "Interlingue"
+msgstr ""
+
+#: includes/core/class-builtin.php:747
+msgid "Inuktitut"
+msgstr ""
+
+#: includes/core/class-builtin.php:743
+msgid "Inupiaq"
+msgstr ""
+
+#: includes/core/class-messages.php:30 includes/core/class-ajax-common.php:50
+#: includes/core/class-telegram-notifications.php:93
+#: includes/core/class-web-notifications.php:31
+#: includes/core/class-rss-feed-extractor.php:29
+#: includes/admin/class-ajax-handler.php:41
+#: includes/admin/class-ajax-handler.php:160
+#: includes/admin/class-ajax-handler.php:217
+#: includes/admin/core/class-admin-ajax-hooks.php:48
+#: includes/admin/core/class-admin-system-setup.php:25
+msgid "Invalid Action."
+msgstr ""
+
+#: includes/core/rest/class-api-old.php:258
+msgid "Invalid API key"
+msgstr ""
+
+#: includes/core/rest/class-api.php:372
+msgid "Invalid API key."
+msgstr ""
+
+#: includes/core/rest/class-api.php:389
+msgid "Invalid API version."
+msgstr ""
+
+#: includes/core/class-files.php:334
+msgid "Invalid coordinates"
+msgstr ""
+
+#: includes/core/class-files.php:352
+msgid "Invalid file ownership"
+msgstr ""
+
+#: includes/core/class-form.php:88
+msgid "Invalid hook"
+msgstr ""
+
+#: includes/core/class-query.php:44
+msgid "Invalid hook."
+msgstr ""
+
+#: includes/core/class-files.php:415
+msgid "Invalid nonce"
+msgstr ""
+
+#: includes/core/class-files.php:329
+msgid "Invalid parameters"
+msgstr ""
+
+#: includes/core/rest/class-api-old.php:382
+msgid "Invalid query!"
+msgstr ""
+
+#: includes/core/rest/class-api.php:503
+msgid "Invalid query."
+msgstr ""
+
+#: includes/core/rest/class-api-v2 copy.php:274 includes/core/rest/class-api-v2
+#: copy.php:306
+msgid "Invalid user specified"
+msgstr ""
+
+#: includes/core/class-builtin.php:965
+msgid "Iran, Islamic Republic of"
+msgstr ""
+
+#: includes/core/class-builtin.php:966
+msgid "Iraq"
+msgstr ""
+
+#: includes/core/class-builtin.php:967
+msgid "Ireland"
+msgstr ""
+
+#: includes/core/class-builtin.php:723
+msgid "Irish"
+msgstr ""
+
+#: includes/core/class-builtin.php:968
+msgid "Isle of Man"
+msgstr ""
+
+#: includes/core/class-builtin.php:969
+msgid "Israel"
+msgstr ""
+
+#: includes/core/class-builtin.php:746
+msgid "Italian"
+msgstr ""
+
+#: includes/core/class-builtin.php:970
+msgid "Italy"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:223
+#: includes/admin/core/list-tables/emails-list-table.php:72
+#: includes/admin/core/list-tables/version-template-list-table.php:32
+msgid "item"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:224
+#: includes/admin/core/list-tables/emails-list-table.php:73
+#: includes/admin/core/list-tables/version-template-list-table.php:33
+msgid "items"
+msgstr ""
+
+#: includes/core/class-builtin.php:971
+msgid "Jamaica"
+msgstr ""
+
+#: includes/core/class-builtin.php:972
+msgid "Japan"
+msgstr ""
+
+#: includes/core/class-builtin.php:748
+msgid "Japanese"
+msgstr ""
+
+#: includes/core/class-builtin.php:749
+msgid "Javanese"
+msgstr ""
+
+#: includes/core/class-builtin.php:973
+msgid "Jersey"
+msgstr ""
+
+#: includes/core/class-builtin.php:974
+msgid "Jordan"
+msgstr ""
+
+#: includes/core/class-date-time.php:51
+msgid "just now"
+msgstr ""
+
+#: includes/core/class-builtin.php:755
+msgid "Kalaallisut"
+msgstr ""
+
+#: includes/core/class-builtin.php:757
+msgid "Kannada"
+msgstr ""
+
+#: includes/core/class-builtin.php:759
+msgid "Kanuri"
+msgstr ""
+
+#: includes/core/class-builtin.php:750
+msgid "Kartuli"
+msgstr ""
+
+#: includes/core/class-builtin.php:760
+msgid "Kashmiri"
+msgstr ""
+
+#: includes/core/class-builtin.php:754
+msgid "Kazakh"
+msgstr ""
+
+#: includes/core/class-builtin.php:975
+msgid "Kazakhstan"
+msgstr ""
+
+#: includes/core/class-builtin.php:976
+msgid "Kenya"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:83
+msgid "key"
+msgstr ""
+
+#: includes/core/class-builtin.php:756
+msgid "Khmer"
+msgstr ""
+
+#: includes/core/class-builtin.php:752
+msgid "Kikuyu"
+msgstr ""
+
+#: includes/core/class-builtin.php:810
+msgid "Kinyarwanda"
+msgstr ""
+
+#: includes/core/class-builtin.php:764
+msgid "Kirghiz"
+msgstr ""
+
+#: includes/core/class-builtin.php:977
+msgid "Kiribati"
+msgstr ""
+
+#: includes/core/class-builtin.php:807
+msgid "Kirundi"
+msgstr ""
+
+#: includes/core/class-builtin.php:762
+msgid "Komi"
+msgstr ""
+
+#: includes/core/class-builtin.php:751
+msgid "Kongo"
+msgstr ""
+
+#: includes/core/class-builtin.php:978
+msgid "Korea, Democratic People's Republic of"
+msgstr ""
+
+#: includes/core/class-builtin.php:979
+msgid "Korea, Republic of"
+msgstr ""
+
+#: includes/core/class-builtin.php:758
+msgid "Korean"
+msgstr ""
+
+#: includes/core/class-builtin.php:761
+msgid "Kurdish"
+msgstr ""
+
+#: includes/core/class-builtin.php:980
+msgid "Kuwait"
+msgstr ""
+
+#: includes/core/class-builtin.php:753
+msgid "Kwanyama"
+msgstr ""
+
+#: includes/core/class-builtin.php:981
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:638
+#: includes/core/google/class-ga-api-controller.php:1187
+msgid "l, F j, Y"
+msgstr ""
+
+#: includes/core/class-builtin.php:770
+msgid "Lao"
+msgstr ""
+
+#: includes/core/class-builtin.php:982
+msgid "Lao People's Democratic Republic"
+msgstr ""
+
+#: templates/reporters-list.php:17
+msgid "Last Name"
+msgstr ""
+
+#: includes/core/class-builtin.php:765
+msgid "Latin"
+msgstr ""
+
+#: includes/core/class-builtin.php:983
+msgid "Latvia"
+msgstr ""
+
+#: includes/core/class-builtin.php:773
+msgid "Latvian"
+msgstr ""
+
+#: includes/core/class-builtin.php:984
+msgid "Lebanon"
+msgstr ""
+
+#: includes/core/class-builtin.php:985
+msgid "Lesotho"
+msgstr ""
+
+#: includes/core/class-date-time.php:147
+msgid "Less than 1 year old"
+msgstr ""
+
+#: includes/core/class-builtin.php:986
+msgid "Liberia"
+msgstr ""
+
+#: includes/core/class-builtin.php:987
+msgid "Libyan Arab Jamahiriya"
+msgstr ""
+
+#: includes/core/class-builtin.php:988
+msgid "Liechtenstein"
+msgstr ""
+
+#: includes/core/class-builtin.php:768
+msgid "Limburgish"
+msgstr ""
+
+#: includes/core/class-builtin.php:769
+msgid "Lingala"
+msgstr ""
+
+#: includes/core/class-builtin.php:634
+msgid "LinkedIn URL"
+msgstr ""
+
+#: templates/rss-fetcher.php:7 templates/page-parser.php:7
+msgid "Links Fetched From RSS"
+msgstr ""
+
+#: includes/core/class-builtin.php:989
+msgid "Lithuania"
+msgstr ""
+
+#: includes/core/class-builtin.php:771
+msgid "Lithuanian"
+msgstr ""
+
+#: includes/core/class-form.php:1011
+msgid "Login"
+msgstr ""
+
+#: includes/core/class-builtin.php:635
+msgid "Lowercase only"
+msgstr ""
+
+#: includes/core/class-builtin.php:772
+msgid "Luba-Katanga"
+msgstr ""
+
+#: includes/core/class-builtin.php:990
+msgid "Luxembourg"
+msgstr ""
+
+#: includes/core/class-builtin.php:766
+msgid "Luxembourgish"
+msgstr ""
+
+#: includes/core/class-builtin.php:991
+msgid "Macao"
+msgstr ""
+
+#: includes/core/class-builtin.php:992
+msgid "Macedonia, the former Yugoslav Republic of"
+msgstr ""
+
+#: includes/core/class-builtin.php:777
+msgid "Macedonian"
+msgstr ""
+
+#: includes/core/class-builtin.php:993
+msgid "Madagascar"
+msgstr ""
+
+#: includes/admin/core/class-admin-system-setup.php:88
+#: includes/admin/core/class-admin-system-setup.php:111
+msgid "Main Site"
+msgstr ""
+
+#: includes/core/class-builtin.php:774
+msgid "Malagasy"
+msgstr ""
+
+#: includes/core/class-builtin.php:994
+msgid "Malawi"
+msgstr ""
+
+#: includes/core/class-builtin.php:781
+msgid "Malay"
+msgstr ""
+
+#: includes/core/class-builtin.php:778
+msgid "Malayalam"
+msgstr ""
+
+#: includes/core/class-builtin.php:995
+msgid "Malaysia"
+msgstr ""
+
+#: includes/core/class-builtin.php:996
+msgid "Maldives"
+msgstr ""
+
+#: includes/core/class-builtin.php:997
+msgid "Mali"
+msgstr ""
+
+#: includes/core/class-builtin.php:998
+msgid "Malta"
+msgstr ""
+
+#: includes/core/class-builtin.php:782
+msgid "Maltese"
+msgstr ""
+
+#: includes/core/class-builtin.php:728
+msgid "Manx"
+msgstr ""
+
+#: includes/core/class-builtin.php:776
+msgid "Maori"
+msgstr ""
+
+#: includes/core/class-builtin.php:780
+msgid "Marathi"
+msgstr ""
+
+#: templates/notifications/notifications.php:102
+msgid "Mark as read"
+msgstr "مقروء"
+
+#: templates/notifications/notifications.php:103
+msgid "Mark as unread"
+msgstr "غير مقروء"
+
+#: includes/core/class-builtin.php:999
+msgid "Marshall Islands"
+msgstr ""
+
+#: includes/core/class-builtin.php:775
+msgid "Marshallese"
+msgstr ""
+
+#: includes/core/class-builtin.php:1000
+msgid "Martinique"
+msgstr ""
+
+#: includes/core/class-builtin.php:1001
+msgid "Mauritania"
+msgstr ""
+
+#: includes/core/class-builtin.php:1002
+msgid "Mauritius"
+msgstr ""
+
+#: includes/common/search-vendor-field/class-vendorseaarchfieldaddon.php:64
+msgid "Max results"
+msgstr ""
+
+#: includes/core/class-builtin.php:1003
+msgid "Mayotte"
+msgstr ""
+
+#: includes/admin/core/list-tables/emails-list-table.php:261
+msgid "Member"
+msgstr ""
+
+#: templates/notifications/notifications.php:63
+msgid "Message"
+msgstr "الرسالة"
+
+#: includes/core/class-builtin.php:1004
+msgid "Mexico"
+msgstr ""
+
+#: includes/core/class-builtin.php:1005
+msgid "Micronesia, Federated States of"
+msgstr ""
+
+#: includes/core/class-builtin.php:1006
+msgid "Moldova, Republic of"
+msgstr ""
+
+#: includes/core/class-builtin.php:1007
+msgid "Monaco"
+msgstr ""
+
+#: includes/core/class-builtin.php:1008
+msgid "Mongolia"
+msgstr ""
+
+#: includes/core/class-builtin.php:779
+msgid "Mongolian"
+msgstr ""
+
+#: includes/core/class-builtin.php:1009
+msgid "Montenegro"
+msgstr ""
+
+#: includes/core/class-builtin.php:1010
+msgid "Montserrat"
+msgstr ""
+
+#: includes/core/class-builtin.php:1011
+msgid "Morocco"
+msgstr ""
+
+#: includes/core/class-builtin.php:1012
+msgid "Mozambique"
+msgstr ""
+
+#: templates/home-page.php:27
+msgid "My Latest Tasks"
+msgstr "المهام الأخيرة (أنا فقط)"
+
+#: templates/home-page.php:119
+msgid "My Requests"
+msgstr ""
+
+#: templates/home-page.php:118
+msgid "My Requests "
+msgstr ""
+
+#: templates/home-page.php:73
+msgid "My Team Tasks"
+msgstr ""
+
+#: includes/core/class-builtin.php:1013
+msgid "Myanmar"
+msgstr ""
+
+#: includes/admin/modules/class-domains-settings.php:109
+#: includes/admin/modules/class-domains-settings.php:118
+#: includes/admin/modules/class-domains-settings.php:127
+msgid "name"
+msgstr ""
+
+#: includes/core/class-builtin.php:1014
+msgid "Namibia"
+msgstr ""
+
+#: includes/core/class-builtin.php:784 includes/core/class-builtin.php:1015
+msgid "Nauru"
+msgstr ""
+
+#: includes/core/class-builtin.php:793
+msgid "Navajo"
+msgstr ""
+
+#: includes/core/class-builtin.php:788
+msgid "Ndonga"
+msgstr ""
+
+#: includes/core/class-builtin.php:1016
+msgid "Nepal"
+msgstr ""
+
+#: includes/core/class-builtin.php:787
+msgid "Nepali"
+msgstr ""
+
+#: includes/core/class-builtin.php:1017
+msgid "Netherlands"
+msgstr ""
+
+#: includes/core/class-builtin.php:1018
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: includes/core/class-builtin.php:1019
+msgid "New Caledonia"
+msgstr ""
+
+#: includes/common/class-hooks.php:102
+msgid "New Task"
+msgstr ""
+
+#: includes/core/class-builtin.php:1020
+msgid "New Zealand"
+msgstr ""
+
+#: includes/core/class-builtin.php:1021
+msgid "Nicaragua"
+msgstr ""
+
+#: includes/core/class-builtin.php:1022
+msgid "Niger"
+msgstr ""
+
+#: includes/core/class-builtin.php:1023
+msgid "Nigeria"
+msgstr ""
+
+#: includes/core/class-builtin.php:1024
+msgid "Niue"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:453
+#: includes/admin/core/list-tables/roles-list-table.php:462
+msgid "No"
+msgstr ""
+
+#: templates/rss-fetcher.php:39 templates/page-parser.php:45
+msgid "No Links Found"
+msgstr ""
+
+#: templates/reporters-list.php:41
+msgid "No Reporter Found"
+msgstr ""
+
+#: templates/home-page.php:152
+msgid "No Requests"
+msgstr ""
+
+#: templates/home-page.php:61 templates/home-page.php:107
+msgid "No Tasks"
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:260
+msgid "No thanks"
+msgstr ""
+
+#: includes/common/search-vendor-field/includes/class-wams-search-gf-field.php:345
+msgid "NO VENDOR FOUND"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:501
+msgid "No.of Members"
+msgstr ""
+
+#: includes/core/class-messages.php:26
+#: includes/core/class-web-notifications.php:27
+msgid "Nonce is wrong"
+msgstr ""
+
+#: includes/core/class-builtin.php:628
+msgid "None"
+msgstr ""
+
+#: includes/core/class-builtin.php:1025
+msgid "Norfolk Island"
+msgstr ""
+
+#: includes/core/class-builtin.php:786
+msgid "North Ndebele"
+msgstr ""
+
+#: includes/core/class-builtin.php:1026
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: includes/core/class-builtin.php:814
+msgid "Northern Sami"
+msgstr ""
+
+#: includes/core/class-builtin.php:1027
+msgid "Norway"
+msgstr ""
+
+#: includes/core/class-builtin.php:791
+msgid "Norwegian"
+msgstr ""
+
+#: includes/core/class-builtin.php:785
+msgid "Norwegian Bokmal"
+msgstr ""
+
+#: includes/core/class-builtin.php:790
+msgid "Norwegian Nynorsk"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:228
+#: includes/admin/core/list-tables/emails-list-table.php:77
+#: includes/admin/core/list-tables/version-template-list-table.php:38
+msgid "not found."
+msgstr ""
+
+#: includes/common/class-cpt.php:41
+msgid "Nothing found in Trash"
+msgstr ""
+
+#: templates/notifications/notifications-menu.php:19
+msgid "Notifications"
+msgstr "الاشعارات"
+
+#: templates/notifications/notifications.php:37
+msgid "Notifications List"
+msgstr "قائمة الاشعارات"
+
+#: includes/admin/modules/class-telegram-settings.php:65
+#: includes/admin/modules/class-web-notifications.php:62
+msgid "Notifications Settings"
+msgstr "إعدادات الاشعارات"
+
+#: includes/core/class-builtin.php:205
+msgid "Number"
+msgstr ""
+
+#: includes/core/class-builtin.php:403
+msgid "Number of years is not valid"
+msgstr ""
+
+#: includes/core/class-builtin.php:636
+msgid "Numeric value only"
+msgstr ""
+
+#: includes/core/class-builtin.php:795
+msgid "Occitan"
+msgstr ""
+
+#: includes/core/class-builtin.php:582
+msgid "oEmbed"
+msgstr ""
+
+#: includes/core/class-builtin.php:796
+msgid "Ojibwa"
+msgstr ""
+
+#: includes/core/class-builtin.php:1028
+msgid "Oman"
+msgstr ""
+
+#: includes/core/class-cron.php:63
+msgid "Once Weekly"
+msgstr ""
+
+#: includes/core/class-files.php:1311
+msgid "Original size"
+msgstr ""
+
+#: includes/core/class-builtin.php:798
+msgid "Oriya"
+msgstr ""
+
+#: includes/core/class-builtin.php:797
+msgid "Oromo"
+msgstr ""
+
+#: includes/core/class-builtin.php:799
+msgid "Ossetian"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:1097
+msgid "Other"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:517
+msgid "Page Views"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:877
+msgid "Pages"
+msgstr ""
+
+#: includes/admin/modules/class-domains-settings.php:91
+msgid "Pages Settings"
+msgstr ""
+
+#: includes/core/class-builtin.php:1029
+msgid "Pakistan"
+msgstr ""
+
+#: includes/core/class-builtin.php:1030
+msgid "Palau"
+msgstr ""
+
+#: includes/core/class-builtin.php:1031
+msgid "Palestine"
+msgstr ""
+
+#: includes/core/class-builtin.php:801
+msgid "Pali"
+msgstr ""
+
+#: includes/core/class-builtin.php:1032
+msgid "Panama"
+msgstr ""
+
+#: includes/core/class-builtin.php:800
+msgid "Panjabi"
+msgstr ""
+
+#: includes/core/class-builtin.php:1033
+msgid "Papua New Guinea"
+msgstr ""
+
+#: includes/core/class-builtin.php:1034
+msgid "Paraguay"
+msgstr ""
+
+#: includes/core/class-builtin.php:803
+msgid "Pashto"
+msgstr ""
+
+#: includes/admin/templates/dashboard/users.php:60
+msgid "Pending Review"
+msgstr ""
+
+#: includes/core/class-builtin.php:716
+msgid "Persian"
+msgstr ""
+
+#: includes/core/class-builtin.php:1035
+msgid "Peru"
+msgstr ""
+
+#: includes/core/class-builtin.php:1036
+msgid "Philippines"
+msgstr ""
+
+#: templates/reporters-list.php:18
+msgid "Phone"
+msgstr ""
+
+#: includes/core/class-builtin.php:637
+msgid "Phone Number"
+msgstr ""
+
+#: includes/core/class-builtin.php:1037
+msgid "Pitcairn"
+msgstr ""
+
+#. %1$s is a extension name; %2$s is a extension version.
+#: includes/class-dependencies.php:173
+#, php-format
+msgid "Please check <strong>\"%1$s\" %2$s</strong> extension's folder name."
+msgstr ""
+
+#: includes/admin/modules/class-search-vendor-field.php:116
+msgid "Please choose Add New Project Form"
+msgstr ""
+
+#: includes/admin/modules/class-search-vendor-field.php:108
+msgid "Please choose Add New vendor Form"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:173
+msgid "Please choose vendor Banking Details Form"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:165
+msgid "Please choose vendor Personal Details Form"
+msgstr ""
+
+#: includes/admin/modules/class-search-vendor-field.php:100
+msgid "Please choose Which Site is for vendor"
+msgstr ""
+
+#: includes/core/class-builtin.php:136
+msgid "Please enter a valid end date in the date range"
+msgstr ""
+
+#: includes/core/class-builtin.php:363 includes/core/class-builtin.php:383
+msgid "Please enter a valid size"
+msgstr ""
+
+#: includes/core/class-builtin.php:115
+msgid "Please enter a valid start date in the date range"
+msgstr ""
+
+#: includes/core/class-builtin.php:112
+msgid "Please provide a date range beginning"
+msgstr ""
+
+#: includes/core/class-builtin.php:133
+msgid "Please provide a date range end"
+msgstr ""
+
+#: includes/core/class-builtin.php:88
+msgid "Please provide a meta key"
+msgstr ""
+
+#: includes/admin/modules/class-domains-settings.php:137
+msgid "Please select the Inbox Page"
+msgstr ""
+
+#: includes/admin/modules/class-domains-settings.php:145
+msgid "Please select the Status Page"
+msgstr ""
+
+#: includes/admin/modules/class-domains-settings.php:153
+msgid "Please select the Tasks Calendar Page"
+msgstr ""
+
+#. %s: plugin name.
+#: includes/class-dependencies.php:157
+#, php-format
+msgid "Please update <strong>%s</strong> to the latest version."
+msgstr ""
+
+#. %s: extension name.
+#: includes/class-dependencies.php:163
+#, php-format
+msgid "Please update extension <strong>\"%s\"</strong> to the latest version."
+msgstr ""
+
+#: includes/admin/modules/class-google-analytics.php:135
+msgid "Plugin authorization succeeded."
+msgstr ""
+
+#: includes/core/class-builtin.php:1038
+msgid "Poland"
+msgstr ""
+
+#: includes/core/class-builtin.php:802
+msgid "Polish"
+msgstr ""
+
+#: includes/core/class-builtin.php:1039
+msgid "Portugal"
+msgstr ""
+
+#: includes/core/class-builtin.php:804
+msgid "Portuguese"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:504
+msgid "Priority"
+msgstr ""
+
+#: includes/core/class-form.php:1014
+msgid "Profile"
+msgstr ""
+
+#: templates/page-parser.php:16
+msgid "Project"
+msgstr ""
+
+#: includes/admin/modules/class-search-vendor-field.php:115
+msgid "Project Form ID"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:92
+msgid "Project Form Settings"
+msgstr ""
+
+#: includes/admin/modules/class-domains-settings.php:116
+#: includes/admin/modules/class-domains-settings.php:117
+msgid "Project Name"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:108
+msgid "Projet Form"
+msgstr ""
+
+#: templates/rss-fetcher.php:18 templates/page-parser.php:21
+msgid "Pub Date"
+msgstr ""
+
+#: includes/core/class-builtin.php:1040
+msgid "Puerto Rico"
+msgstr ""
+
+#: includes/core/class-builtin.php:1041
+msgid "Qatar"
+msgstr ""
+
+#: includes/core/class-builtin.php:805
+msgid "Quechua"
+msgstr ""
+
+#: includes/core/class-builtin.php:806
+msgid "Raeto-Romance"
+msgstr ""
+
+#: templates/notifications/notifications.php:43
+msgid "Read"
+msgstr "مقروء"
+
+#: includes/admin/core/list-tables/emails-list-table.php:329
+msgid "Recipient(s)"
+msgstr ""
+
+#: includes/core/class-builtin.php:654
+msgid "Reddit URL"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:982
+msgid "Referrers"
+msgstr ""
+
+#: includes/admin/templates/google-analytics.php:36
+msgid "Refresh Accounts"
+msgstr ""
+
+#: includes/admin/modules/class-web-notifications.php:83
+msgid "Refresh Interval"
+msgstr ""
+
+#: includes/core/class-form.php:1017
+msgid "Register"
+msgstr ""
+
+#: includes/admin/templates/dashboard/users.php:41
+msgid "Rejected"
+msgstr ""
+
+#: templates/reporters-list.php:7
+msgid "Reporters List"
+msgstr ""
+
+#: includes/admin/templates/google-analytics.php:38
+msgid "Reset Settings"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:411
+msgid "Reset WAMS Role meta"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:486
+msgid "Role"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:500
+msgid "Role ID"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:499
+msgid "Role Title"
+msgstr ""
+
+#: templates/reporters-list.php:20
+#: includes/admin/core/list-tables/roles-list-table.php:26
+#: includes/admin/core/list-tables/roles-list-table.php:117
+#: includes/admin/core/list-tables/roles-list-table.php:487
+msgid "Roles"
+msgstr ""
+
+#: includes/core/class-builtin.php:1043
+msgid "Romania"
+msgstr ""
+
+#: includes/core/class-builtin.php:808
+msgid "Romanian"
+msgstr ""
+
+#: includes/admin/class-admin.php:148
+msgid "RSS Fetcher"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:74
+#: includes/admin/modules/class-rss-fetcher.php:95
+msgid "RSS URL"
+msgstr ""
+
+#: includes/admin/templates/dashboard/upgrade-request.php:14
+msgid ""
+"Run this task from time to time if you have issues with WP Cron and need to "
+"get WAMS extension updates."
+msgstr ""
+
+#: includes/admin/templates/dashboard/cache.php:29
+msgid "Run this task from time to time to keep your DB clean."
+msgstr ""
+
+#: includes/core/class-builtin.php:809
+msgid "Russian"
+msgstr ""
+
+#: includes/core/class-builtin.php:1044
+msgid "Russian Federation"
+msgstr ""
+
+#: includes/core/class-builtin.php:1045
+msgid "Rwanda"
+msgstr ""
+
+#: includes/core/class-builtin.php:1042
+msgid "Réunion"
+msgstr ""
+
+#: includes/core/class-builtin.php:1046
+msgid "Saint Barthélemy"
+msgstr ""
+
+#: includes/core/class-builtin.php:1047
+msgid "Saint Helena"
+msgstr ""
+
+#: includes/core/class-builtin.php:1048
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#: includes/core/class-builtin.php:1049
+msgid "Saint Lucia"
+msgstr ""
+
+#: includes/core/class-builtin.php:1050
+msgid "Saint Martin (French part)"
+msgstr ""
+
+#: includes/core/class-builtin.php:1051
+msgid "Saint Pierre and Miquelon"
+msgstr ""
+
+#: includes/core/class-builtin.php:1052
+msgid "Saint Vincent and the Grenadines"
+msgstr ""
+
+#: includes/core/class-builtin.php:942
+msgid "Sakartvelo"
+msgstr ""
+
+#: includes/core/class-builtin.php:1053
+msgid "Samoa"
+msgstr ""
+
+#: includes/core/class-builtin.php:819
+msgid "Samoan"
+msgstr ""
+
+#: includes/core/class-builtin.php:1054
+msgid "San Marino"
+msgstr ""
+
+#: includes/core/class-builtin.php:815
+msgid "Sango"
+msgstr ""
+
+#: includes/core/class-builtin.php:811
+msgid "Sanskrit"
+msgstr ""
+
+#: includes/core/class-builtin.php:1055
+msgid "Sao Tome and Principe"
+msgstr ""
+
+#: includes/core/class-builtin.php:812
+msgid "Sardinian"
+msgstr ""
+
+#: includes/core/class-builtin.php:1056
+msgid "Saudi Arabia"
+msgstr ""
+
+#: templates/notifications/notifications-settings.php:41
+#: templates/notifications/notifications-settings.php:65
+msgid "Save"
+msgstr "حفظ"
+
+#: includes/admin/templates/google-analytics.php:35
+msgid "Save Settings"
+msgstr ""
+
+#: templates/rss-fetcher.php:20 templates/page-parser.php:23
+msgid "Saved!!"
+msgstr ""
+
+#: includes/core/class-builtin.php:724
+msgid "Scottish Gaelic"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:1029
+msgid "Search Engines"
+msgstr ""
+
+#: includes/common/class-cpt.php:42
+msgid "Search Forms"
+msgstr ""
+
+#: includes/admin/class-admin.php:142
+msgid "Search Vendor Field"
+msgstr ""
+
+#: includes/admin/modules/class-search-vendor-field.php:86
+msgid "Search_Vendor_Field Settings"
+msgstr ""
+
+#: includes/core/class-ajax-common.php:46
+#: includes/core/class-telegram-notifications.php:89
+#: includes/core/class-rss-feed-extractor.php:25
+#: includes/admin/class-ajax-handler.php:37
+#: includes/admin/class-ajax-handler.php:156
+#: includes/admin/class-ajax-handler.php:213 includes/admin/class-admin.php:73
+#: includes/admin/core/class-admin-ajax-hooks.php:44
+#: includes/admin/core/class-admin-notices.php:509
+#: includes/admin/core/class-admin-system-setup.php:21
+msgid "Security Check"
+msgstr ""
+
+#: includes/common/search-vendor-field/class-vendorseaarchfieldaddon.php:51
+msgid "Select Vendor Type(s)"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:100
+#: includes/admin/modules/class-telegram-settings.php:129
+msgid ""
+"Send /activate command from your channel first you will get the Channel ID"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:113
+msgid ""
+"Send /activate command from your channel first you will get the Channel ID "
+"Go to https://web.telegram.org\n"
+"                            Click on your channel\n"
+"                            Look at the URL and find the part that looks "
+"like c12112121212_17878787878787878\n"
+"                            Remove the underscore and after c12112121212\n"
+"                            Remove the prefixed letter 12112121212\n"
+"                            Prefix with a -100 so -10012112121212"
+msgstr ""
+
+#: includes/core/class-builtin.php:1057
+msgid "Senegal"
+msgstr ""
+
+#: includes/core/class-builtin.php:1058
+msgid "Serbia"
+msgstr ""
+
+#: includes/core/class-builtin.php:823
+msgid "Serbian"
+msgstr ""
+
+#: includes/admin/class-admin.php:206
+msgid "Server Debug"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:530
+#: includes/core/google/class-ga-api-controller.php:1176
+msgid "Sessions"
+msgstr ""
+
+#: includes/admin/class-admin.php:394
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/modules/class-google-analytics.php:178
+msgid "Settings has been saved."
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:340
+msgid "Settings have been saved successfully."
+msgstr ""
+
+#: includes/core/class-ajax-common.php:59
+#: includes/core/class-ajax-common.php:69
+msgid "Settings Saved"
+msgstr ""
+
+#: includes/core/class-builtin.php:1059
+msgid "Seychelles"
+msgstr ""
+
+#: includes/core/class-builtin.php:820
+msgid "Shona"
+msgstr ""
+
+#: templates/notifications/notifications-menu.php:30
+msgid "Show All"
+msgstr "عرض الكل"
+
+#: includes/core/class-builtin.php:742
+msgid "Sichuan Yi"
+msgstr ""
+
+#: includes/core/class-builtin.php:1060
+msgid "Sierra Leone"
+msgstr ""
+
+#: includes/core/class-builtin.php:813
+msgid "Sindhi"
+msgstr ""
+
+#: includes/core/class-builtin.php:1061
+msgid "Singapore"
+msgstr ""
+
+#: includes/core/class-builtin.php:816
+msgid "Sinhala"
+msgstr ""
+
+#: includes/admin/class-admin.php:118
+msgid "Site Setup"
+msgstr ""
+
+#: includes/core/class-builtin.php:638
+msgid "Skype ID"
+msgstr ""
+
+#: includes/core/class-builtin.php:817
+msgid "Slovak"
+msgstr ""
+
+#: includes/core/class-builtin.php:1062
+msgid "Slovakia"
+msgstr ""
+
+#: includes/core/class-builtin.php:1063
+msgid "Slovenia"
+msgstr ""
+
+#: includes/core/class-builtin.php:818
+msgid "Slovenian"
+msgstr ""
+
+#: includes/core/class-builtin.php:1064
+msgid "Solomon Islands"
+msgstr ""
+
+#: includes/core/class-builtin.php:821
+msgid "Somali"
+msgstr ""
+
+#: includes/core/class-builtin.php:1065
+msgid "Somalia"
+msgstr ""
+
+#. %1$s is a plugin name; %2$s is a extension name; %3$s is a extension version.
+#: includes/class-dependencies.php:160
+#, php-format
+msgid ""
+"Sorry, but this version of <strong>%1$s</strong> does not work with "
+"extension <strong>\"%2$s\" %3$s</strong> version."
+msgstr ""
+
+#: includes/core/class-builtin.php:639
+msgid "SoundCloud Profile"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:1140
+msgid "Source:"
+msgstr ""
+
+#: includes/core/class-builtin.php:1066
+msgid "South Africa"
+msgstr ""
+
+#: includes/core/class-builtin.php:1067
+msgid "South Georgia and the South Sandwich Islands"
+msgstr ""
+
+#: includes/core/class-builtin.php:792
+msgid "South Ndebele"
+msgstr ""
+
+#: includes/core/class-builtin.php:1068
+msgid "South Sudan"
+msgstr ""
+
+#: includes/core/class-builtin.php:825
+msgid "Southern Sotho"
+msgstr ""
+
+#: includes/core/class-builtin.php:1069
+msgid "Spain"
+msgstr ""
+
+#: includes/core/class-builtin.php:713
+msgid "Spanish"
+msgstr ""
+
+#: includes/core/class-builtin.php:567 includes/core/class-builtin.php:649
+msgid "Spotify URL"
+msgstr ""
+
+#: includes/core/class-builtin.php:1070
+msgid "Sri Lanka"
+msgstr ""
+
+#: templates/notifications/notifications.php:65
+#: includes/admin/core/class-admin-system-setup.php:103
+#: includes/admin/modules/class-domains-settings.php:144
+#: includes/admin/core/list-tables/version-template-list-table.php:215
+msgid "Status"
+msgstr "الحالة"
+
+#: templates/home-page.php:37 templates/home-page.php:83
+#: templates/home-page.php:128
+msgid "Step"
+msgstr ""
+
+#: includes/core/class-builtin.php:1071
+msgid "Sudan"
+msgstr ""
+
+#: includes/core/class-builtin.php:826
+msgid "Sundanese"
+msgstr ""
+
+#: includes/core/class-builtin.php:1072
+msgid "Suriname"
+msgstr ""
+
+#: includes/core/class-builtin.php:1073
+msgid "Svalbard and Jan Mayen"
+msgstr ""
+
+#: includes/core/class-builtin.php:828
+msgid "Swahili"
+msgstr ""
+
+#: includes/core/class-builtin.php:824
+msgid "Swati"
+msgstr ""
+
+#: includes/core/class-builtin.php:1075
+msgid "Sweden"
+msgstr ""
+
+#: includes/core/class-builtin.php:827
+msgid "Swedish"
+msgstr ""
+
+#: includes/core/class-builtin.php:1076
+msgid "Switzerland"
+msgstr ""
+
+#: includes/core/class-builtin.php:1077
+msgid "Syrian Arab Republic"
+msgstr ""
+
+#: includes/admin/class-admin.php:199
+msgid "System Debug"
+msgstr ""
+
+#: includes/core/class-builtin.php:835
+msgid "Tagalog"
+msgstr ""
+
+#: includes/core/class-builtin.php:842
+msgid "Tahitian"
+msgstr ""
+
+#: includes/core/class-builtin.php:1078
+msgid "Taiwan, Province of China"
+msgstr ""
+
+#: includes/core/class-builtin.php:831
+msgid "Tajik"
+msgstr ""
+
+#: includes/core/class-builtin.php:1079
+msgid "Tajikistan"
+msgstr ""
+
+#: includes/core/class-builtin.php:829
+msgid "Tamil"
+msgstr ""
+
+#: includes/core/class-builtin.php:1080
+msgid "Tanzania, United Republic of"
+msgstr ""
+
+#: includes/admin/modules/class-task-scheduler.php:102
+msgid "Task Scheduler"
+msgstr ""
+
+#: includes/admin/modules/class-task-scheduler.php:80
+msgid "Task Scheduler Settings"
+msgstr ""
+
+#: includes/class-config.php:75 includes/class-config.php:201
+#: includes/admin/modules/class-domains-settings.php:152
+msgid "Tasks Calendar"
+msgstr ""
+
+#: includes/admin/class-admin.php:154
+msgid "Tasks Scheduler"
+msgstr ""
+
+#: templates/home-page.php:72
+msgid "Tasks that assigned to me all my team members"
+msgstr ""
+
+#: templates/home-page.php:26
+msgid "Tasks that assigned to me only"
+msgstr ""
+
+#: includes/core/class-builtin.php:840
+msgid "Tatar"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:99
+msgid "Telegram Admin Channel Chat ID"
+msgstr ""
+
+#: templates/notifications/notifications-settings.php:24
+msgid "Telegram Chat ID"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:112
+msgid "Telegram News Channel Chat ID"
+msgstr ""
+
+#: templates/notifications/notifications-settings.php:20
+#: includes/admin/class-admin.php:130
+msgid "Telegram Notifications"
+msgstr "إشعارات تيليغرام"
+
+#: includes/admin/modules/class-telegram-settings.php:128
+msgid "Telegram Programs Channel Chat ID"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:69
+msgid "Telegram Settings"
+msgstr ""
+
+#: includes/core/class-builtin.php:650
+msgid "Telegram URL"
+msgstr ""
+
+#: includes/core/class-builtin.php:189
+msgid "Telephone Box"
+msgstr ""
+
+#: includes/core/class-builtin.php:830
+msgid "Telugu"
+msgstr ""
+
+#: includes/admin/core/list-tables/version-template-list-table.php:182
+#: includes/admin/core/list-tables/version-template-list-table.php:212
+msgid "Template"
+msgstr ""
+
+#: includes/admin/core/list-tables/version-template-list-table.php:183
+msgid "Templates"
+msgstr ""
+
+#: includes/admin/class-admin.php:160
+msgid "TEST PAGE"
+msgstr ""
+
+#: includes/core/class-builtin.php:832
+msgid "Thai"
+msgstr ""
+
+#: includes/core/class-builtin.php:1081
+msgid "Thailand"
+msgstr ""
+
+#: includes/admin/modules/class-google-analytics.php:165
+msgid ""
+"The access code is <strong>not</strong> your <strong>Tracking ID</strong> "
+"(UA-XXXXX-X) <strong>nor</strong> your <strong>email address</strong>!"
+msgstr ""
+
+#: includes/core/class-builtin.php:139
+msgid "The end of date range must be greater than the start of date range"
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:337
+msgid "The form has been duplicated successfully."
+msgstr ""
+
+#: includes/admin/core/list-tables/version-template-list-table.php:142
+msgid "Theme path - "
+msgstr ""
+
+#: includes/admin/core/list-tables/version-template-list-table.php:214
+msgid "Theme version"
+msgstr ""
+
+#: templates/notifications/notifications.php:114
+msgid "There is no notifications"
+msgstr "ليس هناك اي إشعارات جديدة"
+
+#: includes/core/class-form.php:151 includes/core/class-form.php:159
+#: includes/core/class-form.php:166 includes/core/class-form.php:250
+#: includes/core/class-form.php:626
+msgid "This is not possible for security reasons."
+msgstr ""
+
+#: includes/core/class-uploader.php:642
+msgid "This media type is not recognized."
+msgstr ""
+
+#. %1$s is a extension name; %2$s is a plugin name; %3$s is a required version.
+#: includes/class-dependencies.php:154
+#, php-format
+msgid ""
+"This version of <strong>\"%1$s\"</strong> requires the core <strong>"
+"%2$s</strong> plugin to be <strong>%3$s</strong> or higher."
+msgstr ""
+
+#: templates/rss-fetcher.php:19 templates/page-parser.php:22
+msgid "Thumbnail"
+msgstr ""
+
+#: includes/core/class-builtin.php:693
+msgid "Tibetan"
+msgstr ""
+
+#: includes/core/class-builtin.php:833
+msgid "Tigrinya"
+msgstr ""
+
+#: includes/core/class-builtin.php:652
+msgid "TikTok URL"
+msgstr ""
+
+#: templates/notifications/notifications.php:64
+msgid "Time"
+msgstr "الوقت"
+
+#: includes/admin/modules/class-web-notifications.php:84
+msgid "Time in second between each AJAX call for new notification"
+msgstr ""
+
+#: includes/core/class-builtin.php:1082
+msgid "Timor-Leste"
+msgstr ""
+
+#: templates/rss-fetcher.php:16 templates/page-parser.php:18
+msgid "Title"
+msgstr ""
+
+#: includes/admin/modules/class-domains-settings.php:108
+msgid "Title Of the Website"
+msgstr ""
+
+#: includes/core/class-builtin.php:1083
+msgid "Togo"
+msgstr ""
+
+#: includes/core/class-builtin.php:1084
+msgid "Tokelau"
+msgstr ""
+
+#: includes/core/class-builtin.php:837 includes/core/class-builtin.php:1085
+msgid "Tonga"
+msgstr ""
+
+#: includes/common/gravityflow-cs/class-custom-step.php:522
+msgid "Total Records"
+msgstr ""
+
+#: includes/core/class-builtin.php:1086
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:334
+msgid "Try again later. You can run this action once daily."
+msgstr ""
+
+#: includes/core/class-builtin.php:839
+msgid "Tsonga"
+msgstr ""
+
+#: includes/core/class-builtin.php:836
+msgid "Tswana"
+msgstr ""
+
+#: includes/core/class-builtin.php:1087
+msgid "Tunisia"
+msgstr ""
+
+#: includes/core/class-builtin.php:1088
+msgid "Turkey"
+msgstr ""
+
+#: includes/core/class-builtin.php:838
+msgid "Turkish"
+msgstr ""
+
+#: includes/core/class-builtin.php:834
+msgid "Turkmen"
+msgstr ""
+
+#: includes/core/class-builtin.php:1089
+msgid "Turkmenistan"
+msgstr ""
+
+#: includes/core/class-builtin.php:1090
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#: includes/core/class-builtin.php:1091
+msgid "Tuvalu"
+msgstr ""
+
+#: includes/core/class-builtin.php:841
+msgid "Twi"
+msgstr ""
+
+#: includes/core/class-builtin.php:653
+msgid "Twitch URL"
+msgstr ""
+
+#: includes/core/class-builtin.php:640
+msgid "Twitter URL"
+msgstr ""
+
+#: templates/notifications/notifications.php:62
+#: includes/core/google/class-ga-api-controller.php:1086
+msgid "Type"
+msgstr "النوع"
+
+#: includes/core/class-builtin.php:1092
+msgid "Uganda"
+msgstr ""
+
+#: includes/core/class-builtin.php:843
+msgid "Uighur"
+msgstr ""
+
+#: includes/core/class-builtin.php:1093
+msgid "Ukraine"
+msgstr ""
+
+#: includes/core/class-builtin.php:844
+msgid "Ukrainian"
+msgstr ""
+
+#: includes/core/class-builtin.php:642
+msgid "Unique E-mail"
+msgstr ""
+
+#: includes/core/class-builtin.php:643
+msgid "Unique Metakey value"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:527
+msgid "Unique Page Views"
+msgstr ""
+
+#: includes/core/class-builtin.php:644
+msgid "Unique Username"
+msgstr ""
+
+#: includes/core/class-builtin.php:645
+msgid "Unique Username/E-mail"
+msgstr ""
+
+#: includes/core/class-builtin.php:1094
+msgid "United Arab Emirates"
+msgstr ""
+
+#: includes/core/class-builtin.php:1095
+msgid "United Kingdom"
+msgstr ""
+
+#: includes/core/class-builtin.php:1096
+msgid "United States"
+msgstr ""
+
+#: includes/core/class-builtin.php:1097
+msgid "United States Minor Outlying Islands"
+msgstr ""
+
+#: templates/notifications/notifications.php:44
+msgid "Unread"
+msgstr "غير مقروء"
+
+#: templates/notifications/notifications-menu.php:22
+msgid "Unread:"
+msgstr "غير مقروء"
+
+#: includes/core/class-builtin.php:845
+msgid "Urdu"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:1140
+msgid "URI:"
+msgstr ""
+
+#: includes/common/gravityflow-cs/class-custom-step.php:557
+msgid "URL is Valid "
+msgstr ""
+
+#: includes/common/gravityflow-cs/class-custom-step.php:560
+msgid "URL Not Found!"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:110
+#: includes/admin/modules/class-forms-settings.php:132
+msgid "URLs Form"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:82
+#: includes/admin/modules/class-forms-settings.php:77
+msgid "URLs Form Settings"
+msgstr ""
+
+#: includes/core/class-builtin.php:1098
+msgid "Uruguay"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:124
+msgid "User Form"
+msgstr ""
+
+#: includes/core/rest/class-api-v2 copy.php:281
+msgid "User has been successfully deleted."
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:343
+msgid "User has been updated."
+msgstr ""
+
+#: includes/core/rest/class-api-v2 copy.php:246
+msgid "User meta has been changed."
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:577
+msgid "User Role <strong>Deleted</strong> Successfully."
+msgstr ""
+
+#: includes/core/rest/class-api-v2 copy.php:242
+msgid "User role has been changed."
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:568
+msgid "User Roles"
+msgstr ""
+
+#: includes/core/rest/class-api-v2 copy.php:232
+msgid "User status has been changed."
+msgstr ""
+
+#: templates/reporters-list.php:14
+msgid "Username"
+msgstr ""
+
+#: includes/core/google/class-ga-api-controller.php:514
+#: includes/admin/templates/dashboard/users.php:15
+msgid "Users"
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:346
+msgid "Users have been updated."
+msgstr ""
+
+#: includes/core/class-builtin.php:846
+msgid "Uzbek"
+msgstr ""
+
+#: includes/core/class-builtin.php:1099
+msgid "Uzbekistan"
+msgstr ""
+
+#: includes/core/class-builtin.php:1100
+msgid "Vanuatu"
+msgstr ""
+
+#: includes/core/class-builtin.php:847
+msgid "Venda"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:172
+msgid "Vendor Banking Details Form"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:156
+msgid "Vendor Companies Form"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:140
+msgid "Vendor Form"
+msgstr ""
+
+#: includes/admin/modules/class-search-vendor-field.php:107
+msgid "Vendor Form ID"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:180
+msgid "Vendor On RSS Feed Form"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:86
+msgid "Vendor on RSS Form Settings"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:164
+msgid "Vendor Personal Details Form"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:148
+msgid "Vendor Project Form"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:118
+msgid "Vendor RSS Form"
+msgstr ""
+
+#: includes/admin/modules/class-search-vendor-field.php:99
+msgid "vendor Site ID"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:181
+msgid "vendor_rss_form"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:82
+msgid "Vendors Form Settings"
+msgstr ""
+
+#: includes/core/class-builtin.php:1101
+msgid "Venezuela, Bolivarian Republic of"
+msgstr ""
+
+#: includes/core/class-builtin.php:1102
+msgid "Viet Nam"
+msgstr ""
+
+#: includes/core/class-builtin.php:848
+msgid "Vietnamese"
+msgstr ""
+
+#: includes/core/class-builtin.php:1103
+msgid "Virgin Islands, British"
+msgstr ""
+
+#: includes/core/class-builtin.php:1104
+msgid "Virgin Islands, U.S."
+msgstr ""
+
+#: includes/core/class-builtin.php:849
+msgid "Volapuk"
+msgstr ""
+
+#: includes/core/class-builtin.php:1105
+msgid "Wallis and Futuna"
+msgstr ""
+
+#: includes/core/class-builtin.php:850
+msgid "Walloon"
+msgstr ""
+
+#. Name of the plugin
+#. Author of the plugin
+msgid "WAMS"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:502
+msgid "WAMS Custom Role"
+msgstr ""
+
+#: includes/admin/class-admin-dashboard.php:63
+msgid "WAMS Plugin"
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:301
+msgid "WAMS Setup Error: Account page can not be a child page."
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:287
+msgid "WAMS Setup Error: User page can not be a child page."
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:101
+msgid "wams_forms_settings[\"company_form\"]"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:117
+msgid "wams_forms_settings[\"domain_form\"]"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:109
+msgid "wams_forms_settings[\"project_form\"]"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:133
+msgid "wams_forms_settings[\"urls_form\"]"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:125
+msgid "wams_forms_settings[\"user_form\"]"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:157
+msgid "wams_forms_settings[\"vendor_companies_form\"]"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:141
+msgid "wams_forms_settings[\"vendor_form\"]"
+msgstr ""
+
+#: includes/admin/modules/class-forms-settings.php:149
+msgid "wams_forms_settings[\"vendor_projects_form\"]"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:104
+msgid "wams_rss_fetcher_settings[\"enabled\"]"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:96
+msgid "wams_rss_fetcher_settings[\"rss_url\"]"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:111
+msgid "wams_rss_fetcher_settings[\"urls_form\"]"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:119
+msgid "wams_rss_fetcher_settings[\"vendor_rss_form\"]"
+msgstr ""
+
+#: includes/admin/modules/class-rss-fetcher.php:135
+msgid "wams_url_ignored_authors[\"ignored_authors\"]"
+msgstr ""
+
+#: templates/notifications/notifications-settings.php:48
+msgid "Web Notifications"
+msgstr "إشعارات الموقع"
+
+#: includes/admin/class-admin.php:124
+msgid "Web Notifications Settings"
+msgstr "إعدادات تنبيهات الموقع"
+
+#: includes/admin/modules/class-domains-settings.php:107
+msgid "Website Name"
+msgstr ""
+
+#: includes/core/class-builtin.php:646
+msgid "Website URL"
+msgstr ""
+
+#: includes/core/class-builtin.php:704
+msgid "Welsh"
+msgstr ""
+
+#: includes/core/class-builtin.php:722
+msgid "Western Frisian"
+msgstr ""
+
+#: includes/core/class-builtin.php:1106
+msgid "Western Sahara"
+msgstr ""
+
+#: templates/notifications/notifications-settings.php:37
+#: templates/notifications/notifications-settings.php:61
+msgid "When I Get New Task"
+msgstr "عندما اتلقى مهمة جديدة"
+
+#: templates/notifications/notifications-settings.php:33
+#: templates/notifications/notifications-settings.php:57
+msgid "When Workflow Get Updated"
+msgstr "عندما يتم تحديث سير العمل"
+
+#: includes/core/class-builtin.php:851
+msgid "Wolof"
+msgstr ""
+
+#: includes/class-config.php:73 includes/class-config.php:199
+msgid "Workflow Inbox"
+msgstr ""
+
+#: includes/class-config.php:74 includes/class-config.php:200
+#: includes/common/gravityflow-cs/class-custom-step.php:530
+msgid "Workflow Status"
+msgstr ""
+
+#: includes/common/class-hooks.php:139
+msgid "WorkFlow Update"
+msgstr ""
+
+#: includes/common/class-hooks.php:90
+msgid "Workflow Update"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:503
+msgid "WP-Admin Access"
+msgstr ""
+
+#: includes/core/class-form.php:133 includes/core/class-form.php:142
+msgid "Wrong callback."
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:471
+msgid "Wrong Data"
+msgstr ""
+
+#: includes/core/class-files.php:283
+msgid "Wrong mode"
+msgstr ""
+
+#: includes/class-functions.php:43 includes/admin/class-admin-functions.php:31
+msgid "Wrong Nonce"
+msgstr ""
+
+#: includes/core/class-files.php:279
+msgid "Wrong path"
+msgstr ""
+
+#: includes/core/class-builtin.php:852
+msgid "Xhosa"
+msgstr ""
+
+#: includes/core/class-builtin.php:1107
+msgid "Yemen"
+msgstr ""
+
+#: includes/admin/core/list-tables/roles-list-table.php:453
+#: includes/admin/core/list-tables/roles-list-table.php:462
+msgid "Yes"
+msgstr ""
+
+#. %s: time.
+#: includes/core/class-date-time.php:79
+#, php-format
+msgid "Yesterday at %s"
+msgstr ""
+
+#: includes/core/class-builtin.php:853
+msgid "Yiddish"
+msgstr ""
+
+#: includes/core/class-builtin.php:854
+msgid "Yoruba"
+msgstr ""
+
+#: includes/admin/modules/class-telegram-settings.php:82
+msgid "You can get API key from telegram app"
+msgstr ""
+
+#: includes/core/class-form.php:95
+msgid "You can not edit this user."
+msgstr ""
+
+#: includes/admin/modules/class-google-analytics.php:167
+msgid ""
+"You can only use the access code <strong>once</strong>, please generate a "
+"<strong>new access</strong> code following the instructions!"
+msgstr ""
+
+#: includes/common/class-cpt.php:40
+msgid "You did not create any forms yet"
+msgstr ""
+
+#: includes/admin/modules/class-google-analytics.php:200
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#. %s: Plugin name.
+#: includes/admin/core/class-admin-notices.php:401
+#, php-format
+msgid ""
+"You have installed <strong>%s</strong> with wrong folder name. Correct "
+"folder name is <strong>\"wams\"</strong>."
+msgstr ""
+
+#: includes/core/class-files.php:317
+msgid "You have no permission to delete this file"
+msgstr ""
+
+#: includes/core/class-files.php:303 includes/core/class-files.php:345
+#: includes/core/class-files.php:385
+msgid "You have no permission to edit this user"
+msgstr ""
+
+#: includes/core/class-builtin.php:251 includes/core/class-builtin.php:271
+#: includes/core/class-builtin.php:291 includes/core/class-builtin.php:311
+msgid "You have not added any choices yet."
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:331
+msgid "You have the latest updates."
+msgstr ""
+
+#. %s: doc link.
+#: includes/admin/core/list-tables/emails-list-table.php:344
+#, php-format
+msgid ""
+"You may get more details about email notifications customization <a "
+"href=\"%s\">here</a>"
+msgstr ""
+
+#: includes/core/class-builtin.php:472
+msgid "You must add a shortcode to the content area"
+msgstr ""
+
+#: includes/core/class-builtin.php:180 includes/core/class-builtin.php:196
+#: includes/core/class-builtin.php:212 includes/core/class-builtin.php:228
+#: includes/core/class-builtin.php:244 includes/core/class-builtin.php:264
+#: includes/core/class-builtin.php:284 includes/core/class-builtin.php:304
+#: includes/core/class-builtin.php:324 includes/core/class-builtin.php:340
+#: includes/core/class-builtin.php:356 includes/core/class-builtin.php:376
+#: includes/core/class-builtin.php:396 includes/core/class-builtin.php:422
+#: includes/core/class-builtin.php:438 includes/core/class-builtin.php:455
+#: includes/core/class-builtin.php:468 includes/core/class-builtin.php:485
+#: includes/core/class-builtin.php:498 includes/core/class-builtin.php:511
+#: includes/core/class-builtin.php:527 includes/core/class-builtin.php:543
+#: includes/core/class-builtin.php:559 includes/core/class-builtin.php:574
+#: includes/core/class-builtin.php:589
+msgid "You must provide a title"
+msgstr ""
+
+#: includes/core/rest/class-api-v2 copy.php:209 includes/core/rest/class-api-v2
+#: copy.php:266 includes/core/rest/class-api-v2 copy.php:299
+msgid "You must provide a user ID"
+msgstr ""
+
+#: includes/core/rest/class-api-old.php:232
+msgid "You must specify both a token and API key!"
+msgstr ""
+
+#: includes/core/rest/class-api.php:336
+msgid "You must specify both a token and API key."
+msgstr ""
+
+#: includes/core/rest/class-api-v2 copy.php:214
+msgid "You need to provide data to update"
+msgstr ""
+
+#: includes/core/rest/class-api-v2 copy.php:219
+msgid "You need to provide value to update"
+msgstr ""
+
+#: includes/common/class-hooks.php:136
+#, php-format
+msgid "Your Entry #: %1$d Has New Step : %2$s"
+msgstr ""
+
+#: includes/common/class-hooks.php:91
+#, php-format
+msgid "Your Entry #: %1$d in Form: %2$s  Has New Step : %3$s"
+msgstr "الطلب رقم# %1$d في نموذج %2$s الان في مرحلة %3$s"
+
+#: includes/core/class-uploader.php:690
+msgid "Your image is invalid or too large!"
+msgstr ""
+
+#: includes/core/class-uploader.php:602
+msgid "Your image is invalid!"
+msgstr ""
+
+#: includes/core/class-builtin.php:95
+msgid "Your meta key contains illegal characters. Please correct it."
+msgstr ""
+
+#: includes/core/class-builtin.php:91
+msgid "Your meta key is a reserved core field and cannot be used"
+msgstr ""
+
+#: includes/frontend/class-secure.php:184
+#: includes/frontend/class-secure.php:185
+msgid "Your new password cannot be same as old password."
+msgstr ""
+
+#. %s: min height.
+#: includes/core/class-uploader.php:700
+#, php-format
+msgid "Your photo is too small. It must be at least %spx high."
+msgstr ""
+
+#. %s: min widdth.
+#: includes/core/class-uploader.php:697
+#, php-format
+msgid "Your photo is too small. It must be at least %spx wide."
+msgstr ""
+
+#: includes/core/rest/class-api-old.php:245
+msgid "Your request could not be authenticated"
+msgstr ""
+
+#: includes/core/rest/class-api.php:354
+msgid "Your request could not be authenticated."
+msgstr ""
+
+#: includes/admin/templates/dashboard/purge.php:2
+msgid ""
+"Your temp uploads directory is <span class=\"ok\">clean</span>. There is "
+"nothing to purge."
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:322
+msgid "Your temp uploads directory is now clean."
+msgstr ""
+
+#. %s override templates page link.
+#: includes/admin/core/class-admin-notices.php:447
+#, php-format
+msgid ""
+"Your templates are out of date. Please visit <a href=\"%s\">override "
+"templates status page</a> and update templates."
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:325
+msgid "Your user cache is now removed."
+msgstr ""
+
+#: includes/admin/core/class-admin-notices.php:328
+msgid "Your user statuses cache is now removed."
+msgstr ""
+
+#: includes/core/class-builtin.php:647
+msgid "YouTube Profile"
+msgstr ""
+
+#: includes/core/class-builtin.php:648
+msgid "YouTube Video"
+msgstr ""
+
+#: includes/core/class-builtin.php:1108
+msgid "Zambia"
+msgstr ""
+
+#: includes/core/class-builtin.php:855
+msgid "Zhuang"
+msgstr ""
+
+#: includes/core/class-builtin.php:1109
+msgid "Zimbabwe"
+msgstr ""
+
+#: includes/core/class-builtin.php:857
+msgid "Zulu"
+msgstr ""
+
+#: includes/core/class-builtin.php:864
+msgid "Åland Islands"
+msgstr ""

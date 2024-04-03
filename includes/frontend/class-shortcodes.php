@@ -67,22 +67,37 @@ if (!class_exists('wams\core\Shortcodes')) {
 		{
 			add_shortcode('home-page', array(&$this, 'home_page'));
 			add_shortcode('fetch-rss', array(&$this, 'fetch_rss'));
-			add_shortcode('upload-vendors-list', array(&$this, 'upload_vendors_list'));
-			add_shortcode('google-analytics-test', array(&$this, 'google_analytics_test'));
+			add_shortcode('upload-vendors-list', array(WAMS()->vendors_importer(), 'upload_vendors_list'));
+			add_shortcode('google-analytics-updater', array(&$this, 'google_analytics_updater'));
 			add_shortcode('page-parser', array(&$this, 'page_parser'));
 			add_shortcode('link-my-telegram', array(WAMS()->telegram_notifications(), 'link_my_telegram_page'));
-			add_shortcode('view-timeline', array(&$this, 'view_timeline'));
 			add_shortcode('wams-charts', array(WAMS()->frontend()->charts(), 'show_chart'));
 			add_shortcode('wams-tasks-calendar', array(WAMS()->frontend()->tasks_calendar(), 'show_calendar'));
 			add_shortcode('wams-user-logins', array($this, 'user_login_table'));
 			// add_shortcode('wams', array(&$this, 'wams'));
 			add_shortcode('wams_searchform', array(&$this, 'wams_searchform'));
-			add_shortcode('wams_notifications', array(WAMS()->web_notifications(), 'notifications_page'));
+			add_shortcode('wams_notifications', array(&$this, 'notifications_page'));
 			add_shortcode('wams_messages', array(WAMS()->messages(), 'messages_page'));
+			add_shortcode('notification-settings', array(&$this, 'notification_settings'));
+			add_shortcode('reporters-list', array(&$this, 'reporters_list'));
+			add_shortcode('urls-list', array(&$this, 'urls_list'));
+			add_shortcode('gravityflow-timeline', array(&$this, 'gravityflow_timeline'));
+			add_shortcode('gravityflow-wizard', array(&$this, 'gravityflow_wizard'));
+
+			add_shortcode('sample-code', array(&$this, 'sample_code'));
+			// Misbar Site Shortcodes
+			add_shortcode('claim-links', array(&$this, 'claim_links'));
+			add_shortcode('payment-order', array(&$this, 'fill_payment_order'));
+		}
+		public function sample_code()
+		{
+			WAMS()->get_template('sample-code.php', '', [], true);
 		}
 		public function home_page()
 		{
 			if (!is_user_logged_in()) return '';
+			WAMS()->enqueue()->load_home_script();
+			WAMS()->enqueue()->load_bootstrap_table_script();
 			$query = 'get';
 			$search_value = '1';
 			$dashboard = WAMS()->frontend()->user_dashboard();
@@ -92,9 +107,107 @@ if (!class_exists('wams\core\Shortcodes')) {
 				'my_team_tasks' => $dashboard->wams_user_team_tasks(),
 				'user_profile_details' => $dashboard->show_user_profile_details(),
 			];
-			$home = WAMS()->get_template('home-page.php', '', $dashboard_cards, true);
-		}
+			echo '<pre>';
+			// print_r($dashboard->wams_user_team_tasks());
+			// print_r($dashboard->wams_user_team_tasks());
+			echo '</pre>';
+			$current_blog = get_current_blog_id();
+			switch ($current_blog) {
+				case '2':
+					$home = WAMS()->get_template('misbar-home-page.php', '', $dashboard_cards, true);
+					break;
+				default:
+					$home = WAMS()->get_template('home-page.php', '', $dashboard_cards, true);
 
+					break;
+			}
+		}
+		function fill_payment_order($atts)
+		{
+			if (!isset($_GET['payment-order'])) {
+				echo '<div class="alert alert-danger">Please select Payment Order First</div>';
+				return;
+			} else {
+				$po_entry = \GFAPI::get_entry($_GET['payment-order']);
+				if ($po_entry) {
+					$po_id = rgar($po_entry, 'id', $_GET['payment-order']);
+					$po_name = rgar($po_entry, 1, 'No Name');
+					$po_assignee = rgar($po_entry, 2);
+					$po_assignee_name = get_user_meta($po_assignee, 'first_name', true);
+					$vars = [
+						'po_id' => $po_id,
+						'po_name' => $po_name,
+						'po_assignee' => $po_assignee,
+						'po_assignee_name' => $po_assignee_name,
+					];
+					// print_r($po_entry);
+				} else {
+					echo '<div class="alert alert-danger">The Payment Order is not valid!!</div>';
+					return;
+				}
+			}
+			WAMS()->enqueue()->load_tables_script();
+			WAMS()->enqueue()->load_bootstrap_table_script();
+			$vars['columns'] =
+				[
+					'orderId' => 34,
+					'title' => 22,
+					'cost' => 31,
+					'vendor' => 'created_by',
+					'vendor_name' => 'created_by_name',
+				];
+
+			WAMS()->get_template('misbar/payment-orders.php', '', $vars, true);
+		}
+		function claim_links($atts)
+		{
+			WAMS()->enqueue()->load_tables_script();
+			WAMS()->enqueue()->load_bootstrap_table_script();
+			$vars = [
+				'links' => [
+					'link' => 1,
+					'name' => 3,
+					'type' => 'gpnf_entry_nested_form_field'
+				]
+			];
+			if (isset($atts['type'])) {
+				switch ($atts['type']) {
+					case 'claims':
+						# code...
+						break;
+
+					case 'sources':
+						# code...
+						break;
+				}
+			}
+			WAMS()->get_template('misbar/links-list.php', '', $vars, true);
+		}
+		function gravityflow_timeline($atts)
+		{
+			if (isset($atts['entry_id'])) {
+				$entry = \GFAPI::get_entry($atts['entry_id']);
+				$workflow_notes = \Gravity_Flow_Common::get_timeline_notes($entry);
+				WAMS()->get_template('gravity/gravityflow-timeline.php', '', ['timeline' => $workflow_notes, 'entry' => $entry], true);
+			} else echo 'Timeline is missing';
+		}
+		function gravityflow_wizard($atts, $content = null)
+		{
+			if (isset($atts['entry_id'])) {
+				$entry = \GFAPI::get_entry($atts['entry_id']);
+				$form_id = $entry['form_id'];
+				$step_data = WAMS()->gravity()->get_step_data($form_id);
+				if (empty($step_data)) return;
+				WAMS()->get_template('gravity/gravityflow-wizard.php', '', ['steps' => $step_data, 'entry' => $entry], true);
+			} else echo 'Timeline is missing';
+		}
+		function notifications_page()
+		{
+			WAMS()->enqueue()->load_notifications_page_script();
+			WAMS()->enqueue()->load_bootstrap_table_script();
+			WAMS()->get_template('notifications/notifications-settings.php', '', [], true);
+			WAMS()->get_template('notifications/notifications.php', '', [], true);
+		}
 		public function user_login_table()
 		{
 			$logs = [];
@@ -102,18 +215,78 @@ if (!class_exists('wams\core\Shortcodes')) {
 
 			WAMS()->get_template('user-logins.php', '', $logs, true);
 		}
-		public function google_analytics_test()
+		public function google_analytics_updater()
 		{
-			echo '<h1>google_analytics_test</h1>';
+			WAMS()->enqueue()->load_bootstrap_table_script();
+			WAMS()->enqueue()->load_google_analytics_script();
+			$rss_fetcher_settings = get_option('wams_rss_fetcher_settings');
+			$urls_form_settings = get_option('wams_urls_form_settings');
+			$flippedKeys = array_merge($urls_form_settings, ['id' => 'id', 'created_by' => 'created_by', 'date_created' => 'date_created']);
+			$urls_form =  $rss_fetcher_settings['urls_form'];
+			$flippedKeys = array_flip($flippedKeys);
+			// print_r($flippedKeys);
+			$entries = WAMS()->gravity()->get_cached_form_entries($urls_form, ['keys' => $flippedKeys]);
+			WAMS()->get_template('google-analytics-updater.php', '', ['header' => $urls_form_settings, 'entries' => $entries], true);
 		}
 		public function fetch_rss()
 		{
-			echo '<button id="test-btn" >fetch_rss</button>';
+			WAMS()->enqueue()->load_bootstrap_table_script();
+			WAMS()->enqueue()->load_rss_fetcher_script();
+			echo '<div id="fetched-links"></div>';
+			// WAMS()->get_template('rss-fetcher.php', '', [], true);
 		}
-		public function upload_vendors_list()
+		public function page_parser()
 		{
-			echo '<button id="test-btn" >fetch_rss</button>';
+			WAMS()->enqueue()->load_page_parser_script();
+			WAMS()->get_template('page-parser.php', '', [], true);
 		}
+		public function urls_list()
+		{
+			WAMS()->enqueue()->load_bootstrap_table_script();
+			WAMS()->enqueue()->load_tables_script();
+			$rss_fetcher_settings = get_option('wams_rss_fetcher_settings');
+			$urls_form_settings = get_option('wams_urls_form_settings');
+			$flippedKeys = array_merge($urls_form_settings, ['id' => 'id', 'created_by' => 'created_by', 'date_created' => 'date_created']);
+			$urls_form =  $rss_fetcher_settings['urls_form'];
+			$flippedKeys = array_flip($flippedKeys);
+			WAMS()->get_template('urls-list.php', '', ['header' => $flippedKeys], true);
+		}
+		public function reporters_list()
+		{
+			WAMS()->enqueue()->load_bootstrap_table_script();
+
+			$reporters_arr = [];
+
+			$reporters = get_users(['role__not_in' => ['administrator', 'um_publish-team']]);
+			foreach ($reporters as $reporter) {
+				$roles = [];
+				$direct_manager = get_user_meta($reporter->ID, 'direct_manager', true);
+				if ($direct_manager != '') {
+					$direct_manager_id = explode('|', $direct_manager)[1];
+					$direct_manager = ($direct_manager_id) ? get_userdata($direct_manager_id)->display_name : '';
+				}
+				foreach ($reporter->roles as $role) {
+					$role_name = str_replace(['um_', '-'], ['', ' '], $role);
+					$roles[] = ucwords($role_name);
+				}
+				$reporters_arr[] = [
+					'ID' => $reporter->ID,
+					'user_login' => $reporter->user_login,
+					'user_email' => $reporter->user_email,
+					'user_registered' => $reporter->user_registered,
+					'roles' => $roles,
+					'first_name' => get_user_meta($reporter->ID, 'first_name', true),
+					'last_name' => get_user_meta($reporter->ID, 'last_name', true),
+					'phone_number' => get_user_meta($reporter->ID, 'phone_number', true),
+					'telegram_chat_id' => get_user_meta($reporter->ID, 'telegram_chat_id', true),
+					'direct_manager' => $direct_manager,
+				];
+			}
+			WAMS()->get_template('reporters-list.php', '', ['reporters' => $reporters_arr], true);
+		}
+
+
+
 
 		/**
 		 * Load a compatible template

@@ -10,7 +10,7 @@ if (!class_exists('wams\core\Form')) {
 
 	/**
 	 * Class Form
-	 * @package um\core
+	 * @package wams\core
 	 */
 	class Form
 	{

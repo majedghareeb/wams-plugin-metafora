@@ -23,7 +23,6 @@ class Gravity_Flow_Step_Wams_Process extends Gravity_Flow_Step
 
     public function get_settings()
     {
-
         return array(
             'title'  => 'Update Post Status Step',
             'fields' => array(
@@ -32,14 +31,17 @@ class Gravity_Flow_Step_Wams_Process extends Gravity_Flow_Step
                 // $settings_api->get_setting_assignee_routing(),
                 array(
                     'name'          => 'process_type',
-                    'label'         => esc_html__('Process Type', 'gravityflowcs'),
+                    'label'         => esc_html__('Process Type', 'wams'),
                     'type'          => 'radio',
                     'default_value' => 'url_parse',
                     'horizontal'    => true,
                     'onchange'      => 'jQuery(this).closest("form").submit();',
                     'choices'       => array(
-                        array('label' => esc_html__('URL Parse', 'gravityflowcs'), 'value' => 'url_parse'),
-                        array('label' => esc_html__('Get Client Details', 'gravityflowcs'), 'value' => 'get_client_details'),
+                        array('label' => esc_html__('URL Parse', 'wams'), 'value' => 'url_parse', 'tooltip'  => __('Extract Data From URL.', 'wams'),),
+                        array('label' => esc_html__('Get vendor Details', 'wams'), 'value' => 'get_vendor', 'tooltip'  => __('Get Vendor ID for An Author and create new one of not found.', 'wams')),
+                        array('label' => esc_html__('Get Project Details', 'wams'), 'value' => 'get_project_details', 'tooltip'  => __('Get Project Details for a domain.', 'wams')),
+                        array('label' => esc_html__('Update User Roles', 'wams'), 'value' => 'update_user_roles', 'tooltip'  => __('Update User Roles from Form field', 'wams')),
+
                     ),
                 ),
                 array(
@@ -50,7 +52,7 @@ class Gravity_Flow_Step_Wams_Process extends Gravity_Flow_Step
                     'args'       => array(
                         'input_types' => array('text', 'website', 'list'),
                     ),
-                    'tooltip'  => __('Select the field which will contain the URL.', 'gravityflowcs'),
+                    'tooltip'  => __('Select the field which will contain the URL.', 'wams'),
                     'dependency' => array(
                         'field'  => 'process_type',
                         'values' => array('url_parse'),
@@ -59,20 +61,96 @@ class Gravity_Flow_Step_Wams_Process extends Gravity_Flow_Step
                     // 'choices'  => $outputStatus,
                 ),
                 array(
-                    'name'     => 'client_id_field_id',
+                    'name'     => 'author_field_id',
                     'required' => true,
-                    'label'    => 'Select Client ID Field',
+                    'label'    => 'Select Author Field',
                     'type'     => 'field_select',
                     'args'       => array(
-                        'input_types' => array('number', 'wams_search', 'text'),
+                        'input_types' => array('text', 'number', 'wams_search'),
                     ),
-                    'tooltip'  => __('Select the field which will contain the Client ID.', 'gravityflowcs'),
+                    'tooltip'  => __('Select the field which will contain the Author.', 'wams'),
                     'dependency' => array(
                         'field'  => 'process_type',
-                        'values' => array('get_client_details'),
+                        'values' => array('get_vendor'),
                     ),
 
                     // 'choices'  => $outputStatus,
+                ),
+                array(
+                    'name'     => 'domain_field_id',
+                    'required' => true,
+                    'label'    => 'Select Domain Field',
+                    'type'     => 'field_select',
+                    'args'       => array(
+                        'input_types' => array('text', 'website', 'select'),
+                    ),
+                    'tooltip'  => __('Select the field which will contain the Author.', 'wams'),
+                    'dependency' => array(
+                        'field'  => 'process_type',
+                        'values' => array('get_project_details'),
+                    ),
+
+                    // 'choices'  => $outputStatus,
+                ),
+                array(
+                    'name'     => 'project_field_id',
+                    'required' => true,
+                    'label'    => 'Select Project Field',
+                    'type'     => 'field_select',
+                    'args'       => array(
+                        'input_types' => array('text', 'number', 'wams_search'),
+                    ),
+                    'tooltip'  => __('Select the field which will contain the Author.', 'wams'),
+                    'dependency' => array(
+                        'field'  => 'process_type',
+                        'values' => array('get_project_details'),
+                    ),
+
+                    // 'choices'  => $outputStatus,
+                ),
+                array(
+                    'name'     => 'project_manager_field_id',
+                    'required' => true,
+                    'label'    => 'Select Project Manager Field',
+                    'type'     => 'field_select',
+                    'args'       => array(
+                        'input_types' => array('workflow_user'),
+                    ),
+                    'tooltip'  => __('Select the field which will contain the Author.', 'wams'),
+                    'dependency' => array(
+                        'field'  => 'process_type',
+                        'values' => array('get_project_details'),
+                    ),
+
+                    // 'choices'  => $outputStatus,
+                ),
+                array(
+                    'name'     => 'user_email_field',
+                    'required' => true,
+                    'label'    => 'Select User ID Field',
+                    'type'     => 'field_select',
+                    'args'       => array(
+                        'input_types' => array('email'),
+                    ),
+                    'tooltip'  => __('Select the field which will contain the User ID.', 'wams'),
+                    'dependency' => array(
+                        'field'  => 'process_type',
+                        'values' => array('update_user_roles'),
+                    ),
+                ),
+                array(
+                    'name'     => 'roles_field',
+                    'required' => true,
+                    'label'    => 'Select Roles Field',
+                    'type'     => 'field_select',
+                    'args'       => array(
+                        'input_types' => array('select'),
+                    ),
+                    'tooltip'  => __('Select the field which will contain the Roles.', 'wams'),
+                    'dependency' => array(
+                        'field'  => 'process_type',
+                        'values' => array('update_user_roles'),
+                    ),
                 ),
                 array(
                     'name'     => 'output_field_id',
@@ -80,9 +158,45 @@ class Gravity_Flow_Step_Wams_Process extends Gravity_Flow_Step
                     'label'    => 'Select the output field',
                     'type'     => 'field_select',
                     'args'       => array(
-                        'input_types' => array('textarea'),
+                        'input_types' => array('text', 'wams_search'),
                     ),
-                    'tooltip'  => __('Select the textarea Field to write the output in it', 'gravityflowcs'),
+                    'dependency' => array(
+                        'field'  => 'process_type',
+                        'values' => array('get_vendor'),
+                    ),
+                    'tooltip'  => __('Select the Vendor Field to write the matching vendor to', 'wams'),
+
+                    // 'choices'  => $outputStatus,
+                ),
+                array(
+                    'name'     => 'title_field_id',
+                    'required' => true,
+                    'label'    => 'Select the Title field',
+                    'type'     => 'field_select',
+                    'args'       => array(
+                        'input_types' => array('text', 'wams_search'),
+                    ),
+                    'dependency' => array(
+                        'field'  => 'process_type',
+                        'values' => array('url_parse'),
+                    ),
+                    'tooltip'  => __('Select the field ID to set Title Tag of URL', 'wams'),
+
+                    // 'choices'  => $outputStatus,
+                ),
+                array(
+                    'name'     => 'hostname_field_id',
+                    'required' => true,
+                    'label'    => 'Select the Hostname field',
+                    'type'     => 'field_select',
+                    'args'       => array(
+                        'input_types' => array('text', 'wams_search'),
+                    ),
+                    'dependency' => array(
+                        'field'  => 'process_type',
+                        'values' => array('url_parse'),
+                    ),
+                    'tooltip'  => __('Select the field ID to set Hostname of URL', 'wams'),
 
                     // 'choices'  => $outputStatus,
                 ),
@@ -102,8 +216,14 @@ class Gravity_Flow_Step_Wams_Process extends Gravity_Flow_Step
             case 'url_parse':
                 $result = $this->process_url_parse();
                 break;
-            case 'get_client_details':
-                $result = $this->process_get_client_details();
+            case 'get_vendor':
+                $result = $this->process_get_vendor();
+                break;
+            case 'get_project_details':
+                $result = $this->process_project_details();
+                break;
+            case 'update_user_roles':
+                $result = $this->update_user_roles();
                 break;
         }
 
@@ -116,13 +236,23 @@ class Gravity_Flow_Step_Wams_Process extends Gravity_Flow_Step
 
     }
 
-
+    public function update_user_roles()
+    {
+        $user_id_field_id = $this->get_setting('user_id_field');
+        $roles_field_id = $this->get_setting('roles_field');
+        $entry = $this->get_entry();
+        $form = $this->get_form();
+        $user_id = rgar($this->get_entry(), $user_id_field_id);
+        $roles = rgar($this->get_entry(), $roles_field_id);
+        WAMS()->common()->Logger()::info('Custom Step : ' . $user_id . ' ' . $roles);
+    }
 
     public function process_url_parse()
     {
         $meta_data = [];
         $url_field_id = $this->get_setting('url_field_id');
-        $output_field_id = $this->get_setting('output_field_id');
+        $title_field_id = $this->get_setting('title_field_id');
+        $hostname_field_id = $this->get_setting('hostname_field_id');
         $entry = $this->get_entry();
         $form = $this->get_form();
         $field = GFAPI::get_field($form, $url_field_id);
@@ -133,30 +263,209 @@ class Gravity_Flow_Step_Wams_Process extends Gravity_Flow_Step
                 $list = unserialize($list);
                 foreach ($list as $url) {
                     if (!$this->isURL($url)) continue;
-                    $meta_data = $this->get_url_meta_data($url);
-                    $entry[$output_field_id]  .= print_r($meta_data, true);
+                    $title = $this->get_url_title($url);
+                    $hostname = $this->get_host_name($url);
+                    $entry[$title_field_id]  = $title;
+                    $entry[$hostname_field_id]  = $hostname;
                 }
-
                 break;
             case 'text':
-                $url = rgar($this->get_entry(), $url_field_id);
-                if (!$this->isURL($url)) return false;
-                $meta_data = $this->get_url_meta_data($url);
-                $entry[$output_field_id]  .= print_r($meta_data, true);
-                break;
             case 'website':
                 $url = rgar($this->get_entry(), $url_field_id);
-                $meta_data = $this->get_url_meta_data($url);
-                $entry[$output_field_id]  .= print_r($meta_data, true);
-                break;
-            default:
-                return false;
+                if (!$this->isURL($url)) {
+                    $entry[$title_field_id] = 'Not Valid URL';
+                } else {
+                    $title = $this->get_url_title($url);
+                    $hostname = $this->get_host_name($url);
+                    $entry[$title_field_id]  = $title;
+                    $entry[$hostname_field_id]  = $hostname;
+                }
                 break;
         }
         GFAPI::update_entry($entry);
 
         return true;
     }
+
+    public function process_get_vendor()
+    {
+        $author_field_id = $this->get_setting('author_field_id');
+        $output_field_id = $this->get_setting('output_field_id');
+        $entry = $this->get_entry();
+        $form = $this->get_form();
+        $field = GFAPI::get_field($form, $author_field_id);
+        $field_type = $field->get_input_type();
+        switch ($field_type) {
+            case 'text':
+                // author name is stored
+                $author = rgar($this->get_entry(), $author_field_id);
+                $vendor_id = $this->get_vendor_by_rss_author_name($author);
+                $entry[$output_field_id]  = $vendor_id;
+                break;
+            default:
+                return false;
+                break;
+        }
+        GFAPI::update_entry($entry);
+        return true;
+    }
+    public function process_project_details()
+    {
+        $domain_field_id = $this->get_setting('domain_field_id');
+        $project_field_id = $this->get_setting('project_field_id');
+        $project_manager_field_id = $this->get_setting('project_manager_field_id');
+
+        $entry = $this->get_entry();
+        $form = $this->get_form();
+        $field = GFAPI::get_field($form, $domain_field_id);
+        $field_type = $field->get_input_type();
+        switch ($field_type) {
+            case 'text':
+            case 'website':
+                $domain = $this->get_host_name(rgar($this->get_entry(), $domain_field_id));
+                $project = $this->get_project_data($domain);
+                if (!empty($project)) {
+                    $entry[$project_field_id]  = $project['name'];
+                    $entry[$project_manager_field_id]  = $project['project_manager'];
+                }
+                break;
+            default:
+                return false;
+                break;
+        }
+        GFAPI::update_entry($entry);
+        return true;
+    }
+
+    public function isURL($string)
+    {
+        return filter_var($string, FILTER_VALIDATE_URL) !== false;
+    }
+
+    public function get_form_field_type()
+    {
+        $form = GFAPI::get_form(23);
+        if (is_array($form['fields'])) {
+            foreach ($form['fields'] as $field) {
+                echo $input_type = $field->get_input_type() . '<br>';
+                echo  $inputs     = print_r($field->get_entry_inputs(), true) . '<br>';
+            }
+        }
+    }
+
+    /**
+     * Get  Host Name from URL and remove subdomain
+     * @param   string  URL
+     * @return  string  Hostname
+     */
+    public function get_host_name($url)
+    {
+        $parsedUrl = parse_url($url);
+        $hostName = isset($parsedUrl['host']) ? $parsedUrl['host'] : '';
+
+        $domain = preg_replace('/^www\./', '', $hostName);
+        return $domain;
+    }
+
+    public function getDateTime($string)
+    {
+        if (strlen($string) > 24) $string = preg_replace('/:00/', '', $string);
+        $dateFormats = [
+            'Y-m-d\TH:i:sO',      // 2023-08-28T16:07:43+0300
+            'Y-m-d H:i:s',        // 2023-08-28 16:07:43
+            'Y-m-d',              // 2023-08-28
+            // Add more formats here...
+        ];
+        foreach ($dateFormats as $format) {
+            $datetime = DateTime::createFromFormat($format, $string);
+            if ($datetime !== false) {
+                return $datetime->format('Y-m-d H:i:s');
+            }
+        }
+
+        return false; // No matching format found
+    }
+    /**
+     * get vendor ID for Author
+     *
+     * @param [author] Author Name
+     * @return mixed Vendor ID or False if not found
+     */
+    public function get_vendor_by_rss_author_name($author)
+    {
+        // switch_to_blog(WAMS_MAIN_BLOG_ID);
+        $wams_rss_fetcher_settings = get_option('wams_rss_fetcher_settings') ?? 0;
+        $wams_urls_form_settings = get_option('wams_urls_form_settings') ?? 0;
+        $wams_vendor_on_rss_form_settings = get_option('wams_vendor_on_rss_form_settings') ?? 0;
+        $vendor_name_on_rss_form_id = $wams_rss_fetcher_settings['vendor_rss_form'] ?? 0;
+        $author_name_field = $wams_vendor_on_rss_form_settings['author_name'] ?? 0;
+        $vendor_id = $wams_vendor_on_rss_form_settings['vendor_id'] ?? 0;
+        // $wams_vendor_form_settings = get_option('wams_vendor_form_settings');
+        // $vendor_name_field_id = $wams_vendor_form_settings['vendor_name'] ?? 0;
+        if ($vendor_name_on_rss_form_id && $author_name_field && $vendor_id) {
+            $existing_entries = $this->get_entry_if_exists($vendor_name_on_rss_form_id, $author, $author_name_field);
+            if (!is_wp_error($existing_entries)) {
+                $vendor_id = rgar($existing_entries[0], $vendor_id);
+                return (!is_null($vendor_id)) ? $vendor_id : false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+
+    /**
+     * get vendor ID for Author
+     *
+     * @param string  domain host Name
+     * @return array project details [code,project_manager]
+     */
+    public function get_project_data($domain)
+    {
+        $project = [];
+        $forms = get_option('wams_forms_settings');
+        $project_form = $forms['project_form'];
+        $domain_form = $forms['domain_form'];
+        $wams_project_form_settings = get_option('wams_project_form_settings');
+        $wams_domain_form_settings = get_option('wams_domain_form_settings');
+        $project_name_field_id = $wams_project_form_settings['project_name'] ?? 1;
+        $project_code_field_id = $wams_project_form_settings['project_code'] ?? 6;
+        $project_manager_field_id = $wams_project_form_settings['project_manager'] ?? 4;
+        $host_name_field_id = $wams_domain_form_settings['host_name'] ?? 6;
+        $domain_project_field_id = $wams_domain_form_settings['domain_project'] ?? 8;
+        $domain = $this->get_entry_if_exists($domain_form, $domain, $host_name_field_id);
+        if ($domain) {
+
+            $_project = rgar($domain, $domain_project_field_id);
+            $project_data = $this->get_entry_if_exists($project_form, $_project, $project_code_field_id);
+            if ($project_data) {
+                $project['name'] = rgar($project_data, $project_name_field_id);
+                $project['code'] = rgar($project_data, $project_code_field_id);
+                $project['project_manager'] = rgar($project_data, $project_manager_field_id);
+            }
+        }
+        return $project;
+    }
+
+    /**
+     * Check if enry exists
+     * @return  array|bool  first as array or false if not fount
+     */
+    private function get_entry_if_exists($form_id, $value_to_search, $match_field)
+    {
+        $search_criteria  = array(
+            'status' => 'active',
+            'field_filters' => array(
+                array(
+                    'key'   => $match_field,  // Original Client ID Field ID in Add New Clients Form
+                    'value' => $value_to_search,
+                )
+            )
+        );
+        return GFAPI::get_entries($form_id, $search_criteria);
+    }
+
+
     public function process_get_client_details()
     {
         $client_data = [];
@@ -181,43 +490,6 @@ class Gravity_Flow_Step_Wams_Process extends Gravity_Flow_Step
         return true;
     }
 
-    public function isURL($string)
-    {
-        return filter_var($string, FILTER_VALIDATE_URL) !== false;
-    }
-
-
-    public function get_form_field_type()
-    {
-        $form = GFAPI::get_form(23);
-        if (is_array($form['fields'])) {
-            foreach ($form['fields'] as $field) {
-                echo $input_type = $field->get_input_type() . '<br>';
-                echo  $inputs     = print_r($field->get_entry_inputs(), true) . '<br>';
-            }
-        }
-    }
-
-
-
-    public function getDateTime($string)
-    {
-        if (strlen($string) > 24) $string = preg_replace('/:00/', '', $string);
-        $dateFormats = [
-            'Y-m-d\TH:i:sO',      // 2023-08-28T16:07:43+0300
-            'Y-m-d H:i:s',        // 2023-08-28 16:07:43
-            'Y-m-d',              // 2023-08-28
-            // Add more formats here...
-        ];
-        foreach ($dateFormats as $format) {
-            $datetime = DateTime::createFromFormat($format, $string);
-            if ($datetime !== false) {
-                return $datetime->format('Y-m-d H:i:s');
-            }
-        }
-
-        return false; // No matching format found
-    }
     /**
      * get Client Related Data
      *
@@ -312,92 +584,29 @@ class Gravity_Flow_Step_Wams_Process extends Gravity_Flow_Step
         return $related_orders;
     }
     // Function to extract meta data from a URL
-    public function get_url_meta_data($url)
+    public function get_url_title($url)
     {
-        // Use WordPress HTTP API to fetch the URL and extract meta data
-        $html = wp_remote_retrieve_body(wp_remote_get($url));
-
-        // Parse the HTML and extract the meta data
-        $doc = new DOMDocument();
-        @$doc->loadHTML($html);
-
-        $title = '';
-        $description = '';
-
-        // Get the title tag
-        $title_elements = $doc->getElementsByTagName('title');
-        if ($title_elements->length > 0) {
-            $title = $title_elements->item(0)->nodeValue;
-        }
-
-        // Get the meta description tag
-        $meta_tags = [];
-        $schema = [];
-        $meta_elements = $doc->getElementsByTagName('meta');
-        foreach ($meta_elements as $meta) {
-            $key =  ($meta->getAttribute('name')) ? $meta->getAttribute('name') : $meta->getAttribute('property');
-            $content = $meta->getAttribute('content');
-            if ($key !== '') {
-                $meta_tags[$key] = $content;
-            }
-        }
-        $scriptElements = $doc->getElementsByTagName('script');
-        $schemaJsonLd = null;
-        $dataLayer = [];
-        foreach ($scriptElements as $scriptElement) {
-            if ($scriptElement->getAttribute('type') === 'application/ld+json') {
-                $schemaJsonLd = json_decode($scriptElement->textContent);
-            }
-            $text = $scriptElement->textContent;
-            $pattern = '/dataLayer\.push\((.*?)\);/s';
-            preg_match($pattern, $text, $matches);
-
-            if (isset($matches[1])) {
-                $jsonString = $matches[1];
-                $lastCommaPosition = strrpos($jsonString, ',');
-
-                if ($lastCommaPosition !== false) {
-                    // Remove the last comma
-                    $stringWithoutComma = substr_replace($jsonString, '', $lastCommaPosition, 1);
-                    $stringWithoutComma = str_replace("'", '"', $stringWithoutComma);
-                    // echo $stringWithoutComma;
-                }
-                $arrayData = json_decode($stringWithoutComma, true);
-
-                if ($arrayData !== null) {
-                    foreach ($arrayData as $key => $value) {
-                        $dataLayer[$key] =  $value;
-                    }
-                } else {
-                    $dataLayer[] =  ["Invalid JSON string."];
-                }
-                // echo  $jsonString;
-            }
-        }
-
-
-        if (isset($schemaJsonLd->{"@graph"}[0])) {
-            $schema['headline'] = $schemaJsonLd->{"@graph"}[0]->headline;
-            $schema['description'] = $schemaJsonLd->{"@graph"}[0]->description;
-            $schema['author'] = $schemaJsonLd->{"@graph"}[0]->author->name;
-            // $datePublished = new DateTime($schemaJsonLd->{"@graph"}[0]->datePublished);
-            $datePublished = $schemaJsonLd->{"@graph"}[0]->datePublished;
-            $dateModified = $schemaJsonLd->{"@graph"}[0]->dateModified;
-            $datePublishedFormat = $this->getDateTime($datePublished) ?? $this->getDateTime($datePublished);
-            $dateModifiedFormat = $this->getDateTime($dateModified) ?? $this->getDateTime($dateModified);
-            // $dateModified = new DateTime($schemaJsonLd->{"@graph"}[0]->dateModified);
-            $schema['datePublished'] = $datePublishedFormat;
-            $schema['dateModified'] = $dateModifiedFormat;
-        } else {
-
-            $schema =  ["graph not found."];
-        }
-
+        $title = WAMS()->web_page_parser()->getTitle($url);
+        if (isset($title['title'])) return $title;
+        return 'N/A';
+    }
+    public function get_url_status($url)
+    {
         // Return the extracted meta data
-        return array(
-            'meta_tags' => $meta_tags,
-            'schema' => $schema,
-            'dataLayer' => $dataLayer,
-        );
+        $status = '';
+        $status_code = WAMS()->web_page_parser()->getStatusCode($url);
+        switch ($status_code) {
+            case '200':
+                $status = __('URL is Valid ', 'wams');
+                break;
+            case '404':
+                $status = __('URL Not Found!', 'wams');
+                break;
+
+            default:
+                $status = __('Could Not Get URL Data! ', 'wams');
+                break;
+        }
+        return $status;
     }
 }

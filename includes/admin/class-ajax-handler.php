@@ -31,172 +31,6 @@ if (!class_exists('wams\admin\AJAX_Handler')) {
         {
         }
 
-        public function site_setup_ajax_handler()
-        {
-            if (!wp_verify_nonce($_POST['nonce'], 'wams-admin-nonce') || !current_user_can('manage_options')) {
-                wp_die(esc_attr__('Security Check', 'wams'));
-            }
-
-            if (empty($_POST['param'])) {
-                wp_send_json_error(__('Invalid Action.', 'wams'));
-            }
-            switch ($_POST['param']) {
-                case 'install_pages':
-                    $messages = [];
-                    $default_pages = [
-                        [
-                            'title' => 'Home',
-                            'slug' => '/',
-                            'content' => '[home-page]',
-                        ],
-                        [
-                            'title' => 'Inbox',
-                            'slug' => 'inbox',
-                            'content' => '[gravityflow page="inbox"]',
-                        ],
-                        [
-                            'title' => 'Status',
-                            'slug' => 'status',
-                            'content' => '[gravityflow page="status"]',
-                        ],
-                        [
-                            'title' => 'notification',
-                            'slug' => 'notification',
-                            'content' => '[wams_notifications]',
-                        ],
-                        [
-                            'title' => 'Messages',
-                            'slug' => 'messages',
-                            'content' => '[wams_messages]',
-                        ],
-                        [
-                            'title' => 'My Logins',
-                            'slug' => 'my-logins',
-                            'content' => '[wams-user-logins]',
-                        ],
-                        [
-                            'title' => 'Tasks Calendar',
-                            'slug' => 'tasks-calendar',
-                            'content' => '[wams-tasks-calendar]',
-                        ],
-                        [
-                            'title' => 'Charts',
-                            'slug' => 'charts',
-                            'content' => '[wams-charts]',
-                        ],
-                        [
-                            'title' => 'Link Telegram',
-                            'slug' => 'link-my-telegram',
-                            'content' => '[link-my-telegram]',
-                        ],
-                        [
-                            'title' => 'Page Parser',
-                            'slug' => 'page-parser',
-                            'content' => '[page-parser]',
-                        ],
-                        [
-                            'title' => 'Upload Vendors',
-                            'slug' => 'upload-vendors-list',
-                            'content' => '[upload-vendors-list]',
-                        ],
-                        [
-                            'title' => 'Fetch RSS Feed',
-                            'slug' => 'fetch-rss',
-                            'content' => '[fetch-rss]',
-                        ],
-                    ];
-                    foreach ($default_pages as $page) {
-                        if (get_page_by_path($page['slug'])) {
-                            $messages[] = 'Page : ' . $page['title'] . ' already exists';
-                            continue;
-                        }
-                        $core_page = array(
-                            'post_title'     => $page['title'],
-                            'post_content'   => $page['content'],
-                            'post_name'      => sanitize_title($page['slug']),
-                            'post_type'      => 'page',
-                            'post_status'    => 'publish',
-                            'post_author'    => get_current_user_id(),
-                            'comment_status' => 'closed',
-                        );
-                        $post_id = wp_insert_post($core_page);
-                        update_post_meta($post_id, '_wams_core', sanitize_title($page['title']));
-                        $messages[] = 'new page created :' . $page['title'];
-                    }
-                    $forms_page = [];
-                    $forms = WAMS()->admin()->get_forms();
-                    foreach ($forms as $id => $title) {
-                        if (get_page_by_path(sanitize_title($title))) {
-                            $messages[] = 'Page : ' . $title . ' already exists';
-                            continue;
-                        }
-                        $forms_page = array(
-                            'post_title'     => $title,
-                            'post_content'   => '[gravityform id="' . $id . '" title="false" description="false" ajax="true" ]',
-                            'post_name'      => sanitize_title($title),
-                            'post_type'      => 'page',
-                            'post_status'    => 'publish',
-                            'post_author'    => get_current_user_id(),
-                            'comment_status' => 'closed',
-                        );
-
-                        $post_id = wp_insert_post($forms_page);
-                        update_post_meta($post_id, '_wams_forms', sanitize_title($title));
-                        $messages[] = 'new page created :' . $title;
-                    }
-                    wp_send_json_success(['messages' => $messages]);
-                    wp_die();
-                    break;
-                case 'install_views':
-                    $messages = [];
-                    $view = [];
-                    $forms = WAMS()->admin()->get_forms();
-                    foreach ($forms as $id => $title) {
-                        if (get_page_by_path(sanitize_title('view-' . $title), OBJECT, 'gravityview')) {
-                            $messages[] = 'View : ' . $title . ' already exists';
-                            continue;
-                        }
-                        $messages[] = $title;
-                        $view = array(
-                            'post_title'     => 'View: ' . $title,
-                            'post_content'   => '',
-                            'post_name'      => sanitize_title('view-' . $title),
-                            'post_type'      => 'gravityview',
-                            'post_status'    => 'publish',
-                            'post_author'    => get_current_user_id(),
-                        );
-
-                        $view_id = wp_insert_post($view);
-                        update_post_meta($view_id, '_wams_views', sanitize_title('view_' . $title));
-                        update_post_meta($view_id, '_gravityview_form_id', $id);
-                        update_post_meta($view_id, '_gravityview_directory_template', 'default_table');
-                        update_post_meta($view_id, '_gravityview_template_settings', `'a:39:{s:8:"lightbox";s:1:"0";s:18:"show_only_approved";s:1:"0";s:23:"admin_show_all_statuses";s:1:"0";s:9:"page_size";s:2:"25";s:19:"hide_until_searched";s:1:"0";s:10:"hide_empty";s:1:"1";s:18:"no_entries_options";s:1:"0";s:15:"no_results_text";s:0:"";s:15:"no_entries_form";s:0:"";s:21:"no_entries_form_title";s:1:"1";s:27:"no_entries_form_description";s:1:"1";s:19:"no_entries_redirect";s:0:"";s:22:"no_search_results_text";s:0:"";s:12:"single_title";s:0:"";s:15:"back_link_label";s:0:"";s:17:"hide_empty_single";s:1:"1";s:12:"edit_locking";s:1:"1";s:9:"user_edit";s:1:"0";s:14:"unapprove_edit";s:1:"0";s:13:"edit_redirect";s:0:"";s:17:"edit_redirect_url";s:0:"";s:19:"action_label_update";s:6:"Update";s:19:"action_label_cancel";s:6:"Cancel";s:19:"action_label_delete";s:6:"Delete";s:11:"user_delete";s:1:"0";s:15:"delete_redirect";s:1:"1";s:19:"delete_redirect_url";s:0:"";s:12:"sort_columns";s:0:"";s:10:"sort_field";a:2:{i:0;s:0:"";i:1;s:0:"";}s:14:"sort_direction";a:2:{i:0;s:3:"ASC";i:1;s:3:"ASC";}s:10:"start_date";s:0:"";s:8:"end_date";s:0:"";s:10:"embed_only";s:1:"0";s:14:"user_duplicate";s:1:"0";s:11:"rest_enable";s:1:"0";s:10:"csv_enable";s:1:"0";s:11:"csv_nolimit";s:1:"0";s:10:"custom_css";s:0:"";s:17:"custom_javascript";s:0:"";}'`);
-                        $messages[] = 'new View created :' . $title;
-                        $view_page = array(
-                            'post_title'     => 'View: ' . $title,
-                            'post_content'   => '[gravityview id="' . $view_id . ']',
-                            'post_name'      => sanitize_title('view_' . $title),
-                            'post_type'      => 'page',
-                            'post_status'    => 'publish',
-                            'post_author'    => get_current_user_id(),
-                            'comment_status' => 'closed',
-                        );
-
-                        $post_id = wp_insert_post($view_page);
-                        update_post_meta($post_id, '_wams_views', sanitize_title($title));
-                        $messages[] = 'new page created :' . $title . ' for view id:  ' . $view_id;
-                    }
-                    wp_send_json_success(['messages' => $messages]);
-                    wp_die();
-                    break;
-                case 'install_user_menu':
-                    //Create User Menu
-
-                    wp_send_json_success(['messages' => ['User Menu Setup']]);
-                    break;
-            }
-        }
-
         public function db_cleanup_ajax_handler()
         {
             if (!wp_verify_nonce($_POST['nonce'], 'wams-admin-nonce') || !current_user_can('manage_options')) {
@@ -367,7 +201,29 @@ if (!class_exists('wams\admin\AJAX_Handler')) {
                         'notification_uri' => '/',
                         'message' => $message . ' # ' . rand(1, 100),
                     ];
-                    WAMS()->web_notifications()->store_notification($user_id, "TEST", $arg);
+                    WAMS()->web_notifications()->store_notification($user_id, "new-task", "New Message", $arg);
+                    wp_send_json(['success', 'Test Message has been sent']);
+
+                    break;
+            }
+        }
+        public function telegram_notifications_ajax_handler()
+        {
+            if (!wp_verify_nonce($_POST['nonce'], 'wams-admin-nonce') || !current_user_can('manage_options')) {
+                wp_die(esc_attr__('Security Check', 'wams'));
+            }
+
+            if (empty($_POST['param'])) {
+                wp_send_json_error(__('Invalid Action.', 'wams'));
+            }
+            switch ($_POST['param']) {
+                case 'send_test_notification':
+                    $message = $_POST['message'] ?? 'TEST Message';
+                    $user_id = $_POST['user_id'] ?? get_current_user_id();
+                    $channel_id = $_POST['user_channel_id'] ?? false;
+
+                    WAMS()->telegram_notifications()->send_telegram_message($user_id, $message);
+                    if (!$channel_id) WAMS()->telegram_notifications()->send_message_to_channel($channel_id, $message);
                     wp_send_json(['success', 'Test Message has been sent']);
 
                     break;

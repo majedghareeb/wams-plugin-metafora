@@ -4,26 +4,28 @@
         <div class="m-3">
             <?php if (!empty($token)) : ?>
                 <form name="wams_form" method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
-                    <?php if (!empty($ga4_profiles_list)) : ?>
-                        <div class="mb-3 row">
+                    <?php //if (!empty($ga4_profiles_list)) : 
+                    ?>
+                    <div class="mb-3 row">
 
-                            <label for="default_profile">GA4 Main Profile</label>
-                            <select name="default_profile" id="default_profile">
-                                <?php
-                                foreach ($ga4_profiles_list as $profile) {
-                                    $selected = ($profile['1'] == $options['default_profile']) ? 'selected' : '';
-                                    echo '<option ' . $selected . ' value="' . $profile['1'] . '">';
-                                    // echo  $profile['1'];
-                                    echo  $profile['2'] . ' - ';
-                                    echo  $profile['0'] . ' - ';
-                                    echo  $profile['3'];
-                                    echo '</option>';
-                                    # code...
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    <?php endif; ?>
+                        <label for="default_profile">GA4 Main Profile</label>
+                        <select name="default_profile" id="default_profile">
+                            <?php
+                            foreach ($ga4_profiles_list as $profile) {
+                                $selected = ($profile['1'] == $options['default_profile']) ? 'selected' : '';
+                                echo '<option ' . $selected . ' value="' . $profile['1'] . '">';
+                                // echo  $profile['1'];
+                                echo  $profile['2'] . ' - ';
+                                echo  $profile['0'] . ' - ';
+                                echo  $profile['3'];
+                                echo '</option>';
+                                # code...
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <?php //endif; 
+                    ?>
 
                     <?php
 
@@ -41,11 +43,41 @@
     </div>
 </div>
 
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-2">
+                <h5 class="card-title">Test Google Analytics</h5>
+            </div>
+            <div class="mb-3">
+                <label for="account" class="form-label">Account</label>
+                <select class="form-select form-select-lg" name="default_profile" id="default_profile">
+                    <option selected>Select Account</option>
+                    <?php
+                    foreach ($ga4_profiles_list as $profile) {
+                        $selected = ($options['default_profile'] == $profile['1']) ? 'selected' : '';
+                        echo '<option ' . $selected . ' value="' . $profile['1'] . '">';
+                        // echo  $profile['1'];
+                        echo  $profile['0'] . ' - ';
+                        echo  $profile['3'];
+                        echo '</option>';
+                        # code...
+                    }
+                    ?>
+                </select>
+            </div>
+            <div><button type="submit" id="test-google-analytics" class="btn btn-primary">Submit</button></div>
+            <div id="test-result" class="mb-3">
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php
 // $results[] = $ga->get($view_id, $query, $from, $to, $decoded_url);
-$options = (array) json_decode(get_option('wams_ga_options'));
+// $options = (array) json_decode(get_option('wams_ga_options'));
 // print_r($options['ga4_profiles_list']);
-echo '<pre>' . print_r($ga4_profiles_list) . '</pre>';
+// echo '<pre>' . print_r($ga4_profiles_list) . '</pre>';
 
-print_r($result);
+// print_r($result);

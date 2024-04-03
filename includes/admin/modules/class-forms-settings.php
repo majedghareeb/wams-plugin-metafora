@@ -97,7 +97,7 @@ if (!class_exists('wams\admin\modules\Forms_Settings')) {
                     'wams_forms_settings' => [
                         [
                             'name'    => 'company_form',
-                            'label'   => __('Company Form', 'wams'),
+                            'label'   => __('Company Form ID', 'wams'),
                             'desc'    => __('wams_forms_settings["company_form"]', 'wams'),
                             'type'    => 'select',
                             'default' => 'no',
@@ -105,7 +105,7 @@ if (!class_exists('wams\admin\modules\Forms_Settings')) {
                         ],
                         [
                             'name'    => 'project_form',
-                            'label'   => __('Projet Form', 'wams'),
+                            'label'   => __('Projet Form ID', 'wams'),
                             'desc'    => __('wams_forms_settings["project_form"]', 'wams'),
                             'type'    => 'select',
                             'default' => 'no',
@@ -113,7 +113,7 @@ if (!class_exists('wams\admin\modules\Forms_Settings')) {
                         ],
                         [
                             'name'    => 'domain_form',
-                            'label'   => __('Domain Form', 'wams'),
+                            'label'   => __('Domain Form ID', 'wams'),
                             'desc'    => __('wams_forms_settings["domain_form"]', 'wams'),
                             'type'    => 'select',
                             'default' => 'no',
@@ -121,7 +121,7 @@ if (!class_exists('wams\admin\modules\Forms_Settings')) {
                         ],
                         [
                             'name'    => 'user_form',
-                            'label'   => __('User Form', 'wams'),
+                            'label'   => __('User Form ID', 'wams'),
                             'desc'    => __('wams_forms_settings["user_form"]', 'wams'),
                             'type'    => 'select',
                             'default' => 'no',
@@ -129,7 +129,7 @@ if (!class_exists('wams\admin\modules\Forms_Settings')) {
                         ],
                         [
                             'name'    => 'urls_form',
-                            'label'   => __('URLs Form', 'wams'),
+                            'label'   => __('URLs Form ID', 'wams'),
                             'desc'    => __('wams_forms_settings["urls_form"]', 'wams'),
                             'type'    => 'select',
                             'default' => 'no',
@@ -137,31 +137,15 @@ if (!class_exists('wams\admin\modules\Forms_Settings')) {
                         ],
                         [
                             'name'    => 'vendor_form',
-                            'label'   => __('Vendor Form', 'wams'),
+                            'label'   => __('Vendor Form ID', 'wams'),
                             'desc'    => __('wams_forms_settings["vendor_form"]', 'wams'),
                             'type'    => 'select',
                             'default' => 'no',
                             'options' => ($forms)
                         ],
                         [
-                            'name'    => 'vendor_projectss_form',
-                            'label'   => __('Vendor Project Form', 'wams'),
-                            'desc'    => __('wams_forms_settings["vendor_projects_form"]', 'wams'),
-                            'type'    => 'select',
-                            'default' => 'no',
-                            'options' => ($forms)
-                        ],
-                        [
-                            'name'    => 'vendor_companies_form',
-                            'label'   => __('Vendor Companies Form', 'wams'),
-                            'desc'    => __('wams_forms_settings["vendor_companies_form"]', 'wams'),
-                            'type'    => 'select',
-                            'default' => 'no',
-                            'options' => ($forms)
-                        ],
-                        [
                             'name'              => 'vendor_personal_details_form',
-                            'label'             => __('Vendor Personal Details Form', 'wams'),
+                            'label'             => __('Vendor Personal Details Sub Form', 'wams'),
                             'desc'              => __('Please choose vendor Personal Details Form', 'wams'),
                             'type'              => 'select',
                             'default'           => '',
@@ -169,7 +153,7 @@ if (!class_exists('wams\admin\modules\Forms_Settings')) {
                         ],
                         [
                             'name'              => 'vendor_banking_details_form',
-                            'label'             => __('Vendor Banking Details Form', 'wams'),
+                            'label'             => __('Vendor Banking Details Sub Form', 'wams'),
                             'desc'              => __('Please choose vendor Banking Details Form', 'wams'),
                             'type'              => 'select',
                             'default'           => '',
@@ -306,6 +290,13 @@ if (!class_exists('wams\admin\modules\Forms_Settings')) {
                                 'name'  => 'vendor_sap_id',
                                 'label' => 'Vendor SAP ID',
                                 'desc'  => 'SAP ID',
+                                'type'  => 'select',
+                                'options' => $_form_fields
+                            ],
+                            [
+                                'name'  => 'vendor_name_on_rss',
+                                'label' => 'Vendor Name On RSS Feed',
+                                'desc'  => 'Vendor Name as appear On RSS Feed',
                                 'type'  => 'select',
                                 'options' => $_form_fields
                             ]

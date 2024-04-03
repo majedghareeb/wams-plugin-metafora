@@ -2,6 +2,9 @@
 
 namespace wams\frontend;
 
+use GFAPI;
+use GFFormsModel;
+
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -20,6 +23,36 @@ if (!class_exists('wams\core\Charts')) {
         {
         }
 
+        public function charts_ajax_handler()
+        {
+            if (!wp_verify_nonce($_POST['nonce'], 'wams-frontend-nonce')) {
+                wp_die(esc_attr__('Security Check', 'wams'));
+            }
+
+            if (empty($_POST['param'])) {
+                wp_send_json_error(__('Invalid Action.', 'wams'));
+            }
+
+            switch ($_POST['param']) {
+                case 'get_chart_data':
+                    if (isset($_POST['form_id'])) {
+                        $tasks = $this->wams_get_workflow_status($_POST['form_id']);
+                        wp_send_json_success($tasks);
+                    } else {
+                        wp_send_json_error('Form Not Found');
+                    }
+
+                    break;
+
+                default:
+                    wp_send_json(['ok']);
+
+                    break;
+            }
+            wp_die();
+        }
+
+
         public function show_calendar_header_icon()
         {
             $page_link = '/';
@@ -36,8 +69,28 @@ if (!class_exists('wams\core\Charts')) {
         public function show_chart()
         {
             $tasks = [];
-            $tasks = $this->get_tasks();
-            $home = WAMS()->get_template('charts.php', '', ['tasks' => $tasks], true);
+            $allowed_forms = [1, 17];
+            $forms = GFFormsModel::get_forms();
+            if ($forms && !empty($forms)) {
+                foreach ($forms as $key => $form) {
+                    if (!in_array($form->id, $allowed_forms)) {
+                        unset($forms[$key]);
+                    }
+                }
+            }
+            $tasks = $this->wams_get_workflow_status($allowed_forms[0]);
+            // WAMS()->enqueue()->load_chart_script();
+            WAMS()->enqueue()->load_apexcharts_script();
+            WAMS()->get_template('apexcharts.php', '', ['forms' => $forms, 'tasks' => $tasks], true);
+        }
+        public function get_forms_tasks()
+        {
+            $forms = \GFAPI::get_forms();
+            foreach ($forms as $form) {
+                $labels[] = $form['title'];
+                $entries_count = \GFAPI::count_entries($form['id'], []);
+                $datasets['data'][] = $entries_count;
+            }
         }
         public function get_tasks()
         {
@@ -46,7 +99,7 @@ if (!class_exists('wams\core\Charts')) {
             $display_name = $current_user->display_name;
             // $form_id = 11;
             $tasks = get_transient('wams_forms_chart_' . $user_id);
-            // $tasks = false;
+            $tasks = false;
             if (!$tasks) :
                 $tasks = [];
                 $search_criteria = array(
@@ -63,9 +116,9 @@ if (!class_exists('wams\core\Charts')) {
                 $labels = [];
                 $datasets = [];
                 $datasets['label'] = $display_name;
-                $datasets['backgroundColor'] = 'rgba(75, 192, 192, 0.2)';
-                $datasets['borderColor'] = 'rgba(75, 192, 192, 1)';
-                $datasets['borderWidth'] = 1;
+                $datasets['backgroundColor'] = $this->int_to_hex('3');
+                $datasets['borderColor'] = $this->int_to_hex('2');
+                $datasets['borderWidth'] = 2;
                 $forms = \GFAPI::get_forms();
                 foreach ($forms as $form) {
                     $labels[] = $form['title'];
@@ -120,6 +173,36 @@ if (!class_exists('wams\core\Charts')) {
             $template = ob_get_contents();
             $output = ob_get_clean();
             return $output;
+        }
+
+        public function wams_get_workflow_status($form_id)
+        {
+            $chart_cache = get_transient('wams_forms_chart_' . $form_id);
+            $chart_cache = false;
+            if (!$chart_cache) {
+                global $wpdb;
+                $results = $wpdb->get_results(
+                    $wpdb->prepare(
+                        "SELECT meta_value as status, COUNT(*) AS count FROM {$wpdb->prefix}gf_entry_meta WHERE form_id= %d AND meta_key = 'workflow_final_status' GROUP BY meta_value",
+                        $form_id
+                    )
+                );
+                $labels = [];
+                $data = [];
+
+                if ($results) {
+                    foreach ($results as $result) {
+                        $labels[] = ucwords($result->status);
+                        $data[] = intval($result->count);
+                    }
+                }
+
+                $dataset = ['labels' => $labels, 'data' => $data];
+                set_transient('wams_forms_chart_' . $form_id, $dataset,  MINUTE_IN_SECONDS);
+                return $dataset;
+            } else {
+                return $chart_cache;
+            }
         }
     }
 }

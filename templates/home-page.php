@@ -14,16 +14,19 @@
  */
 if (!defined('ABSPATH')) {
     exit;
-} ?>
+}
+$blog_url = get_bloginfo('url');
+?>
 <div class="container">
     <div class="row g-4">
+
         <div class=" col-lg-12">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-start">
                         <h4 class="card-title" data-bs-toggle="tooltip" data-bs-title="<?php echo __('Tasks that assigned to me only', 'wams'); ?>">
                             <?php echo __('My Latest Tasks', 'wams'); ?></h4>
-                        <button id="tasks-refresh" class="btn"><i class="fas fa-sync"></i></button>
+                        <button data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo __('Refresh', 'wams'); ?>" id="tasks-refresh" class="btn"><i class="fas fa-sync"></i></button>
                     </div>
 
                     <hr>
@@ -41,7 +44,7 @@ if (!defined('ABSPATH')) {
                             </thead>
                             <?php foreach ($my_tasks as $entry_id => $task) : ?>
                                 <tr>
-                                    <td class="tdst-group-item"><a href="/inbox/?page=gravityflow-inbox&view=entry&id=<?php echo @$task['form_id']; ?>&lid=<?php echo @$entry_id; ?>"><?php echo @$entry_id; ?></a>
+                                    <td class="tdst-group-item"><a href="<?php echo $blog_url; ?>/inbox/?page=gravityflow-inbox&view=entry&id=<?php echo @$task['form_id']; ?>&lid=<?php echo @$entry_id; ?>"><?php echo @$entry_id; ?></a>
                                     </td>
                                     <td class="tdst-group-item"><?php echo @$task['step_name']; ?></td>
                                     <td class="tdst-group-item"><?php echo @$task['form_name']; ?></td>
@@ -87,7 +90,7 @@ if (!defined('ABSPATH')) {
                             </thead>
                             <?php foreach ($my_team_tasks as $entry_id => $task) : ?>
                                 <tr>
-                                    <td class="tdst-group-item"><a href="/inbox/?page=gravityflow-inbox&view=entry&id=<?php echo @$task['form_id']; ?>&lid=<?php echo @$entry_id; ?>"><?php echo @$entry_id; ?></a>
+                                    <td class="tdst-group-item"><a href="<?php echo $blog_url; ?>/inbox/?page=gravityflow-inbox&view=entry&id=<?php echo @$task['form_id']; ?>&lid=<?php echo @$entry_id; ?>"><?php echo @$entry_id; ?></a>
                                     </td>
                                     <td class="tdst-group-item"><?php echo @$task['step_name']; ?></td>
                                     <td class="tdst-group-item"><?php echo @$task['form_name']; ?></td>
@@ -113,7 +116,7 @@ if (!defined('ABSPATH')) {
                 <div class="card-body">
 
                     <div class="d-flex justify-content-between align-items-start">
-                        <h4 class="card-title" data-bs-toggle="tooltip" data-bs-title="<?php echo __('My Requests ', 'wams'); ?>">
+                        <h4 class="card-title" data-bs-toggle="tooltip" data-bs-title="<?php echo __('My Requests', 'wams'); ?>">
                             <?php echo __('My Requests', 'wams'); ?></h4>
                         <button id="requests-refresh" class="btn"><i class="fas fa-sync"></i></button>
                     </div>
@@ -132,7 +135,7 @@ if (!defined('ABSPATH')) {
                             </thead>
                             <?php foreach ($my_requests as $entry_id => $task) : ?>
                                 <tr>
-                                    <td class="tdst-group-item"><a href="/status/?page=gravityflow-inbox&view=entry&id=<?php echo @$task['form_id']; ?>&lid=<?php echo @$entry_id; ?>"><?php echo @$entry_id; ?></a>
+                                    <td class="tdst-group-item"><a href="<?php echo $blog_url; ?>/status/?page=gravityflow-inbox&view=entry&id=<?php echo @$task['form_id']; ?>&lid=<?php echo @$entry_id; ?>"><?php echo @$entry_id; ?></a>
                                     </td>
                                     <td class="tdst-group-item"><?php echo @$task['step_name']; ?></td>
                                     <td class="tdst-group-item"><?php echo @$task['form_name']; ?></td>

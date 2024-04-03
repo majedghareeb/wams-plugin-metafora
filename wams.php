@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Plugin Name: WAMS2
+ * Plugin Name: WAMS
  * Plugin URI: http://wams.com/
- * Description: The New WAMS Plugin
+ * Description: Fadaat Media - WAMS Plugin
  * Version: 1.0.0
  * Author: WAMS
  * Author URI: http://wams.com/
  * Text Domain: wams
  * Domain Path: /languages
  * Requires at least: 5.5
- * Requires PHP: 8.0
+ * Requires PHP: 7.4
  *
  * @package WAMS
  */
@@ -35,10 +35,11 @@ define('WAMS_VERSION', $plugin_data['Version']);
 define('WAMS_PLUGIN_NAME', $plugin_data['Name']);
 
 // define( 'WAMS_LEGACY_BUILDER_OFF', true );
-
-define('WAMS_MAIN_BLOG_ID', 1);
-define('WAMS_ARCHIVE_BLOG_ID', 2);
-define('WAMS_INPUT_BLOG_ID', 3);
+if (is_multisite()) {
+    define('WAMS_MAIN_BLOG_ID', get_main_site_id());
+} else {
+    define('WAMS_MAIN_BLOG_ID', 1);
+}
 
 require_once 'includes/class-functions.php';
 require_once 'includes/class-init.php';

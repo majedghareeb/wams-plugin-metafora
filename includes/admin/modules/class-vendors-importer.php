@@ -4,6 +4,7 @@ namespace wams\admin\modules;
 
 use \wams\admin\core\Admin_Settings_API;
 use GFAPI;
+use GFFormsModel;
 
 class Vendors_Importer
 {
@@ -48,20 +49,31 @@ class Vendors_Importer
     {
         echo '<h1>Vendors Importer</h1>';
         echo '<div class="wrap">';
-        $form_ids = [14, 5, 6, 9, 15, 13, 12];
-        $forms_fields = [];
-        foreach ($form_ids as $form_id) {
-            $form = GFAPI::get_form($form_id);
-            if ($form) {
-                foreach ($form['fields'] as $field) {
-                    $forms_fields[] = [
-                        'form_id' => $form['id'],
-                        'form_title' => $form['title'],
-                        'field_id' => $field['id'],
-                        'field_type' => $field['type'],
-                        'field_label' =>  $field['label']
-                    ];
-                    // echo '<option value="' . $field['id'] . '">' . $field['label'] . '</option>';
+        $forms_settings = get_option('wams_forms_settings');
+
+        if ($forms_settings) {
+            $company_form_id = $forms_settings['company_form'];
+            $project_form_id = $forms_settings['project_form'];
+            $vendor_form_id = $forms_settings['vendor_form'];
+            $vendor_personal_details_form_id = $forms_settings['vendor_personal_details_form'];
+            $vendor_banking_details_form_id = $forms_settings['vendor_banking_details_form'];
+
+            $form_ids = [$vendor_form_id, $vendor_personal_details_form_id, $vendor_banking_details_form_id,];
+            $forms_fields = [];
+            foreach ($form_ids as $form_id) {
+                $form = GFAPI::get_form($form_id);
+                if ($form) {
+                    foreach ($form['fields'] as $field) {
+                        if (in_array($field['type'], ['form', 'section'])) continue;
+                        $forms_fields[] = [
+                            'form_id' => $form['id'],
+                            'form_title' => $form['title'],
+                            'field_id' => $field['id'],
+                            'field_type' => $field['type'],
+                            'field_label' =>  $field['label']
+                        ];
+                        // echo '<option value="' . $field['id'] . '">' . $field['label'] . '</option>';
+                    }
                 }
             }
         }
@@ -119,6 +131,7 @@ class Vendors_Importer
         if (isset($_POST['save_map'])) {
             $formData = array();
             foreach ($_POST['select'] as $index => $value) {
+                if ($value == '') continue;
                 // Store the pair of text and select values for each row in the array
                 $form_data = explode('.', $index);
                 $csv_header = explode('.', $_POST['select'][$index]);
@@ -141,28 +154,5 @@ class Vendors_Importer
         }
         include_once WAMS()->admin()->templates_path . 'vendors-importer.php';
         echo '</div>';
-    }
-
-
-    public function import_settings()
-    {
-        $message = '';
-        $form_ids = [14, 5, 6, 9, 15, 13, 12];
-        $forms_fields = [];
-        foreach ($form_ids as $form_id) {
-            $form = GFAPI::get_form($form_id);
-            if ($form) {
-                foreach ($form['fields'] as $field) {
-                    $forms_fields[] = [
-                        'form_id' => $form['id'],
-                        'form_title' => $form['title'],
-                        'field_id' => $field['id'],
-                        'field_type' => $field['type'],
-                        'field_label' =>  $field['label']
-                    ];
-                    // echo '<option value="' . $field['id'] . '">' . $field['label'] . '</option>';
-                }
-            }
-        }
     }
 }

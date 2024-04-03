@@ -20,6 +20,13 @@ if (!class_exists('wams\core\Messages')) {
         {
         }
 
+
+        function messages_page()
+        {
+            WAMS()->enqueue()->load_messages_script();
+            WAMS()->get_template('messages/messages-list.php', '', [], true);
+        }
+
         function messages_ajax_handler()
         {
             if (!wp_verify_nonce($_POST['nonce'], 'wams-frontend-nonce')) {
@@ -32,8 +39,16 @@ if (!class_exists('wams\core\Messages')) {
 
             // return wp_send_json(['message' => "TEST AJAX from Admin " . __METHOD__]);
             switch ($_POST['param']) {
-                case 'ajax_get_new_count':
-                    wp_send_json($this->ajax_get_new_count());
+                case 'send_message':
+                    $formData = wp_parse_args($_POST['formData']);
+                    if (isset($formData['user_id'])) {
+                        wp_send_json_success([
+                            'status' => 'success',
+                            'message' => __('Settings Saved', 'wams'),
+                            'formData' => $formData
+                        ]);
+                    }
+
                     break;
                 case 'ajax_check_update':
                     echo ($this->reload_notification_box());
@@ -203,7 +218,7 @@ if (!class_exists('wams\core\Messages')) {
             if ($vars && isset($vars['photo'])) {
                 $photo = $vars['photo'];
             } else {
-                $photo = wams_get_default_avatar_uri($user_id);
+                $photo = um_get_default_avatar_uri($user_id);
             }
 
             $url = '';
@@ -335,10 +350,7 @@ if (!class_exists('wams\core\Messages')) {
             }
         }
 
-        function messages_page()
-        {
-            WAMS()->get_template('messages/messages-list.php', '', [], true);
-        }
+
 
         /**
          * Mark as read.
@@ -773,7 +785,8 @@ if (!class_exists('wams\core\Messages')) {
 						  {$unread_where}
 					ORDER BY time DESC"
             );
-            $new_notifications_formatted = (absint($new_notifications) > 9) ? __('9+', 'wams') : absint($new_notifications);
+            // $new_notifications_formatted = (absint($new_notifications) > 9) ? __('9+', 'wams') : absint($new_notifications);
+            $new_notifications_formatted = absint($new_notifications);
 
             $output = array(
                 'new_notifications_formatted' => esc_html($new_notifications_formatted),

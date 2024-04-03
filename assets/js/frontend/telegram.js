@@ -1,7 +1,8 @@
 jQuery(document).ready(function () {
-    var ajaxurl = wams.ajaxurl;
-    var nonce = wams.nonce
+    var ajaxurl = wams_frontend_scripts.ajaxurl;
+    var nonce = wams_frontend_scripts.nonce
     var action = "telegram_ajax_request";
+
     /*
      * Activate Telegram account
      */
@@ -30,22 +31,10 @@ jQuery(document).ready(function () {
                     nonce: nonce
                 },
                 complete: function (response) {
-                    console.log(response);
-                    // result = response.responseJSON;
-                    if (!response.success) {
-
-                        Swal.fire(
-                            "Failed to Send Codes!",
-                            result.message,
-                            "error"
-                        )
-                    } else {
-                        Swal.fire(
-                            "Activation Code Send",
-                            "Please check your telegram messages!",
-                            "success"
-                        )
-                    }
+                    Swal.fire({
+                        icon: response.responseJSON.status,
+                        text: response.responseJSON.message,
+                    })
 
                 }
             });
@@ -92,25 +81,14 @@ jQuery(document).ready(function () {
                             nonce: nonce
                         },
                         complete: function (response) {
-                            console.log(response);
                             data = response.responseJSON;
-                            if (data.status == 1) {
-                                Swal.fire(
-                                    "Chat ID successfully updated <br>",
-                                    data.message,
-                                    "success"
-                                )
-                                setTimeout(function () {
-                                    location.reload();
-                                }, 3000);
-
-                            } else {
-                                Swal.fire(
-                                    data.message,
-                                    "Failed to update!",
-                                    "error"
-                                )
-                            }
+                            Swal.fire({
+                                icon: data.status,
+                                text: data.message,
+                            })
+                            setTimeout(function () {
+                                location.reload();
+                            }, 3000);
                         }
                     });
                 }
@@ -145,23 +123,10 @@ jQuery(document).ready(function () {
                 nonce: nonce
             },
             complete: function (response) {
-                console.log(response);
-                //alert(action + ' ' + url);
-                //var responsehtml = response.responseJSON.message;
-                if (response.status == 200) {
-                    //alert(responsehtml);
-                    Swal.fire({
-                        icon: 'success',
-                        title: JSON.stringify(response.responseJSON.message),
-                        text: 'Please check your telegram app'
-                    })
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: action,
-                        text: 'Something went wrong!',
-                    })
-                }
+                Swal.fire({
+                    icon: response.responseJSON.status,
+                    text: response.responseJSON.message,
+                })
             }
         });
     });

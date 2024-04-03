@@ -4,90 +4,14 @@ jQuery(document).ready(function () {
     var action = "web_notifications_frontend_ajax_request";
     var wams_notifications_filter_trigger = false;
     var wams_notifications_interval_id;
-    // Select all button click
-    jQuery('.notification-item').click(function () {
-        notification_id = jQuery(this).data('id');
-        notification_url = jQuery(this).data('url');
-        wams_notifications_actions('read', parseInt(notification_id));
-        window.location.href = notification_url;
-    });
-    jQuery('#checkAll').click(function () {
-        var checkbox = $(this);
-        jQuery('.form-check-input').prop('checked', checkbox.is(':checked'));
-        // Update UI (optional)
-        if (checkbox.is(':checked')) {
-            jQuery('#notifications-table').find('tr').addClass('selected');
-        } else {
-            jQuery('#notifications-table').find('tr').removeClass('selected');
-        }
-    });
-
-    jQuery('.action-button').click(function (event) {
-        // Get the button and its parent row
-        var actionType = event.currentTarget.dataset.actionType;
-        var rowId = event.currentTarget.dataset.rowId;
-        wams_notifications_actions(actionType, rowId)
-        switch (actionType) {
-            case 'delete':
-                var row = jQuery(this).closest('tr');
-                row.remove();
-                break;
-            case 'read':
-                var status = jQuery(this).closest('tr').find('td .status');
-                status.text('read');
-
-                break;
-            case 'unread':
-                var status = jQuery(this).closest('tr').find('.status');
-                status.text('unread');
-                break;
-            default:
-                break;
-        }
-    });
-    // Checkbox change
-    jQuery('.multi-action-button').click(function (event) {
-        var actionType = event.currentTarget.dataset.actionType;
-        var selectedIds = [];
-        jQuery('.form-check-input:checked').each(function () {
-            if (jQuery(this).attr('id') !== 'checkAll') {
-                selectedIds.push(jQuery(this).attr('id'));
-                switch (actionType) {
-                    case 'delete':
-                        var row = jQuery(this).closest('tr');
-                        row.remove();
-                        break;
-                    case 'read':
-                        var status = jQuery(this).closest('tr').find('td .status');
-                        status.text('read');
-
-                        break;
-                    case 'unread':
-                        var status = jQuery(this).closest('tr').find('.status');
-                        status.text('unread');
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-
-        });
-
-        wams_notifications_actions(actionType, selectedIds)
-
-        // Send selectedRows to server, perform calculations, etc.
-        console.log("actionType:", actionType);
-        console.log("Selected rows:", selectedIds);
-    });
 
     wams_notifications_init_interval();
 
     function wams_notifications_init_interval() {
         /* Load notifications */
         if (parseInt(wams_frontend_scripts.timer) !== 0) {
-            wams_notifications_interval_id = setInterval(wams_load_notifications, parseInt(10000));
-            // wams_notifications_interval_id = setInterval(wams_load_notifications, parseInt(wams_frontend_scripts.timer));
+            // wams_notifications_interval_id = setInterval(wams_load_notifications, parseInt(10000));
+            wams_notifications_interval_id = setInterval(wams_load_notifications, parseInt(wams_frontend_scripts.timer));
         }
     }
     // /* Play Notification Sound */
@@ -106,35 +30,14 @@ jQuery(document).ready(function () {
         }
     });
 
-    /**
-     * AJAX request for a new notification
-     */
-    function wams_notifications_actions(actionType, selectedIds) {
+    jQuery('.notification-item').click(function () {
+        notification_id = jQuery(this).data('id');
+        notification_url = jQuery(this).data('url');
+        wams_notifications_actions('read', parseInt(notification_id));
+        window.location.href = notification_url;
+    });
 
-        var param = 'notification_action_' + actionType
-        jQuery.ajax({
-            type: "POST",
-            dataType: "JSON",
-            url: ajaxurl,
-            data: {
-                action: action,
-                selectedIds: selectedIds,
-                param: param,
-                nonce: nonce
-            },
-            beforeSend: function () {},
-            complete: function () {},
-            success: function (response) {
-                console.log(response);
-                // if (response.success !== true) {
-                //     console.error("WAMS: Request 'wams_notifications_actions' failed.", response);
-                //     return;
-                // }
 
-            }
-        });
-        // }
-    }
     /**
      * Play Notification Sound
      * @returns null
@@ -157,7 +60,8 @@ jQuery(document).ready(function () {
      * AJAX request for a new notification
      */
     function wams_load_notifications() {
-        console.log('triggered');
+        // console.log('triggered');
+
         if (wams_load_notifications.inProcess) {
             return;
         }
@@ -182,12 +86,15 @@ jQuery(document).ready(function () {
                 wams_load_notifications.inProcess = false;
             },
             success: function (response) {
+
                 if (response.success !== true) {
                     console.error("WAMS: Request 'wams_notification_get_new_count' failed.", response);
                     return;
                 }
                 // Display a quantity of new items as a number in red
                 var new_count = response.data.new_notifications;
+                var inbox_count = response.data.inbox_count;
+                if (inbox_count > 0) jQuery('.workflow-inbox-count').html(inbox_count)
                 if (jQuery('#unread-notifications-count').html() < new_count) {
                     if (new_count !== 0) {
                         jQuery('#unread-notifications-count').html(new_count)
